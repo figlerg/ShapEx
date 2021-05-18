@@ -1,0 +1,57 @@
+# for timestep=0.001
+
+
+
+param aone in [0.015,0.025];
+param bone in [30,32];
+
+dparam lone in [46,47];       # timestep = 0.001, thus for 51 samples we get a signal duration of 50*0.001=0.05 sec
+
+
+
+param atwo in [0.10,0.15];
+
+param btwo in [-35,-32];
+
+dparam ltwo in [101,102];
+
+
+
+param slopeone in [26.0,26.1];
+
+dparam lthree in [30,31];
+
+
+
+param slopetwo in [-40.1,-40];
+
+dparam lfour in [27,28];
+
+
+
+param slopethree in [25.0,26.0];
+
+dparam lfive in [12,13];
+
+
+
+param asix in [0.03,0.035];
+
+param bsix in [8,9];
+
+dparam lsix in [151,152];
+
+
+
+param aseven in [0.04,0.041];
+
+param bseven in [-35,-34];
+
+dparam lseven in [46,47];
+
+param ignored in [100,101];   # this is an offset parameter and is being ignored
+
+
+
+
+exp(aone,bone,ignored,lone).exp(atwo,btwo,ignored,ltwo).line(slopeone,ignored,lthree).line(slopetwo,ignored,lfour).line(slopethree,ignored,lfive).exp(asix,bsix,ignored,lsix).exp(aseven,bseven,ignored,lseven);

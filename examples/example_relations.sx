@@ -1,0 +1,10 @@
+1x + y <= 1;
+-1.0x + 1*y <= 4.0; # various ways of writing these down are supported
+y >= 1; # greater or equal works as well, all the equivalence manipulations are handled automatically
+dparam l in [1.0,10.0];
+#param y in [-2,2.2]; # this type of declaration is compatible with the relational format as well
+
+
+#line(x,y,l);
+
+line(x,y,l).const(y,l); # this works as well

@@ -1,0 +1,53 @@
+conda create --name shapex anaconda r-base r-essentials rpy2 r-volesti
+
+conda install numpy pandas rpy2 tqdm pip matplotlib r-base -y
+conda install -c conda-forge antlr-python-runtime -y
+
+pip install z3-solver
+
+install.packages(c("Rcpp","RcppEigen","BH","digest","rlang","volesti", "codetools"),dependencies=TRUE)
+
+
+
+sudo docker start xenodochial_yalow   # start daemon
+sudo docker exec -it xenodochial_yalow /bin/bash # enter container shell when its running
+sudo docker cp /home/felix/Desktop/shapes_generator xenodochial_yalow:/home/  # copy shapex into container
+
+
+
+
+
+
+----- NOW WITH DOCKER FILE
+
+
+ORIGINAL CALL
+python /home/shapex/main.py --inputfile /home/shapex/example_spec/emsoft20/pulses_emsoft20.felix -n 100 --valuation_mode sampling --paths 10 --threshold 0.001 --timestep 0.1 --enable_offsets -v
+
+WHAT WAS IN THE CONTINUUMIO DOC (DOESNT WORK)
+docker run -i -t -p 8888:8888 continuumio/miniconda /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+
+
+
+
+INSTEAD, INSIDE DOCKER CONTAINER (MAYBE WRITE IN DOCKERFILE)
+jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/opt/notebooks
+
+BUILD DOCKER IMAGE LIKE THIS (WHILE IN DOCKERFILE LOCATION; TRAILING DOT IMPORTANT):
+docker build --rm -t shapex:latest .
+
+RUN DOCKER IMAGE LIKE THIS:
+docker run -p 8888:8888 -i -t shapex:1.0 /bin/bash
+NEW, WITH NOTEBOOK CALL:
+docker run -p 8888:8888 -i -t shapex:latest /bin/bash -c "/opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+
+
+CALL MAIN INSIDE JUPYTER
+%run /home/shapex/main.py --inputfile /home/shapex/example_spec/emsoft20/pulses_emsoft20.felix -n 100 --valuation_mode sampling --paths 10 --threshold 0.001 --timestep 0.1 --enable_offsets -v
+
+
+EVEN BETTER: RUN WITH NOTEBOOK CALL FIXED + DIRECT DEMO.IPYNB
+docker run -p 8888:8888 -i -t shapex:latest /bin/bash -c "/opt/conda/bin/jupyter notebook /home/shapex/demo.ipynb --notebook-dir=/opt/notebooks --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='0291029398729374728jdaojalklyo'"
+
+(found out that i can open ipynb files directly by browser url: http://127.0.0.1:8888/notebooks/filename.ipynb?token=...)
+

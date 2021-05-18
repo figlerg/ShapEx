@@ -1,0 +1,9 @@
+param a in [0,1];
+param b in [0,0]; # lets keep it simple
+dparam l in [0,1];
+
+#nonlin a*l <= 0.6; # multi-affine constraint
+#nonlin 0.6 >= a*l;
+nonlin a*l + a*l <= 1.2;
+nonlin b < 10;
+line(a,b,l);

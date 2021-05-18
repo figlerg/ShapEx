@@ -1,0 +1,22 @@
+param a1 in [-0.261,-0.197];
+param b1 in [9.06,9.70];
+dparam d1 in [18,24];
+
+param a2 in [-0.007,0.031];
+param b2 in [9.23,10.09];
+dparam d2 in [26,44];
+
+param a3 in [-0.001,0.001];
+param b3 in [4.96,5.12];
+dparam d3 in [69,74];
+
+param a4 in [0.110, 0.116];
+param b4 in [4.43, 4.60];
+dparam d4 in [38, 39];
+
+param a5 in [0.199, 0.263];
+param b5 in [4.35, 4.45];
+dparam d5 in [20, 22];
+
+#line(a1,b1,d1).line(a2,b2,d2).line(a3,b3,d3).(line(a4,b4,d4) join line(a5,b5,d5)).line(a1,b1,d1); # 1st automaton in paper
+line(a2,b2,d2).line(a1,b1,d1).line(a3,b3,d3).(line(a4,b4,d4) join line(a5,b5,d5)).line(a2,b2,d2); # 1st automaton in paper
