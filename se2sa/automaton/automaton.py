@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import networkx as nx
+# import networkx as nx
 
 from .transition import Transition
 
@@ -93,31 +93,31 @@ class ShapeAutomaton:
 
 
 
-    def visualize(self):
-        G = nx.DiGraph()
-
-        for location in self.locations:
-            G.add_node(location)
-
-        for transition in self.transitions:
-            G.add_edge(transition.source, transition.target, weight = 5)
-            #G.edges[transition.source, transition.target]['weight'] = 5
-
-        pos = nx.spring_layout(G)
-        plt.subplot(111)
-
-        ## fits better, but without info on final/initial
-        # nx.draw(G, pos, edge_color = 'cyan', with_labels=True, node_color ='pink',
-        #         labels={location:location.name for location in self.locations})
-
-
-        nx.draw(G, pos, edge_color = 'black', node_color = 'cyan', with_labels=True)
-
-        nx.draw_networkx_edge_labels(G, pos, edge_labels={(edge.source, edge.target):str(edge.letter)
-                                                          for edge in self.transitions}, font_color='green')
-        plt.axis('off')
-        plt.tight_layout()
-        plt.show()
+    # def visualize(self):
+    #     G = nx.DiGraph()
+    #
+    #     for location in self.locations:
+    #         G.add_node(location)
+    #
+    #     for transition in self.transitions:
+    #         G.add_edge(transition.source, transition.target, weight = 5)
+    #         #G.edges[transition.source, transition.target]['weight'] = 5
+    #
+    #     pos = nx.spring_layout(G)
+    #     plt.subplot(111)
+    #
+    #     ## fits better, but without info on final/initial
+    #     # nx.draw(G, pos, edge_color = 'cyan', with_labels=True, node_color ='pink',
+    #     #         labels={location:location.name for location in self.locations})
+    #
+    #
+    #     nx.draw(G, pos, edge_color = 'black', node_color = 'cyan', with_labels=True)
+    #
+    #     nx.draw_networkx_edge_labels(G, pos, edge_labels={(edge.source, edge.target):str(edge.letter)
+    #                                                       for edge in self.transitions}, font_color='green')
+    #     plt.axis('off')
+    #     plt.tight_layout()
+    #     plt.show()
 
     #aux for set of locations in the layer adjacent to the final locations (used in se2sa.kleene)
     def last_nonfinal_layer(self):

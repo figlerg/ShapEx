@@ -1,4 +1,4 @@
-# Generated from C:/Users/giglerf/Documents/dev/shape_gen_tool/shapes_generator_base/se2sa/grammar\ShapeExpression.g4 by ANTLR 4.9
+# Generated from C:/Users/Felix/PycharmProjects/ShapEx/se2sa/grammar\ShapeExpression.g4 by ANTLR 4.9.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -122,19 +122,19 @@ class ShapeExpressionParser ( Parser ):
                      "'abs('", "','", "'in'", "'['", "']'", "<INVALID>", 
                      "<INVALID>", "<INVALID>", "<INVALID>", "'.'", "'join'", 
                      "'('", "')'", "'const'", "'line'", "'exp'", "'sine'", 
-                     "'sinc'", "'param'", "'dparam'", "'nonlin'" ]
+                     "'sinc'", "'param'", "'duration'", "'constraint'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "DOUBLE", "INT", "SIGN", "COMP_OP", "CONCAT", "UNION", 
                       "LEFTPAREN", "RIGHTPAREN", "CONSTANT", "LINE", "EXPONENTIAL", 
-                      "SINE", "SINC", "PARAM", "DPARAM", "NONLIN", "STRING", 
-                      "ID", "WS", "LINE_TERMINATOR", "LINE_COMMENT" ]
+                      "SINE", "SINC", "PARAM", "DURATION", "CONSTRAINT", 
+                      "STRING", "ID", "WS", "LINE_TERMINATOR", "LINE_COMMENT" ]
 
     RULE_shape_expression = 0
     RULE_param_declaration = 1
-    RULE_discrete_param_declaration = 2
+    RULE_duration_declaration = 2
     RULE_relation = 3
     RULE_relation_string = 4
     RULE_scalar = 5
@@ -150,7 +150,7 @@ class ShapeExpressionParser ( Parser ):
     RULE_discrete_interval = 15
     RULE_number = 16
 
-    ruleNames =  [ "shape_expression", "param_declaration", "discrete_param_declaration", 
+    ruleNames =  [ "shape_expression", "param_declaration", "duration_declaration", 
                    "relation", "relation_string", "scalar", "expression", 
                    "atomic", "atomic_constant", "atomic_line", "atomic_exponential", 
                    "atomic_sine", "atomic_sinc", "summand", "interval", 
@@ -182,8 +182,8 @@ class ShapeExpressionParser ( Parser ):
     SINE=23
     SINC=24
     PARAM=25
-    DPARAM=26
-    NONLIN=27
+    DURATION=26
+    CONSTRAINT=27
     STRING=28
     ID=29
     WS=30
@@ -192,7 +192,7 @@ class ShapeExpressionParser ( Parser ):
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.9")
+        self.checkVersion("4.9.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -200,6 +200,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class Shape_expressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -216,11 +217,11 @@ class ShapeExpressionParser ( Parser ):
                 return self.getTypedRuleContext(ShapeExpressionParser.Param_declarationContext,i)
 
 
-        def discrete_param_declaration(self, i:int=None):
+        def duration_declaration(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ShapeExpressionParser.Discrete_param_declarationContext)
+                return self.getTypedRuleContexts(ShapeExpressionParser.Duration_declarationContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.Discrete_param_declarationContext,i)
+                return self.getTypedRuleContext(ShapeExpressionParser.Duration_declarationContext,i)
 
 
         def relation(self, i:int=None):
@@ -267,15 +268,15 @@ class ShapeExpressionParser ( Parser ):
                     self.state = 34
                     self.param_declaration()
                     pass
-                elif token in [ShapeExpressionParser.DPARAM]:
+                elif token in [ShapeExpressionParser.DURATION]:
                     self.state = 35
-                    self.discrete_param_declaration()
+                    self.duration_declaration()
                     pass
                 elif token in [ShapeExpressionParser.T__3, ShapeExpressionParser.DOUBLE, ShapeExpressionParser.INT, ShapeExpressionParser.SIGN, ShapeExpressionParser.ID]:
                     self.state = 36
                     self.relation()
                     pass
-                elif token in [ShapeExpressionParser.NONLIN]:
+                elif token in [ShapeExpressionParser.CONSTRAINT]:
                     self.state = 37
                     self.relation_string()
                     pass
@@ -285,7 +286,7 @@ class ShapeExpressionParser ( Parser ):
                 self.state = 40 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShapeExpressionParser.T__3) | (1 << ShapeExpressionParser.DOUBLE) | (1 << ShapeExpressionParser.INT) | (1 << ShapeExpressionParser.SIGN) | (1 << ShapeExpressionParser.PARAM) | (1 << ShapeExpressionParser.DPARAM) | (1 << ShapeExpressionParser.NONLIN) | (1 << ShapeExpressionParser.ID))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShapeExpressionParser.T__3) | (1 << ShapeExpressionParser.DOUBLE) | (1 << ShapeExpressionParser.INT) | (1 << ShapeExpressionParser.SIGN) | (1 << ShapeExpressionParser.PARAM) | (1 << ShapeExpressionParser.DURATION) | (1 << ShapeExpressionParser.CONSTRAINT) | (1 << ShapeExpressionParser.ID))) != 0)):
                     break
 
             self.state = 42
@@ -302,6 +303,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class Param_declarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -359,14 +361,15 @@ class ShapeExpressionParser ( Parser ):
         return localctx
 
 
-    class Discrete_param_declarationContext(ParserRuleContext):
+    class Duration_declarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def DPARAM(self):
-            return self.getToken(ShapeExpressionParser.DPARAM, 0)
+        def DURATION(self):
+            return self.getToken(ShapeExpressionParser.DURATION, 0)
 
         def ID(self):
             return self.getToken(ShapeExpressionParser.ID, 0)
@@ -376,26 +379,26 @@ class ShapeExpressionParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ShapeExpressionParser.RULE_discrete_param_declaration
+            return ShapeExpressionParser.RULE_duration_declaration
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDiscrete_param_declaration" ):
-                return visitor.visitDiscrete_param_declaration(self)
+            if hasattr( visitor, "visitDuration_declaration" ):
+                return visitor.visitDuration_declaration(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
 
-    def discrete_param_declaration(self):
+    def duration_declaration(self):
 
-        localctx = ShapeExpressionParser.Discrete_param_declarationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_discrete_param_declaration)
+        localctx = ShapeExpressionParser.Duration_declarationContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 4, self.RULE_duration_declaration)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 52
-            self.match(ShapeExpressionParser.DPARAM)
+            self.match(ShapeExpressionParser.DURATION)
             self.state = 53
             self.match(ShapeExpressionParser.ID)
             self.state = 55
@@ -418,6 +421,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class RelationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -484,13 +488,14 @@ class ShapeExpressionParser ( Parser ):
 
 
     class Relation_stringContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def NONLIN(self):
-            return self.getToken(ShapeExpressionParser.NONLIN, 0)
+        def CONSTRAINT(self):
+            return self.getToken(ShapeExpressionParser.CONSTRAINT, 0)
 
         def scalar(self, i:int=None):
             if i is None:
@@ -525,7 +530,7 @@ class ShapeExpressionParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 68
-            self.match(ShapeExpressionParser.NONLIN)
+            self.match(ShapeExpressionParser.CONSTRAINT)
             self.state = 69
             self.scalar(0)
             self.state = 72 
@@ -554,6 +559,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class ScalarContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -693,6 +699,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class ExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -905,6 +912,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class AtomicContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1057,6 +1065,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class Atomic_constantContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1124,6 +1133,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class Atomic_lineContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1195,6 +1205,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class Atomic_exponentialContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1270,6 +1281,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class Atomic_sineContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1349,6 +1361,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class Atomic_sincContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1428,6 +1441,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class SummandContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1498,6 +1512,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class IntervalContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1550,6 +1565,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class Discrete_intervalContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1618,6 +1634,7 @@ class ShapeExpressionParser ( Parser ):
 
 
     class NumberContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)

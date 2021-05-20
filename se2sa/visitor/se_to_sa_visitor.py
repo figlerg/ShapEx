@@ -198,7 +198,7 @@ class SEToSAVisitor(ShapeExpressionVisitor):
             param_interval = IntervalObject()
             return (param, param_interval)
 
-    def visitDiscrete_param_declaration(self, ctx: ShapeExpressionParser.Discrete_param_declarationContext):
+    def visitDuration_declaration(self, ctx: ShapeExpressionParser.Discrete_param_declarationContext):
         param = ctx.ID().getText()
 
         try:  # need exception for param declarations without explicit interval

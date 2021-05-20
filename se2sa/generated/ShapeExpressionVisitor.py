@@ -1,4 +1,4 @@
-# Generated from C:/Users/giglerf/Documents/dev/shape_gen_tool/shapes_generator_base/se2sa/grammar\ShapeExpression.g4 by ANTLR 4.9
+# Generated from C:/Users/Felix/PycharmProjects/ShapEx/se2sa/grammar\ShapeExpression.g4 by ANTLR 4.9.1
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .ShapeExpressionParser import ShapeExpressionParser
@@ -19,8 +19,8 @@ class ShapeExpressionVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ShapeExpressionParser#discrete_param_declaration.
-    def visitDiscrete_param_declaration(self, ctx:ShapeExpressionParser.Discrete_param_declarationContext):
+    # Visit a parse tree produced by ShapeExpressionParser#duration_declaration.
+    def visitDuration_declaration(self, ctx:ShapeExpressionParser.Duration_declarationContext):
         return self.visitChildren(ctx)
 
 

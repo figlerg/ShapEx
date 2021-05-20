@@ -1,7 +1,8 @@
 grammar ShapeExpression;
+// TODO import anyHR grammar here?
 
 shape_expression:
-     (param_declaration | discrete_param_declaration | relation | relation_string) + expression ';'
+     (param_declaration | duration_declaration | relation | relation_string) + expression ';'
      ;
 
 param_declaration:
@@ -9,8 +10,8 @@ param_declaration:
     PARAM ID  interval? ';'
     ;
 
-discrete_param_declaration:
-    DPARAM ID discrete_interval? ';'
+duration_declaration:
+    DURATION ID discrete_interval? ';'
     ;
 
 // TODO relations are cumbersome, should support "<" ">" and "=="
@@ -20,13 +21,14 @@ relation:
     // TODO create checks for missing number; should I also make two signs (e.g. '--' illegal for clarity?)
 
 relation_string:
-    NONLIN scalar (COMP_OP scalar)+ ';'
-//    NONLIN STRING ';'// TODO temporary... i would like to keep some simple grammar here
+    // TODO this should be harmonised with anyHR grammar
+    CONSTRAINT scalar (COMP_OP scalar)+ ';'
+//    NONLIN STRING ';'
     ;
 
 //  for user specified non-linear relations we need different relations (simply strings) to be evalued via eval
 scalar:
-    scalar (( '+' | '-' | '*' | '^' | '**') scalar)+ // TODO something's not ideal here: leading '-' doesn't work.
+    scalar (( '+' | '-' | '*' | '^' | '**') scalar)+
     | ID
     | number
     | '(' scalar ')'
@@ -114,8 +116,8 @@ EXPONENTIAL: 'exp';
 SINE: 'sine';
 SINC: 'sinc';
 PARAM: 'param';
-DPARAM: 'dparam';
-NONLIN: 'nonlin';
+DURATION: 'duration';
+CONSTRAINT: 'constraint';
 
 STRING : '"' .*? '"' ;
 ID: [a-zA-Z]+[0-9]*; // for relations it is necessary to enforce that no ID starts with a number

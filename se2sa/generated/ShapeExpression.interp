@@ -25,8 +25,8 @@ null
 'sine'
 'sinc'
 'param'
-'dparam'
-'nonlin'
+'duration'
+'constraint'
 null
 null
 null
@@ -60,8 +60,8 @@ EXPONENTIAL
 SINE
 SINC
 PARAM
-DPARAM
-NONLIN
+DURATION
+CONSTRAINT
 STRING
 ID
 WS
@@ -71,7 +71,7 @@ LINE_COMMENT
 rule names:
 shape_expression
 param_declaration
-discrete_param_declaration
+duration_declaration
 relation
 relation_string
 scalar

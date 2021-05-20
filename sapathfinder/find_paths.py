@@ -72,7 +72,6 @@ def find_paths(aut:ShapeAutomaton, n:int) -> Set[Transition]:
     return short_first[0:n] # this should not change anything, but it does.
     # Something weird is happening here with the letter __eq__ method and sets
 
-
 # helper function so I can easily check how many different letter sequences have been made at any given time
 def paths_transition2letter(paths:Set[Tuple[Transition]]) -> Set[Tuple[Letter]]:
 
@@ -82,6 +81,3 @@ def paths_transition2letter(paths:Set[Tuple[Transition]]) -> Set[Tuple[Letter]]:
         letter_paths.add(letter_path)
 
     return letter_paths
-
-
-

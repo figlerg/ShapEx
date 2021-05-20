@@ -208,3 +208,4 @@ dmypy.json
 .pics/
 ./**.png
 log/**.jpg
+venv/

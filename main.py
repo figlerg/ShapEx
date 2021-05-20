@@ -1,8 +1,13 @@
 import argparse
-
+import random
+from typing import List, Dict, Set
+import sys
+import datetime
+import os
+import textwrap
 from antlr4 import *
-from se2sa.SyntaxError import MyErrorStrategy
 
+from se2sa.SyntaxError import MyErrorStrategy
 from generation_tool.sa2traces import *
 from misc.save import save_to_csv
 from misc.visualize import plotter
@@ -10,15 +15,6 @@ from sapathfinder.find_paths import find_paths
 from se2sa.generated.ShapeExpressionLexer import ShapeExpressionLexer
 from se2sa.generated.ShapeExpressionParser import ShapeExpressionParser
 from se2sa.visitor.se_to_sa_visitor import SEToSAVisitor
-import random
-from typing import List, Dict, Set
-import sys
-import datetime
-import os
-import textwrap
-
-
-# new relational import
 
 # parsing cmd input:
 p = argparse.ArgumentParser(description='Shape expression parser')
@@ -33,6 +29,7 @@ p.add_argument('--continuity_constraints', '-cc', nargs=1, required=False, type=
                     'default), hardcoded, filter')
 p.add_argument('--filter_tolerance', '-ft', nargs=1, type=float, required=False, default=1.,
                help='Tolerance for filter modes (defines how harsh the constraints are). Default is 1.')
+# TODO maybe discard iteration mode (coverage?)
 p.add_argument('--density', '-ds', nargs='?', type=int, default=0,
                help="Necessary for iteration mode. Sets the number of samples to be taken for each variable parameter "
                     "of the atomic shapes from its values range.")
@@ -43,7 +40,6 @@ p.add_argument('--paths', nargs=1, type=int, required=True,
 p.add_argument('--dist', required=False, nargs=1,
                help="optionally sets the noise distribution. 'normal' (default) or 'uniform' are possible")
 p.add_argument('--out', '-o', nargs=1, required=False, help='directory where the generated samples will be stored')
-
 p.add_argument('--seed', dest='seed', required=False, help='Integer seed for reproducibility.', type=int, default=12345)
 
 p.add_argument('--visualize', '-v', dest='visualize', required=False, action='store_true',
@@ -61,10 +57,12 @@ input_stream = FileStream(args.inputfile[0])
 paths_upper_bound = int(args.paths[0])
 valuation_mode = args.valuation_mode[0]
 traces_upper_bound = int(args.number[0])
+
 if args.out:
     dir_string: str = args.out[0]
 else:
     dir_string = ''
+
 timestep = args.timestep
 density = args.density
 threshold = float(args.threshold[0])
@@ -119,12 +117,14 @@ else:
 
 # TODO xor checks for incompatible modes/inputs?
 
+# TODO decide which to keep
 assert continuity_constraints in ['hardcoded', 'no_constraints', 'filter'], \
     "--continuity_constraints/-cc has to be set either to 'hardcoded', 'no_constraints' or 'filter'."
 
 assert valuation_mode == 'sampling' or valuation_mode == 'iteration', \
     "--valuation_mode/-m has to be set either to 'sampling' or 'iteration'"
 
+# TODO this should probably be an enumerator
 if valuation_mode == 'sampling' and detected_relations:
     if density:
         print(
@@ -152,9 +152,8 @@ elif valuation_mode == 'iteration':
     iteration_mode = True
 
 else:
-    assert False
+    assert False, "Something went wrong."
     # raise  # TODO define parsing error object
-
     pass
 
 if args.dist:
@@ -223,7 +222,8 @@ traces_positive = paths2traces(paths, density, noise_density, aut_container, see
                                timestep=timestep, threshold=threshold, positive_example=True,
                                continuity_constraints=continuity_constraints,
                                param_sampling=interval_sampling_mode, n=n, relational_input=relational_sampling_mode,
-                               non_integer_durations=detected_non_int_duration, handle_nonlin_constr = handle_nonlin_constr)
+                               non_integer_durations=detected_non_int_duration,
+                               handle_nonlin_constr=handle_nonlin_constr)
 print('Positive samples generated.')
 if threshold == 0:
     print('\nINFO: threshold = {} => no negative examples are going to be generated.'.format(threshold))
@@ -239,7 +239,7 @@ else:
                                    param_sampling=interval_sampling_mode, n=n,
                                    relational_input=relational_sampling_mode,
                                    non_integer_durations=detected_non_int_duration,
-                                   handle_nonlin_constr = handle_nonlin_constr)
+                                   handle_nonlin_constr=handle_nonlin_constr)
     print('Negative samples generated.')
 
 if save_csv:
