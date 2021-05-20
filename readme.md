@@ -59,7 +59,7 @@ PARAMETERS (new first):
     acceptable noise threshold
 
 --number/-n [int]
-    upper bound for number of samples
+    number of samples
 
 --dist ['normal' or 'uniform'] NEEDS TO BE CHECKED
     optionally sets the noise distribution
