@@ -6,9 +6,9 @@ from tqdm import tqdm
 # from uniform_SMT.aut2sampling_matrix import sampling_matrix
 # from uniform_SMT.uniform_polytope import sampler
 from typing import Dict, Set, List
-from se2sa.automaton.interval import IntervalObject
-from se2sa.automaton.automaton_container import ShapeAutomatonContainer
-from se2sa.automaton.relation import RelationObject
+from parse.se2sa.interval import IntervalObject
+from parse.se2sa.automaton import ShapeAutomatonContainer
+from parse.se2sa.automaton import RelationObject
 
 from sympy import StrictLessThan, StrictGreaterThan, LessThan, GreaterThan
 
@@ -316,7 +316,7 @@ def instantiate(params: tuple, param_interval_map: dict, density: int, seed: int
 
         ratio = (n - non_sat.sum()) / n
 
-        print("{} % of samples satisfy continuity constraint.".format(ratio * 100))
+        print("{} % of samples satisfy continuity __constraint.".format(ratio * 100))
         return samples[~non_sat.astype(bool)], index
 
         return out
@@ -336,16 +336,15 @@ def reject(sample: np.ndarray, epsilon: float, sample_index, aut:ShapeAutomatonC
     # get pairs directly into namespace:
     locals().update(value_tuples)
     non_sat = False
-    from math import exp # this is necessary because I allow it in parser
     for relation in aut.relations:
         if isinstance(relation,str):
-            if not eval(relation):  # evaluate whether the constraint is satisfied
+            if not eval(relation):  # evaluate whether the __constraint is satisfied
                 non_sat = True  # change value if this is the case. rest of relations need not be considered
                 break
 
         # TODO There probably is some unnecessary code around because I first handled the nonlinear constraints as strings, then as sympy objects! this should be cleaned up!
         if isinstance(relation,(str, StrictLessThan, StrictGreaterThan, LessThan, GreaterThan)): # TODO NOT TESTED!
-            if not relation.subs(dict(value_tuples)):  # evaluate whether the constraint is satisfied
+            if not relation.subs(dict(value_tuples)):  # evaluate whether the __constraint is satisfied
                 non_sat = True  # change value if this is the case. rest of relations need not be considered
                 break
 

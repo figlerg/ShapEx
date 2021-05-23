@@ -13,7 +13,7 @@ def plotter(traces: list, param_intervals: dict = {}, density: int = 0, comparis
     for trace in tqdm(traces, desc='Samples plotted', position=0):
 
         parts = splitter_helper(trace)
-        if parts:  # this is for the constraint tweak.. in case splitter_helper returns none, nothing happens for this trace
+        if parts:  # this is for the __constraint tweak.. in case splitter_helper returns none, nothing happens for this trace
             for part in parts:
                 axs.plot(part[0], part[1], 'b')
         # axs.scatter(traces[key][0][0], traces[key][1][0])

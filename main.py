@@ -1,25 +1,25 @@
 import argparse
 import random
-from typing import List, Dict, Set
+from typing import Dict
 import sys
 import datetime
 import os
 import textwrap
 from antlr4 import *
 
-from se2sa.SyntaxError import MyErrorStrategy
+from parse.se2sa.SyntaxError import MyErrorStrategy
 from generation_tool.sa2traces import *
 from misc.save import save_to_csv
 from misc.visualize import plotter
-from sapathfinder.find_paths import find_paths
-from se2sa.generated.ShapeExpressionLexer import ShapeExpressionLexer
-from se2sa.generated.ShapeExpressionParser import ShapeExpressionParser
-from se2sa.visitor.se_to_sa_visitor import SEToSAVisitor
+from word_sampler.sapathfinder.find_paths import find_paths
+from parse.generated.ShapeExpressionLexer import ShapeExpressionLexer
+from parse.generated.ShapeExpressionParser import ShapeExpressionParser
+from parse.se2sa.visitor.se_to_sa_visitor import SEToSAVisitor
 
 # parsing cmd input:
-p = argparse.ArgumentParser(description='Shape expression parser')
+p = argparse.ArgumentParser(description='Shape __expression parser')
 
-p.add_argument('--inputfile', '-i', nargs=1, required=True, help='shape expression input file')
+p.add_argument('--inputfile', '-i', nargs=1, required=True, help='shape __expression input file')
 p.add_argument('--timestep', '-ts', nargs='?', type=float, default=1.0,
                help="optionally sets the signal sampling time step. if not specified, timestep=1. (default) is used")
 p.add_argument('--valuation_mode', '-m', nargs=1, required=True, type=str, default='sampling',

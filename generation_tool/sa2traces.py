@@ -1,17 +1,13 @@
 from collections import deque
 
-import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
 
 from generation_tool.ideal_atomics import line_gen, const_gen, sine_gen, sinc_gen, exp_gen
-from misc.visualize import plotter
-from sapathfinder import find_paths
-from se2sa.Error import *
-from se2sa.automaton.alphabet.letter import Letter
-from se2sa.automaton.alphabet.letter_type import LetterType
-from se2sa.automaton.automaton_container import ShapeAutomatonContainer
-from se2sa.automaton.interval import IntervalObject
+from alphabet import Letter
+from alphabet import LetterType
+from parse.se2sa.automaton import ShapeAutomatonContainer
+from parse.se2sa.interval import IntervalObject
 from generation_tool.instantiate import instantiate
 
 
@@ -389,7 +385,7 @@ def paths2traces(input_paths: set, density: int, noise_density: int,
 
                             trace[-1] = new_segment[-1]
 
-                # continuity constraint not satisfied?
+                # continuity __constraint not satisfied?
                 if trace == 'discarded':
                     continue
 

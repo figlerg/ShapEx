@@ -1,6 +1,6 @@
 import numpy as np
 
-from se2sa.Error import InputError
+from parse.Error import InputError
 
 
 def create_x_values(duration: int, timestep: float = 1.0):

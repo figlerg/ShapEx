@@ -1,18 +1,14 @@
 import unittest
 
-from sapathfinder.find_paths import find_paths
-from se2sa.automaton.automaton import ShapeAutomaton
-from se2sa.automaton.automaton_container import ShapeAutomatonContainer
-from se2sa.automaton.location import Location
-from se2sa.automaton.transition import Transition
-from se2sa.automaton.alphabet.line_letter import LineLetter
-from se2sa.automaton.alphabet.exp_letter import ExpLetter
-from se2sa.automaton.alphabet.exp_letter import Letter
-from se2sa.se2sa import kleene_to_aut
-from se2sa.se2sa import union_to_aut
-from se2sa.se2sa import concat_to_aut
-
-from typing import List, Set
+from word_sampler.sapathfinder.find_paths import find_paths
+from parse.se2sa.automaton.automaton import ShapeAutomaton
+from parse.se2sa.automaton.location import Location
+from parse.se2sa.automaton.transition import Transition
+from alphabet import LineLetter
+from alphabet.exp_letter import ExpLetter
+from alphabet.exp_letter import Letter
+from parse.se2sa import kleene_to_aut
+from parse.se2sa import concat_to_aut
 
 
 class KleeneStarSearchTest(unittest.TestCase):
