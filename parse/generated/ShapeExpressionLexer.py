@@ -242,7 +242,7 @@ class ShapeExpressionLexer(Lexer):
     literalNames = [ "<INVALID>",
             "':'", "';'", "'*'", "'.'", "'join'", "'('", "')'", "'const'", 
             "'line'", "'exp'", "'sine'", "'sinc'", "'param'", "'duration'", 
-            "'__constraint'", "'e'", "'**'", "'-'", "'+'", "'['", "']'", 
+            "'_constraint'", "'e'", "'**'", "'-'", "'+'", "'['", "']'",
             "'<='", "'>='", "'<'", "'>'", "'=='", "'!='", "','", "'in'" ]
 
     symbolicNames = [ "<INVALID>",

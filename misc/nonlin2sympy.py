@@ -11,21 +11,21 @@ def str2sympy(raw_text:str):
 
     # the following was created because i did not know that function sympify existed (would have been much easier).
     # I keep it for checking that
-    # the __constraint indeed has exactly one inequality
+    # the _constraint indeed has exactly one inequality
     rel_types = ['<=', '>=', '<', '>']
     found = {}
     tmp = raw_text
     for rel in rel_types:
         # see https://stackoverflow.com/questions/4664850/how-to-find-all-occurrences-of-a-substring
         idx = [m.start() for m in re.finditer(rel, tmp)]
-        assert len(idx) <= 1, "Chained inequalities not allowed in nonlin __constraint."
+        assert len(idx) <= 1, "Chained inequalities not allowed in nonlin _constraint."
         if idx:
             tmp = tmp[:idx[0]] + ' '*len(rel) + tmp[idx[0] + len(rel):]
             # replace every rel found with spaces in order to avoid duplicates in case of '<','<=' while still
             # maintaining the right length
             found[rel] = idx[0]
 
-    assert len(found) == 1, "Nonlinear __constraint '" + raw_text +\
+    assert len(found) == 1, "Nonlinear _constraint '" + raw_text +\
                             "' is invalid, there needs to be exactly one inequality."
 
     rel_str = list(found.keys())[0]

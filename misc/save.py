@@ -4,7 +4,7 @@ import os
 from tqdm import tqdm
 
 
-# creates 'positive' and 'negative' directories and saves traces inside
+# creates 'force_positive' and 'negative' directories and saves traces inside
 def save_to_csv(traces, positive, dir_string):
     directory_label = {True: 'Positive', False: 'Negative'}
     new_dir_string = dir_string + os.sep + directory_label[positive]

@@ -1,5 +1,4 @@
 from abc import ABCMeta, abstractmethod
-from expression.Expression import *
 
 NOT_IMPLEMENTED = "You should implement this."
 
@@ -9,6 +8,8 @@ class ExpressionVisitor:
 
     def visit(self, node, args):
         out = None
+
+        from expression.Expression import AtomicExpression,ConcatExpression,UnionExpression,KleeneExpression
 
         if isinstance(node, AtomicExpression):
             out = self.visitAtomicExpression(node, args)

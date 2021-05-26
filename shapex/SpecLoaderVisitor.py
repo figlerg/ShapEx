@@ -1,16 +1,18 @@
 from anyHR.constraint.Constraint import Constraints
 from anyHR.constraint.node.Node import *
+from anyHR.constraint.node.substitute import substitute
 from typing import Tuple, Dict
 
+from alphabet.const_letter import ConstLetter
+from alphabet.exp_letter import ExpLetter
+from alphabet.line_letter import LineLetter
+from alphabet.sinc_letter import SincLetter
+from alphabet.sine_letter import SineLetter
 from expression.Expression import *
 from parse.Error import *
 from parse.generated.ShapeExpressionParser import ShapeExpressionParser
 from parse.generated.ShapeExpressionVisitor import ShapeExpressionVisitor
 from parse.se2sa.interval import *
-
-from anyHR.constraint.node.substitute import substitute
-
-
 
 
 class SpecLoaderVisitor(ShapeExpressionVisitor):
@@ -19,69 +21,141 @@ class SpecLoaderVisitor(ShapeExpressionVisitor):
             (Expression, Tuple[Tuple], Constraints):
         # for ShapEx.add_shape_expression()
         reg_exp = self.visit(ctx.regular_expression())
-        bounds_dict, constraints = self.visit(ctx.constraints())
+        bounds_dict, constraints, singletons_hashmap = self.visit(ctx.constraints())
 
-        bounds_dict : Dict[str, IntervalObject]
-        print(constraints)
+        bounds_dict: Dict[str, IntervalObject]
 
-        full_exp = (reg_exp, bounds_dict, constraints)
+        full_exp = (reg_exp, bounds_dict, constraints, singletons_hashmap)
 
         return full_exp
 
-    def visitConstraints(self, ctx: ShapeExpressionParser.ConstraintsContext):
+    # get the regular expression
 
-        bounding_box_dict = {}
+    def visitAtomicConstExp(self, ctx):
+        self.visitChildren(ctx)
 
-        duplicate_check_set = set()
-        for child in ctx.children:
-            if isinstance(child, (ShapeExpressionParser.Duration_declarationContext,
-                                  ShapeExpressionParser.Param_declarationContext)):
-                param_interval: tuple = self.visit(child)
-                bounding_box_dict.update((param_interval,))
+        c = ctx.atomic_constant().Identifier(0).getText()
 
-                param = param_interval[0]
+        shape_param = {c}
+        l = ConstLetter(c)
 
-                # Multiple declarations for one param are illegal
-                if param in duplicate_check_set:
-                    raise IllegalSpecError(message='Please check input file for parameter declaration duplicates')
-                duplicate_check_set.update(param)
+        try:  # because its optional, maybe there is no Identifier(0) or Identifier(1)
 
-        bounding_box_dict = dict(sorted(bounding_box_dict.items()))  # sort by key
+            length = ctx.atomic_constant().Identifier(1).getText()
+            shape_param.add(length)
+            l.length = length
+        except:
+            pass
 
-        # parameters with intervals of the type (x,x) are later substituted and are searched here
-        singletons = []
-        singletons_hashmap = dict()
-        for item in bounding_box_dict.items():
-            interval: IntervalObject = item[1]
-            if interval.is_singleton():
-                singletons.append(item[0])
-                singletons_hashmap[item[0]] = item[1].start
+        return AtomicExpression(l)
 
+    def visitAtomicLineExp(self, ctx):
 
-        # in the final constraints object only non singular values will appear
-        var_name_list = sorted(set(bounding_box_dict.keys()) - set(singletons))
+        self.visitChildren(ctx)
+        slope = ctx.atomic_line().Identifier(0).getText()
+        offset = ctx.atomic_line().Identifier(1).getText()
 
-        constraints = Constraints(var_name_list)
+        shape_param = {slope, offset}
+        l = LineLetter(slope, offset)
 
-        for child in ctx.children:
-            if isinstance(child, ShapeExpressionParser.ConstraintContext):
-                constraint_tree: Node = self.visit(child)
-                test = type(constraint_tree)
-                substitute(node=constraint_tree, var_val_pairs=singletons_hashmap)
-                # constraint tree now has all singleton values as concrete values
+        # optional parameter length!
+        try:
+            length = ctx.atomic_line().Identifier(2).getText()
 
-                constraints.add_constraint(constraint_tree)
+            shape_param.add(length)
+            l.length = length
+        except:
+            pass
 
-        # delete all the obsolete variables (constants).
-        # This is unnecessary and only done to make sure none of them remain
-        for var in singletons:
-            bounding_box_dict.pop(var)
+        return AtomicExpression(l)
 
-        bounds_ordered = dict() # same as bounding_box_dict just with same order as var_name_list
-        for var in var_name_list:
-            bounds_ordered[var] = bounding_box_dict[var]
+    def visitAtomicExponentialExp(self, ctx):
+        self.visitChildren(ctx)
+        a = ctx.atomic_exponential().Identifier(0).getText()
+        b = ctx.atomic_exponential().Identifier(1).getText()
+        c = ctx.atomic_exponential().Identifier(2).getText()
 
-        return bounds_ordered, constraints
+        shape_param = {a, b, c}
+        l = ExpLetter(a, b, c)
+
+        try:
+            length = ctx.atomic_exponential().Identifier(3).getText()
+
+            shape_param.add(length)
+            l.length = length
+
+        except:
+            pass
+
+        return AtomicExpression(l)
+
+    def visitAtomicSineExp(self, ctx):
+        self.visitChildren(ctx)
+        a = ctx.atomic_sine().Identifier(0).getText()
+        b = ctx.atomic_sine().Identifier(1).getText()
+        c = ctx.atomic_sine().Identifier(2).getText()
+        d = ctx.atomic_sine().Identifier(3).getText()
+
+        shape_param = {a, b, c, d}
+        l = SineLetter(a, b, c, d)
+
+        try:
+            length = ctx.atomic_sine().Identifier(4).getText()
+
+            shape_param.add(length)
+            l.length = length
+
+        except:
+            pass
+
+        return AtomicExpression(l)
+
+    def visitAtomicSincExp(self, ctx):
+        self.visitChildren(ctx)
+        a = ctx.atomic_sinc().Identifier(0).getText()
+        b = ctx.atomic_sinc().Identifier(1).getText()
+        c = ctx.atomic_sinc().Identifier(2).getText()
+        d = ctx.atomic_sinc().Identifier(3).getText()
+
+        shape_param = {a, b, c, d}
+        l = SincLetter(a, b, c, d)
+
+        try:
+            length = ctx.atomic_sinc().Identifier(4).getText()
+
+            shape_param.add(length)
+            l.length = length
+
+        except:
+            pass
+
+        return AtomicExpression(l)
+
+    def visitConcatExp(self, ctx: ShapeExpressionParser.ConcatExpContext):
+
+        exp_1 = self.visit(ctx.regular_expression(0))
+        exp_2 = self.visit(ctx.regular_expression(1))
+
+        return ConcatExpression(exp_1, exp_2)
+
+    def visitUnionExp(self, ctx: ShapeExpressionParser.UnionExpContext):
+
+        exp_1 = self.visit(ctx.regular_expression(0))
+        exp_2 = self.visit(ctx.regular_expression(1))
+
+        return UnionExpression(exp_1, exp_2)
+
+    def visitKleeneExp(self, ctx: ShapeExpressionParser.KleeneExpContext):
+
+        exp = self.visit(ctx.regular_expression())
+
+        return KleeneExpression(exp)
+
+    def visitParenExp(self, ctx: ShapeExpressionParser.ParenExpContext):
+
+        exp_in_parens = self.visit(ctx.regular_expression())
+
+        return exp_in_parens
 
     # param declaration visitors
     def visitParam_declaration(self, ctx: ShapeExpressionParser.Param_declarationContext) -> (str, IntervalObject):
@@ -113,6 +187,70 @@ class SpecLoaderVisitor(ShapeExpressionVisitor):
 
         return interval
 
+    # get all constraints
+    def visitConstraints(self, ctx: ShapeExpressionParser.ConstraintsContext):
+
+        bounding_box_dict = {}
+
+        duplicate_check_set = set()
+        for child in ctx.children:
+            if isinstance(child, (ShapeExpressionParser.Duration_declarationContext,
+                                  ShapeExpressionParser.Param_declarationContext)):
+                param_interval: tuple = self.visit(child)
+                bounding_box_dict.update((param_interval,))
+
+                param = param_interval[0]
+
+                # Multiple declarations for one param are illegal
+                if param in duplicate_check_set:
+                    raise IllegalSpecError(message='Please check input file for parameter declaration duplicates')
+                duplicate_check_set.update(param)
+
+        bounding_box_dict = dict(sorted(bounding_box_dict.items()))  # sort by key
+
+        # parameters with intervals of the type (x,x) are later substituted and are searched here
+        singletons = []
+        singletons_hashmap = dict()
+        for item in bounding_box_dict.items():
+            interval: IntervalObject = item[1]
+            if interval.is_singleton():
+                singletons.append(item[0])
+                singletons_hashmap[item[0]] = item[1].start
+
+        # in the final constraints object only non singular values will appear
+        var_name_list = sorted(set(bounding_box_dict.keys()) - set(singletons))
+
+        constraints = Constraints(var_name_list)
+
+        var_checkup_set = set()
+        for child in ctx.children:
+            if isinstance(child, ShapeExpressionParser.Constraint_declarationContext):
+                constraint_tree: Node = self.visit(child)
+
+                substitute(node=constraint_tree, var_val_pairs=singletons_hashmap)
+                # constraint tree now has all singleton values as concrete values
+
+                var_checkup_set.update(constraint_tree.get_vars())
+
+                constraints.add_constraint(constraint_tree)
+
+        assert var_checkup_set.issubset(var_name_list), 'Some variables have not been properly declared. ' \
+                                                        'Check for implicitly declared variables in constraints.'
+
+        # delete all the obsolete variables (constants).
+        # This is unnecessary and only done to make sure none of them remain
+        for var in singletons:
+            bounding_box_dict.pop(var)
+
+        bounds_ordered = dict()  # same as bounding_box_dict just with same order as var_name_list
+        for var in var_name_list:
+            bounds_ordered[var] = bounding_box_dict[var]
+
+        return bounds_ordered, constraints, singletons_hashmap
+
+    def visitConstraint_declaration(self, ctx: ShapeExpressionParser.Constraint_declarationContext):
+        return self.visit(ctx.constraint())
+
     # All the visitor definitions for a constraint (same as in anyHR)
     def visitLRA_LEQ(self, ctx) -> Node:
         exp_1 = self.visit(ctx.expression(0))
@@ -122,7 +260,6 @@ class SpecLoaderVisitor(ShapeExpressionVisitor):
     def visitLRA_GEQ(self, ctx) -> Node:
         exp_1 = self.visit(ctx.expression(0))
         exp_2 = self.visit(ctx.expression(1))
-        print(type(GEQ))
         return GEQ(exp_1, exp_2)
 
     def visitLRA_Less(self, ctx) -> Node:
@@ -193,13 +330,13 @@ class SpecLoaderVisitor(ShapeExpressionVisitor):
 if __name__ == '__main__':
     from antlr4 import *
     from parse.generated.ShapeExpressionLexer import ShapeExpressionLexer
-    from parse.se2sa.SyntaxError import MyErrorStrategy
+    from parse.se2sa.SyntaxError import HardSyntaxErrorStrategy
 
     input_stream = FileStream(r"C:\Users\giglerf\Documents\dev\ShapEx\examples\example_after_refactoring.sx")
     lexer = ShapeExpressionLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = ShapeExpressionParser(stream)
-    parser._errHandler = MyErrorStrategy()
+    parser._errHandler = HardSyntaxErrorStrategy()
     ctx = parser.shape_expression()
 
     # translate to automaton

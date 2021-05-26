@@ -1,7 +1,7 @@
 grammar ShapeExpression;
 
 
-// full __expression
+// full _expression
 shape_expression:
 //     (param_declaration | duration_declaration | relation | relation_string) + regular_expression ';'
      regular_expression ':' constraints
@@ -9,7 +9,7 @@ shape_expression:
 
 // constraints and subrules
 constraints:
-    (param_declaration | duration_declaration | constraint) +
+    (param_declaration | duration_declaration | constraint_declaration) +
     ;
 
 param_declaration:
@@ -23,7 +23,11 @@ duration_declaration:
     DURATION Identifier discrete_interval ';'
     ;
 
-//TODO should I add keyword?
+// maybe add keyword?
+constraint_declaration:
+    constraint ';'
+    ;
+
 constraint:
     expression LEQ expression                                           #LRA_LEQ
     | expression GEQ expression                                         #LRA_GEQ
@@ -46,14 +50,14 @@ expression
     ;
 
 
-// regular __expression and subrules
+// regular _expression and subrules
 
 regular_expression:
     atomic                                                  #AtomicExp
+    |   LEFTPAREN regular_expression RIGHTPAREN             #ParenExp
+    |   regular_expression '*'                              #KleeneExp
     |   regular_expression CONCAT regular_expression        #ConcatExp
     |   regular_expression UNION regular_expression         #UnionExp
-    |   regular_expression '*'                              #KleeneExp
-    |   LEFTPAREN regular_expression RIGHTPAREN             #ParenExp
     ;
 
 atomic:
@@ -104,7 +108,7 @@ literal
 
 // basic building blocks
 
-// for regular __expression phi (from original shapex grammar)
+// for regular _expression phi (from original shapex grammar)
 CONCAT: '.';
 UNION: 'join';
 //KLEENE: '*'; // using * elsewhere... KLEENE would shadow this

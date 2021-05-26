@@ -29,6 +29,11 @@ class ShapeExpressionVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ShapeExpressionParser#constraint_declaration.
+    def visitConstraint_declaration(self, ctx:ShapeExpressionParser.Constraint_declarationContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ShapeExpressionParser#LRA_LEQ.
     def visitLRA_LEQ(self, ctx:ShapeExpressionParser.LRA_LEQContext):
         return self.visitChildren(ctx)

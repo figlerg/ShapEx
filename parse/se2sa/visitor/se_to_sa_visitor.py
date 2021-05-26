@@ -156,7 +156,7 @@ class SEToSAVisitor(ShapeExpressionVisitor):
         # TODO refactor name if i decide to switch to sympy relations completely!
         # return str2sympy(ctx.getText()[6:-1])
         # add .replace('e','E')) to automatically eliminate stuff when using dejan's format?
-        # return str2sympy(ctx.getText()[6:-1]) # return normal sympy __expression
+        # return str2sympy(ctx.getText()[6:-1]) # return normal sympy _expression
         return ctx.getText()[6:-1] # exclude keyword and ';', just text
         # return ctx.getText()[7:-2] # TODO temporary exclude keyword, string parens and ';'
 

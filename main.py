@@ -7,8 +7,8 @@ import os
 import textwrap
 from antlr4 import *
 
-from parse.se2sa.SyntaxError import MyErrorStrategy
-from generation_tool.sa2traces import *
+from parse.se2sa.SyntaxError import HardSyntaxErrorStrategy
+from generation_tool.generate_traces import *
 from misc.save import save_to_csv
 from misc.visualize import plotter
 from word_sampler.sapathfinder.find_paths import find_paths
@@ -17,9 +17,9 @@ from parse.generated.ShapeExpressionParser import ShapeExpressionParser
 from parse.se2sa.visitor.se_to_sa_visitor import SEToSAVisitor
 
 # parsing cmd input:
-p = argparse.ArgumentParser(description='Shape __expression parser')
+p = argparse.ArgumentParser(description='Shape _expression parser')
 
-p.add_argument('--inputfile', '-i', nargs=1, required=True, help='shape __expression input file')
+p.add_argument('--inputfile', '-i', nargs=1, required=True, help='shape _expression input file')
 p.add_argument('--timestep', '-ts', nargs='?', type=float, default=1.0,
                help="optionally sets the signal sampling time step. if not specified, timestep=1. (default) is used")
 p.add_argument('--valuation_mode', '-m', nargs=1, required=True, type=str, default='sampling',
@@ -37,7 +37,7 @@ p.add_argument('--threshold', '-th', nargs=1, required=True, help='acceptable no
 p.add_argument('--number', '-n', nargs=1, required=True, help='upper bound for number of samples')
 p.add_argument('--paths', nargs=1, type=int, required=True,
                help='upper bound for number of paths through shape automaton')
-p.add_argument('--dist', required=False, nargs=1,
+p.add_argument('--noise_dist', required=False, nargs=1,
                help="optionally sets the noise distribution. 'normal' (default) or 'uniform' are possible")
 p.add_argument('--out', '-o', nargs=1, required=False, help='directory where the generated samples will be stored')
 p.add_argument('--seed', dest='seed', required=False, help='Integer seed for reproducibility.', type=int, default=12345)
@@ -80,7 +80,7 @@ handle_nonlin_constr = continuity_constraints == 'filter'
 lexer = ShapeExpressionLexer(input_stream)
 stream = CommonTokenStream(lexer)
 parser = ShapeExpressionParser(stream)
-parser._errHandler = MyErrorStrategy()
+parser._errHandler = HardSyntaxErrorStrategy()
 ctx = parser.shape_expression()
 
 # translate to automaton
@@ -192,7 +192,7 @@ if iteration_mode:
         "\n> Number of variable parameters detected in the shape specification: {0}\n> density = {1} => {2} different noise-free shapes ({1}^{0})".format(
             var_params_count, density, density ** var_params_count))
 
-    # compute the number of different noise values to be sampled from [0,threshold] for the positive examples, which is the same number
+    # compute the number of different noise values to be sampled from [0,threshold] for the force_positive examples, which is the same number
     # of values to be sampled from [threshold,3*threshold] for the negative examples (this is why we have /2.):
     noise_density = int((combinations_per_path / (density ** var_params_count)) / 2.)
 
@@ -229,7 +229,7 @@ if threshold == 0:
     print('\nINFO: threshold = {} => no negative examples are going to be generated.'.format(threshold))
 else:
     seed_negative = seed + 1
-    # the above should not be necessary since the same noise can not lead to both positive and negative examples,
+    # the above should not be necessary since the same noise can not lead to both force_positive and negative examples,
     # but i feel safer setting a different seed for each call of paths2traces
 
     traces_negative = paths2traces(paths, density, noise_density, aut_container, seed,
@@ -257,7 +257,7 @@ if visualize:
         to_be_visualized = traces_negative + traces_positive  # rewrite this if one needs noisy positives
         print('Per default, the results will be visualized. '
               '\nIf threshold is 0, exact traces are shown. '
-              '\nIf threshold is nonzero, both positive and negative traces are shown.')
+              '\nIf threshold is nonzero, both force_positive and negative traces are shown.')
 
     if len(to_be_visualized) >= 1000:
         random.seed(seed + 2)  # unnecessary for generation, but now visualizations will always look the same

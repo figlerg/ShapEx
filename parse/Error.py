@@ -6,7 +6,7 @@ class CmdInputError(Error):
     """Exception raised for errors because of cmd inputs.
 
     Attributes:
-        __expression -- input __expression in which the error occurred
+        _expression -- input _expression in which the error occurred
         message -- explanation of the error
     """
 
@@ -18,7 +18,7 @@ class InputError(Error):
     """Exception raised for errors in the input.
 
     Attributes:
-        __expression -- input __expression in which the error occurred
+        _expression -- input _expression in which the error occurred
         message -- explanation of the error
     """
 
@@ -27,10 +27,10 @@ class InputError(Error):
         self.message = message
 
 class InfLoopError(Error):
-    """Exception raised for too many tries to get positive/negative example.
+    """Exception raised for too many tries to get force_positive/negative example.
 
     Attributes:
-        __expression -- input __expression in which the error occurred
+        _expression -- input _expression in which the error occurred
         message -- explanation of the error
     """
 
@@ -42,7 +42,7 @@ class IllegalSpecError(Error):
     """Exception raised for user input that is not valid (similar to a parsing error, but might include other things as well.
 
     Attributes:
-        __expression -- input __expression in which the error occurred
+        _expression -- input _expression in which the error occurred
         message -- explanation of the error
     """
 
