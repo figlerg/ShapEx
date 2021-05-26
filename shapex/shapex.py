@@ -8,6 +8,7 @@ from misc.visualize import plotter
 from parse.generated.ShapeExpressionLexer import *
 from parse.generated.ShapeExpressionParser import *
 from parse.se2sa.SyntaxError import HardSyntaxErrorStrategy
+import tqdm
 
 
 class ShapEx(object):
@@ -44,7 +45,7 @@ class ShapEx(object):
         path = self._expression.sample()
         params, rejections = self._hr.next_sample()
         params = np.concatenate((params,np.asarray(list(self._constants.values()))))
-        # TODO check if all this casting is impeding performance
+        # TODO this casting is probably impeding performance
 
         self._hr: HitAndRun
 
@@ -57,8 +58,14 @@ class ShapEx(object):
         # generate ideal example
         return example
 
-    def samples(self):
-        return
+    def samples(self, n):
+        out = []
+        for i in tqdm.tqdm(range(n),desc='Samples generated', position=0, leave=True):
+            out.append(shapex.sample())
+
+        return out
+
+
 
     # do n samples
 
@@ -139,10 +146,8 @@ if __name__ == '__main__':
 
     print(testexp.sample())
 
-    a = []
-    for i in range(100):
-        a.append(shapex.sample(),)
 
-    plotter(a)
+
+    plotter(shapex.samples(1000))
 
 

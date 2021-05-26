@@ -10,7 +10,7 @@ def plotter(traces: list, param_intervals: dict = {}, density: int = 0, comparis
 # TODO add things like axes, title, etc
     fig, axs = plt.subplots(nrows=1, ncols=1, constrained_layout=True, figsize=(16, 9))
 
-    for trace in tqdm(traces, desc='Samples plotted', position=0):
+    for trace in tqdm(traces, desc='Samples plotted', position=0, leave=True):
 
         parts = splitter_helper(trace)
         if parts:  # this is for the _constraint tweak.. in case splitter_helper returns none, nothing happens for this trace
@@ -38,7 +38,7 @@ def plotter(traces: list, param_intervals: dict = {}, density: int = 0, comparis
                 axs.plot(x_vals, trace, 'c')  # this is for xvals [0,1,...]
 
     axs.set_xlabel('time')
-    axs.set_title('Pulse Specification')
+    # axs.set_title('Pulse Specification')
 
     time = str(datetime.datetime.now())
     timestamp = time.replace(':', '_')  # ':' cannot be in file_path
