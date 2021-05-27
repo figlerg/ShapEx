@@ -1,9 +1,10 @@
 from alphabet.letter import Letter
 from alphabet.letter_type import LetterType
 
+
 class SineLetter(Letter):
-    def __init__(self, a, b, c, d, length = 'undefined'):
-        #the atomic shape sine is of the form f(x) = a * sin(b * x + c) + d
+    def __init__(self, a, b, c, d, length='undefined'):
+        # the atomic shape sine is of the form f(x) = a * sin(b * x + c) + d
         self.a = a
         self.b = b
         self.c = c
@@ -11,26 +12,23 @@ class SineLetter(Letter):
         self.length = length
 
     def __str__(self):
-        out = "sine(" + str(self.a) + ", " + str(self.b) + ", " +\
-              str(self.c) + ", " + str(self.d) +")"
+        out = "sine(" + str(self.a) + ", " + str(self.b) + ", " + \
+              str(self.c) + ", " + str(self.d) + ")"
         return out
-
 
     def get_type(self):
         return LetterType.SINE
 
     def deepcopy_own(self):
-        return SineLetter(self.a, self.b , self.c, self.d, self.length)
-    #for easier handling in se2sa
+        return SineLetter(self.a, self.b, self.c, self.d, self.length)
 
-    def get_param_list(self, return_constant = True):
+    # for easier handling in expression2aut
+
+    def get_param_list(self, return_constant=True):
         if return_constant:
-            return [self.a, self.b , self.c, self.d, self.length]
+            return [self.a, self.b, self.c, self.d, self.length]
         else:
             return [self.a, self.b, self.c, self.length]
-
-
-
 
     @property
     def a(self):
@@ -71,6 +69,3 @@ class SineLetter(Letter):
     @length.setter
     def length(self, length):
         self.__length = length
-
-
-

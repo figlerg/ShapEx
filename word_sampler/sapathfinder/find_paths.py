@@ -1,14 +1,12 @@
 from collections import deque
-
 from typing import Set, Tuple
 
 from alphabet.letter import Letter
-from parse.se2sa.automaton.automaton import ShapeAutomaton
-from parse.se2sa.automaton.transition import Transition
+from parse.expression2aut.automaton.automaton import ShapeAutomaton
+from parse.expression2aut.automaton.transition import Transition
 
 
 def find_paths(aut: ShapeAutomaton, n: int) -> Set[Transition]:
-
     initials = aut.initial_locations
 
     paths = set()
@@ -45,12 +43,10 @@ def find_paths(aut: ShapeAutomaton, n: int) -> Set[Transition]:
 
         # for edge in aut.outgoing(single_discovered, include_dead_ends= False):
         for edge in aut.outgoing(single_discovered.target, include_dead_ends=False):
-
             edge_q.append(edge)
 
     # letters have practically the same information as transitions, at least for generating
     letter_paths = paths_transition2letter(finished_paths)
-
 
     short_first = sorted(letter_paths, key=len, reverse=False)
     # slicing takes care of returning the right number, should it overshoot

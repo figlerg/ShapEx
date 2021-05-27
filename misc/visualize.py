@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 def plotter(traces: list, param_intervals: dict = {}, density: int = 0, comparison_set=None, savename=None, timestep=1,
             case=0):
-# TODO add things like axes, title, etc
+    # TODO add things like axes, title, etc
     fig, axs = plt.subplots(nrows=1, ncols=1, constrained_layout=True, figsize=(16, 9))
 
     for trace in tqdm(traces, desc='Samples plotted', position=0, leave=True):

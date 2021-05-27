@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class LetterType(Enum):
     UNDEFINED = 0
     CONST = 1

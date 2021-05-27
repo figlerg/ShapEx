@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 # import networkx as nx
 
 from .transition import Transition
@@ -10,13 +9,12 @@ class ShapeAutomaton:
         self.transitions = set()
         self.initial_locations = set()
         self.final_locations = set()
-        #self.parameters = set()
+        # self.parameters = set()
 
     def deepcopy_own(self):
         clone = ShapeAutomaton()
 
         d = dict()
-
 
         for location in self.locations:
             tmp = location.deepcopy_own()
@@ -34,7 +32,8 @@ class ShapeAutomaton:
         # for parameter in self.parameters:
         #     clone.add_parameter(parameter)
         return clone
-    #for easier handling in se2sa
+
+    # for easier handling in expression2aut
 
     def accept(self, visitor):
         visitor.visit_automaton(self)
@@ -54,8 +53,8 @@ class ShapeAutomaton:
         if location in self.final_locations:
             self.final_locations.remove(location)
 
-    #aux fct for set of all incoming transitions
-    def incoming(self,location):
+    # aux fct for set of all incoming transitions
+    def incoming(self, location):
         out = set()
 
         for transition in self.transitions:
@@ -63,7 +62,7 @@ class ShapeAutomaton:
                 out.add(transition)
         return out
 
-    def outgoing(self, location, include_dead_ends = True):
+    def outgoing(self, location, include_dead_ends=True):
         out = set()
 
         for transition in self.transitions:
@@ -71,7 +70,7 @@ class ShapeAutomaton:
                 if include_dead_ends:
                     out.add(transition)
 
-                #additional condition for skipping dead ends
+                # additional condition for skipping dead ends
                 elif not include_dead_ends:
                     if self.outgoing(transition.target) or transition.target.is_final:
                         out.add(transition)
@@ -79,19 +78,15 @@ class ShapeAutomaton:
                     raise Exception('2nd argument has to be boolean')
         return out
 
-
-    #use this if you want the nodes instead of the edges
-    def adjacent(self, location, include_dead_ends = True):
-        #returns next layer of nodes, by default includes even nonfinal dead ends
+    # use this if you want the nodes instead of the edges
+    def adjacent(self, location, include_dead_ends=True):
+        # returns next layer of nodes, by default includes even nonfinal dead ends
         adjacent_nodes = set()
 
         for transition in self.outgoing(location, include_dead_ends):
             adjacent_nodes.add(transition.target)
 
         return adjacent_nodes
-
-
-
 
     # def visualize(self):
     #     G = nx.DiGraph()
@@ -119,7 +114,7 @@ class ShapeAutomaton:
     #     plt.tight_layout()
     #     plt.show()
 
-    #aux for set of locations in the layer adjacent to the final locations (used in se2sa.kleene)
+    # aux for set of locations in the layer adjacent to the final locations (used in expression2aut.kleene)
     def last_nonfinal_layer(self):
         out = set()
         for final_location in self.final_locations:
@@ -127,11 +122,11 @@ class ShapeAutomaton:
                 out.add(transition.source)
         return out
 
-    #transition
-    def add_transition(self,transition):
+    # transition
+    def add_transition(self, transition):
         self.transitions.add(transition)
 
-    def remove_transition(self,transition):
+    def remove_transition(self, transition):
         self.transitions.remove(transition)
 
     @property
@@ -142,8 +137,8 @@ class ShapeAutomaton:
     def transitions(self, transitions):
         self.__transitions = transitions
 
-#location
-    def add_location(self,location):
+    # location
+    def add_location(self, location):
         self.locations.add(location)
 
         if location.is_initial:
@@ -160,8 +155,6 @@ class ShapeAutomaton:
 
         if location.is_final:
             self.final_locations.remove(location)
-
-
 
     @property
     def locations(self):
@@ -193,18 +186,17 @@ class ShapeAutomaton:
     def final_locations(self, final_locations):
         self.__final_locations = final_locations
 
-
-# #parameter
-#     def add_parameter(self,parameter):
-#         self.parameters.add(parameter)
-#
-#     @property
-#     def parameters(self):
-#         return self.__parameters
-#
-#     @parameters.setter
-#     def parameters(self, parameters):
-#         self.__parameters = parameters
+    # #parameter
+    #     def add_parameter(self,parameter):
+    #         self.parameters.add(parameter)
+    #
+    #     @property
+    #     def parameters(self):
+    #         return self.__parameters
+    #
+    #     @parameters.setter
+    #     def parameters(self, parameters):
+    #         self.__parameters = parameters
 
     def __str__(self):
         out = ''
@@ -213,5 +205,4 @@ class ShapeAutomaton:
         for t in self.transitions:
             out = out + str(t) + '\n'
         return out
-    #TODO for prettier printing one could easily print initial locations first, then normal one, then final ones
-
+    # TODO for prettier printing one could easily print initial locations first, then normal one, then final ones

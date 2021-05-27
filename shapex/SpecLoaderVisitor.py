@@ -1,7 +1,8 @@
+from typing import Tuple, Dict
+
 from anyHR.constraint.Constraint import Constraints
 from anyHR.constraint.node.Node import *
 from anyHR.constraint.node.substitute import substitute
-from typing import Tuple, Dict
 
 from alphabet.const_letter import ConstLetter
 from alphabet.exp_letter import ExpLetter
@@ -9,10 +10,10 @@ from alphabet.line_letter import LineLetter
 from alphabet.sinc_letter import SincLetter
 from alphabet.sine_letter import SineLetter
 from expression.Expression import *
-from parse.Error import *
+from misc.Error import *
 from parse.generated.ShapeExpressionParser import ShapeExpressionParser
 from parse.generated.ShapeExpressionVisitor import ShapeExpressionVisitor
-from parse.se2sa.interval import *
+from parse.expression2aut.automaton.interval import IntervalObject
 
 
 class SpecLoaderVisitor(ShapeExpressionVisitor):
@@ -330,7 +331,7 @@ class SpecLoaderVisitor(ShapeExpressionVisitor):
 if __name__ == '__main__':
     from antlr4 import *
     from parse.generated.ShapeExpressionLexer import ShapeExpressionLexer
-    from parse.se2sa.SyntaxError import HardSyntaxErrorStrategy
+    from parse.SyntaxError import HardSyntaxErrorStrategy
 
     input_stream = FileStream(r"C:\Users\giglerf\Documents\dev\ShapEx\examples\example_after_refactoring.sx")
     lexer = ShapeExpressionLexer(input_stream)

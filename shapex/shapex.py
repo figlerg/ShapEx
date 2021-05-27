@@ -1,21 +1,21 @@
 import numpy as np
+import tqdm
 from anyHR.hit_and_run.hit_and_run import *
 
 from SpecLoaderVisitor import SpecLoaderVisitor
-from expression.Expression import Expression, WordSamplerMode
+from expression.Expression import WordSamplerMode
 from generation_tool.generate_traces import to_typestring, atomic_gen
 from misc.visualize import plotter
+from parse.SyntaxError import HardSyntaxErrorStrategy
 from parse.generated.ShapeExpressionLexer import *
 from parse.generated.ShapeExpressionParser import *
-from parse.se2sa.SyntaxError import HardSyntaxErrorStrategy
-import tqdm
 
 
 class ShapEx(object):
     def __init__(self, timestep=1.0,
                  word_sampler=WordSamplerMode.SEARCH, search_budget=100, target_word_length=0,
                  dir_sampling=DirectionSampling.RDHR, shrinking=Shrinking.NO_SHRINKING, init_point=InitPoint.PSO,
-                 noise_dist='uniform', mu=0, sigma=0):
+                 noise_dist='uniform', noise=0):
         self._expression = None  # new.
         self._constraint = None  # from anyHR
         self._hr = None  # from anyHR
@@ -23,7 +23,6 @@ class ShapEx(object):
         self._timestep = timestep
 
         # params for word sampling
-        self.word_sampler = WordSamplerMode.SEARCH
         self._word_sampler = word_sampler
         self._search_budget = search_budget
         self._target_word_length = target_word_length
@@ -35,8 +34,7 @@ class ShapEx(object):
 
         # params for noise sampling
         self.noise_dist = noise_dist
-        self.mu = mu
-        self.sigma = sigma
+        self.noise = noise
 
     # TODO getters setters of these vars (property). constraint setter should reinitialise hr. hr setter should override
     #  self._constraint. make public again, since it should be possible to do it without sx file
@@ -44,12 +42,12 @@ class ShapEx(object):
     def sample(self):
         path = self._expression.sample()
         params, rejections = self._hr.next_sample()
-        params = np.concatenate((params,np.asarray(list(self._constants.values()))))
+        params = np.concatenate((params, np.asarray(list(self._constants.values()))))
         # TODO this casting is probably impeding performance
 
         self._hr: HitAndRun
 
-        index = dict([(name,i) for i,name in enumerate(self._hr.constraint.var_name_list)])
+        index = dict([(name, i) for i, name in enumerate(self._hr.constraint.var_name_list)])
         for item in self._constants.items():
             index[item[0]] = len(index)
 
@@ -60,12 +58,10 @@ class ShapEx(object):
 
     def samples(self, n):
         out = []
-        for i in tqdm.tqdm(range(n),desc='Samples generated', position=0, leave=True):
+        for i in tqdm.tqdm(range(n), desc='Samples generated', position=0, leave=True):
             out.append(shapex.sample())
 
         return out
-
-
 
     # do n samples
 
@@ -84,8 +80,9 @@ class ShapEx(object):
             if not trace:
                 start = (0, 0)  # relative offset gets added later in atomic gen
 
-                trace = atomic_gen(param_values_selected, letter_type, dist_mode=self.noise_dist, timestep=self._timestep,
-                                   start=start)
+                trace = atomic_gen(param_values_selected, letter_type, dist_mode=self.noise_dist,
+                                   timestep=self._timestep,
+                                   start=start, dist_param=self.noise)
 
                 settings_labels = [(parameter, param_values[index[parameter]])
                                    for parameter in param_vars]
@@ -94,7 +91,8 @@ class ShapEx(object):
                 trace.insert(3, settings_labels)
             else:
                 start = (trace[-1][0], 0)  # again, relative offset is added in atomic_gen
-                new_segment = atomic_gen(param_values_selected, letter_type, dist_mode=self.noise_dist, timestep=self._timestep, start=start)
+                new_segment = atomic_gen(param_values_selected, letter_type, dist_mode=self.noise_dist,
+                                         timestep=self._timestep, start=start, dist_param=self.noise)
 
                 trace[0] = np.concatenate((trace[0], new_segment[0]))
                 trace[1] = np.concatenate((trace[1], new_segment[1]))
@@ -121,6 +119,9 @@ class ShapEx(object):
         reg_exp, bounds_dict, constraints, singletons_dict = visitor.visit(ctx)
 
         self._expression = reg_exp
+        self._expression.set_sampler(word_sampler=self._word_sampler, budget=self._search_budget,
+                                     target_mu=self._target_word_length)
+
         self._constraint = constraints
         bounding_box = list([(item[1].start, item[1].end) for item in bounds_dict.items()])
 
@@ -132,22 +133,25 @@ class ShapEx(object):
 
 
 if __name__ == '__main__':
-    filename = r"C:\Users\giglerf\Documents\dev\ShapEx\examples\example_after_refactoring.sx"
+    filename = r"C:\Users\giglerf\Documents\dev\ShapEx\examples\example_1.sx"
 
-    shapex = ShapEx()
+    shapex = ShapEx(noise=1, word_sampler=WordSamplerMode.SEARCH, target_word_length=5)
 
     shapex.add_shape_expression(filename)
 
-    testexp = shapex._expression
+    ## tests for boltzmann sampling
+    # testexp = shapex._expression
+    # emp_mean_word_length = 0
+    # for i in range(n:=10000):
+    #     sample = testexp.sample()
+    #     if i < 10:
+    #         # print(sample)
+    #     emp_mean_word_length+= len(sample)
+    #
+    # emp_mean_word_length/= n
 
-    testexp: Expression
+    # print(emp_mean_word_length)
 
-    testexp.set_sampler()
+    # print(testexp.sample())
 
-    print(testexp.sample())
-
-
-
-    plotter(shapex.samples(1000))
-
-
+    plotter(shapex.samples(10))

@@ -1,20 +1,21 @@
 import argparse
-import random
-from typing import Dict
-import sys
 import datetime
 import os
+import random
 import textwrap
-from antlr4 import *
+from typing import Dict
 
-from parse.se2sa.SyntaxError import HardSyntaxErrorStrategy
+import sys
+from antlr4 import *
+from parse.expression2aut.visitor.se_to_sa_visitor import SEToSAVisitor
+
 from generation_tool.generate_traces import *
 from misc.save import save_to_csv
 from misc.visualize import plotter
-from word_sampler.sapathfinder.find_paths import find_paths
+from parse.SyntaxError import HardSyntaxErrorStrategy
 from parse.generated.ShapeExpressionLexer import ShapeExpressionLexer
 from parse.generated.ShapeExpressionParser import ShapeExpressionParser
-from parse.se2sa.visitor.se_to_sa_visitor import SEToSAVisitor
+from word_sampler.sapathfinder.find_paths import find_paths
 
 # parsing cmd input:
 p = argparse.ArgumentParser(description='Shape _expression parser')

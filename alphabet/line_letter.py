@@ -1,8 +1,9 @@
 from .letter import Letter
 from .letter_type import LetterType
 
+
 class LineLetter(Letter):
-    def __init__(self, slope, offset, length = 'undefined'):
+    def __init__(self, slope, offset, length='undefined'):
         self.slope = slope
         self.offset = offset
         self.length = length
@@ -10,7 +11,7 @@ class LineLetter(Letter):
     def get_type(self):
         return LetterType.LINE
 
-    def get_param_list(self, return_constant = True):
+    def get_param_list(self, return_constant=True):
         if return_constant:
             return [self.slope, self.offset, self.length]
         else:
@@ -18,8 +19,8 @@ class LineLetter(Letter):
 
     def deepcopy_own(self):
         return LineLetter(self.slope, self.offset, self.length)
-    #for easier handling in se2sa
 
+    # for easier handling in expression2aut
 
     def __str__(self):
         out = "line(" + str(self.slope) + ", " + str(self.offset) + ")"
@@ -27,10 +28,7 @@ class LineLetter(Letter):
 
     # def __deepcopy__(self, memo):
     #     return Location(self.name, self.is_initial, self.is_final)
-    # #for easier handling in se2sa
-
-
-
+    # #for easier handling in expression2aut
 
     @property
     def slope(self):
@@ -55,4 +53,3 @@ class LineLetter(Letter):
     @length.setter
     def length(self, length):
         self.__length = length
-

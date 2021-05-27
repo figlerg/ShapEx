@@ -2,6 +2,7 @@ class Error(Exception):
     """Base class for exceptions in this module."""
     pass
 
+
 class CmdInputError(Error):
     """Exception raised for errors because of cmd inputs.
 
@@ -13,6 +14,7 @@ class CmdInputError(Error):
     def __init__(self, expression, message):
         self.expression = expression
         self.message = message
+
 
 class InputError(Error):
     """Exception raised for errors in the input.
@@ -26,6 +28,7 @@ class InputError(Error):
         self.expression = expression
         self.message = message
 
+
 class InfLoopError(Error):
     """Exception raised for too many tries to get force_positive/negative example.
 
@@ -37,6 +40,7 @@ class InfLoopError(Error):
     def __init__(self, expression, message):
         self.expression = expression
         self.message = 'possible infinite loop, threshold too restrictive for noise?'
+
 
 class IllegalSpecError(Error):
     """Exception raised for user input that is not valid (similar to a parsing error, but might include other things as well.

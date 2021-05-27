@@ -1,6 +1,6 @@
 import numpy as np
 
-from parse.Error import InputError
+from misc.Error import InputError
 
 
 def create_x_values(duration: int, timestep: float = 1.0):
@@ -16,13 +16,13 @@ def create_x_values(duration: int, timestep: float = 1.0):
       To be checked whether this change in handling the old parameter 'duration' has
       any impact in other parts of Felix' code.
     """
-    #n_samples = int(duration//timestep)                     # 03.10.2019: commented out
-    #return np.linspace(0, n_samples*timestep, n_samples+1)  # 03.10.2019: commented out
+    # n_samples = int(duration//timestep)                     # 03.10.2019: commented out
+    # return np.linspace(0, n_samples*timestep, n_samples+1)  # 03.10.2019: commented out
     # Update 03.10.2019:
     # Update 14.05.2020- if clause for automatic handling of non-integer durations
     if isinstance(duration, int):
-        return np.linspace(0,(duration-1)*timestep,int(duration))
-    else: # in case a float value is given
+        return np.linspace(0, (duration - 1) * timestep, int(duration))
+    else:  # in case a float value is given
         x = np.arange(start=0, stop=duration + timestep, step=timestep)
         return x
 
@@ -39,9 +39,7 @@ def line_gen(fixed_function_parameters: list, timestep: float = 1.):
 
     # EDIT: give optional relative offset parameter at the end of fixed function parameters, so [duration,x_0,y_0, slope, rel_offset]
 
-
     has_relative_offset = len(fixed_function_parameters) == 5
-
 
     if len(fixed_function_parameters) != 4 and not has_relative_offset:
         raise InputError('illegal input', 'invalid parameter vector length')
@@ -50,15 +48,13 @@ def line_gen(fixed_function_parameters: list, timestep: float = 1.):
     start_val = [float(fixed_function_parameters[1]), float(fixed_function_parameters[2])]
     slope = float(fixed_function_parameters[3])
 
-
     if has_relative_offset:
         relative_offset = fixed_function_parameters[4]
     else:
         relative_offset = 0
 
-
     # x_values
-    #x = np.array(range(duration + 1))
+    # x = np.array(range(duration + 1))
     x = create_x_values(duration, timestep)
     transferred_x = x + start_val[0]  # translation
 
@@ -88,7 +84,6 @@ def const_gen(fixed_function_parameters: list, timestep: float = 1.):
 
     has_relative_offset = len(fixed_function_parameters) == 4
 
-
     if len(fixed_function_parameters) != 3 and not has_relative_offset:
         raise InputError('illegal input', 'invalid parameter vector length')
 
@@ -111,17 +106,15 @@ def sine_gen(fixed_function_parameters: list, timestep: float = 1.):
 
     has_relative_offset = len(fixed_function_parameters) == 7
 
-
     if len(fixed_function_parameters) != 6 and not has_relative_offset:
         raise InputError('illegal input', 'invalid parameter vector length')
-
 
     a, b, c = fixed_function_parameters[3:6]
 
     if has_relative_offset:
         relative_offset = fixed_function_parameters[-1]
         intercept = a * np.sin(b * 0 + c)
-        y_0 = relative_offset +fixed_function_parameters[2]
+        y_0 = relative_offset + fixed_function_parameters[2]
         correction = -(intercept - y_0)  # gets transferred later!
     else:
         intercept = a * np.sin(b * 0 + c)
@@ -129,7 +122,7 @@ def sine_gen(fixed_function_parameters: list, timestep: float = 1.):
         correction = -(intercept - y_0)  # gets transferred later!
 
     # x_values
-    #x = np.array(range(fixed_function_parameters[0] + 1))  # different: start with x=1
+    # x = np.array(range(fixed_function_parameters[0] + 1))  # different: start with x=1
     duration = fixed_function_parameters[0]
     x = create_x_values(duration, timestep)
     transferred_x = x + fixed_function_parameters[1]
@@ -165,7 +158,6 @@ def sinc_gen(fixed_function_parameters: list, timestep: float = 1.):
 
     has_relative_offset = len(fixed_function_parameters) == 7
 
-
     if len(fixed_function_parameters) != 6 and not has_relative_offset:
         raise InputError('illegal input', 'invalid parameter vector length')
 
@@ -182,7 +174,7 @@ def sinc_gen(fixed_function_parameters: list, timestep: float = 1.):
         d = a + relative_offset
 
     # x_values
-    #x = np.array([i for i in range(fixed_function_parameters[0] + 1)])
+    # x = np.array([i for i in range(fixed_function_parameters[0] + 1)])
     duration = fixed_function_parameters[0]
     x = create_x_values(duration, timestep)
 
@@ -214,11 +206,8 @@ def exp_gen(fixed_function_parameters: list, timestep: float = 1.):
 
     has_relative_offset = len(fixed_function_parameters) == 6
 
-
     if len(fixed_function_parameters) != 5 and not has_relative_offset:
         raise InputError('illegal input', 'invalid parameter vector length')
-
-
 
     duration = fixed_function_parameters[0]
     b, c = fixed_function_parameters[3:5]
@@ -234,7 +223,7 @@ def exp_gen(fixed_function_parameters: list, timestep: float = 1.):
     intercept = b
     correction = -(intercept - y_0)
 
-    #x = np.array(range(duration + 1))
+    # x = np.array(range(duration + 1))
     x = create_x_values(duration, timestep)
     transferred_x = x + x_0  # translation
 

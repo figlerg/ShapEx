@@ -1,12 +1,12 @@
 class IntervalObject:
-    def __init__(self, newstart:float=float("-inf"), newend:float=float("inf"), is_discrete=False, timestep = False):
+    def __init__(self, newstart: float = float("-inf"), newend: float = float("inf"), is_discrete=False,
+                 timestep=False):
 
         if newstart > newend:
             tmp = newstart
-            newstart = newend # this doesn't change anything outside of function
+            newstart = newend  # this doesn't change anything outside of function
             newend = tmp
             print('WARNING: One of the Intervals [a,b] satisfies b < a. This is switched automatically.')
-
 
         self.start = newstart
         self.end = newend
@@ -22,7 +22,7 @@ class IntervalObject:
         return '[' + str(self.start) + ', ' + str(self.end) + ']' + discrete_mark
 
     def is_unbounded(self):
-        return self.start == float('-inf') and self.end == float ('inf')
+        return self.start == float('-inf') and self.end == float('inf')
 
     def sat(self, value):
         return self.start <= value <= self.end
@@ -36,7 +36,7 @@ class IntervalObject:
         return self.__start
 
     @start.setter
-    def start(self, start:float):
+    def start(self, start: float):
         self.__start = start
 
     @property
@@ -52,7 +52,7 @@ class IntervalObject:
         return self.__is_discrete
 
     @is_discrete.setter
-    def is_discrete(self, is_discrete:bool):
+    def is_discrete(self, is_discrete: bool):
         self.__is_discrete = is_discrete
 
     @property
@@ -60,5 +60,5 @@ class IntervalObject:
         return self.__timestep
 
     @timestep.setter
-    def timestep(self, timestep:float):
+    def timestep(self, timestep: float):
         self.__timestep = timestep

@@ -7,12 +7,11 @@ class Transition:
 
     def deepcopy_own(self):
         return Transition(self.name, self.source.deepcopy_own(), self.target.deepcopy_own(), self.letter)
-    #for easier handling in se2sa
 
+    # for easier handling in expression2aut
 
     def __eq__(self, other):
         return tuple(self.__dict__.values()) == tuple(other.__dict__.values())
-
 
     def __hash__(self):
         return hash(self.__dict__.values())
@@ -24,7 +23,6 @@ class Transition:
     @name.setter
     def name(self, name):
         self.__name = name
-
 
     @property
     def source(self):
@@ -41,7 +39,7 @@ class Transition:
     @target.setter
     def target(self, target):
         self.__target = target
-        
+
     @property
     def letter(self):
         return self.__letter
@@ -55,10 +53,7 @@ class Transition:
         letter = self.letter
         target = self.target
 
-        out = str(source) + " ---" +\
+        out = str(source) + " ---" + \
               str(letter) + "---> " + str(target)
 
         return out
-
-
-

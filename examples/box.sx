@@ -1,6 +1,0 @@
-param x in [1,2];
-param y in [0,1];
-
-dparam l in [1,23];
-
-line(x,y,l);

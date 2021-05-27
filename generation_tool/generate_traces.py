@@ -2,11 +2,11 @@ from collections import deque
 
 import numpy as np
 
-from generation_tool.ideal_atomics import line_gen, const_gen, sine_gen, sinc_gen, exp_gen
 from alphabet.letter import Letter
 from alphabet.letter import LetterType
-from parse.Error import InputError, InfLoopError
-from parse.se2sa.interval import IntervalObject
+from parse.expression2aut.automaton.interval import IntervalObject
+from generation_tool.ideal_atomics import line_gen, const_gen, sine_gen, sinc_gen, exp_gen
+from misc.Error import InputError
 
 
 # this is just an interface to the inputstring for set_gen in shapes.py
@@ -36,7 +36,7 @@ def interval_to_pair(intervals):
         raise InputError('Wrong input', 'This function expects an IntervalObject or an iterable of them')
 
 
-def atomic_gen(param, shape, dist_mode='uniform', timestep=1., start: tuple = (0, 0)):
+def atomic_gen(param, shape, dist_mode='uniform', timestep=1., start: tuple = (0, 0), dist_param=0):
     """
     converts param to format: [length, start_x, start_y, a, b,...], then inserts this into gen_functions,
     so it's just an interface between paths2traces and [shape]_gen
@@ -66,7 +66,7 @@ def atomic_gen(param, shape, dist_mode='uniform', timestep=1., start: tuple = (0
         print('no valid shape letter!')
         raise InputError('Illegal input:', 'not a letter')
 
-    return add_noise(exact, dist_mode)
+    return add_noise(exact, dist_mode, dist_param=dist_param)
 
 
 def generate_noise(dist_type: str, dist_par: float, size: int):
@@ -101,7 +101,7 @@ def generate_noise(dist_type: str, dist_par: float, size: int):
     return noise_vector
 
 
-def add_noise(curve, mode='uniform', dist_param = 0):
+def add_noise(curve, mode='uniform', dist_param=0):
     # curve: [xval:list, yval:list, mse:float, ex_end_point:tuple]; yval contains the noise-free shape
     # mode: the distribution type used to generate the noise; 'uniform' and 'normal' supported currently
 

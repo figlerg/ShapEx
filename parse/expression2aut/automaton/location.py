@@ -10,7 +10,8 @@ class Location:
 
     def deepcopy_own(self):
         return Location(self.name, self.is_initial, self.is_final)
-    #for easier handling in se2sa
+
+    # for easier handling in expression2aut
 
     @property
     def is_initial(self):
@@ -35,6 +36,3 @@ class Location:
     @name.setter
     def name(self, name):
         self.__name = name
-
-
-
