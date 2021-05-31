@@ -2,7 +2,7 @@ import numpy as np
 import tqdm
 from anyHR.hit_and_run.hit_and_run import *
 
-# from shapex.shapex.SpecLoaderVisitor import SpecLoaderVisitor
+
 from shapex.expression.Expression import WordSamplerMode
 from shapex.generation_tool.generate_traces import to_typestring, atomic_gen
 from shapex.misc.visualize import plotter
@@ -142,7 +142,7 @@ class ShapEx(object):
 
 
 if __name__ == '__main__':
-    filename = r"C:\Users\giglerf\Documents\dev\ShapEx\examples\example_1.sx"
+    filename = r"..\examples\example_1.sx"
 
     shapex = ShapEx(noise=1, word_sampler=WordSamplerMode.SEARCH, target_word_length=5)
 
