@@ -135,7 +135,7 @@ class ShapEx(object):
 
 
 if __name__ == '__main__':
-    filename = r"C:\Users\giglerf\Documents\dev\ShapEx\examples\example_1.sx"
+    filename = r"..\examples\example_1.sx"
 
     shapex = ShapEx(noise=1, word_sampler=WordSamplerMode.SEARCH, target_word_length=5)
 

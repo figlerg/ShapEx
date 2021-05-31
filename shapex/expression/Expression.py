@@ -12,11 +12,8 @@ from numpy.polynomial import Polynomial as P
 
 from shapex.alphabet.letter import Letter
 from shapex.misc.Error import InputError
-<<<<<<< HEAD
-from shapex.word_sampler.sapathfinder import find_paths
-=======
+
 from shapex.word_sampler.sapathfinder.find_paths import find_paths
->>>>>>> 48cc3f91a5ac397cf4319be8856a255d1cc5a4b3
 from shapex.word_sampler.visitors.BoltzmannSampler import GenFuncVisitor, BoltzmannVisitor
 from shapex.word_sampler.visitors.RE2SAVisitor import RE2SAVisitor
 

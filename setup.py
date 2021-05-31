@@ -9,7 +9,7 @@ setup(
     author='Felix Gigler, Dejan Nickovic, Mateis Cristinel, Nicolas Basset, Thao Dang',
     author_email='felix.gigler.fl@ait.ac.at',
     python_requires='>=3.5',
-    install_requires=['tqdl', 'matplotlib'
+    install_requires=['tqdm', 'matplotlib'
     ],
     packages=find_packages(),
 
