@@ -1,0 +1,57 @@
+# manually made, the plots dont make sense. offsets wrong?
+# for timestep=0.001
+
+
+# regular expression:
+(exp(a1,b1,offset1,l1).exp(a2,b2,offset2,l2).line(a3,offset3,l3).line(a4,offset4,l4).line(a5,offset5,l5).exp(a6,b6,offset6,l6).exp(a7,b7,offset7,l7).const(offset8, d6))*
+
+# ':' separates regular expression and constraints
+:
+
+# all params need to be initialised with param
+param offset1 in (0,0);
+param offset2 in (-2,4);
+param offset3 in (-2,4);
+param offset4 in (-2,4);
+param offset5 in (-2,4);
+param offset6 in (-2,4);
+param offset7 in (-2,4);
+param offset8 in (-2,4);
+
+param a1 in (0.015, 0.025);
+param b1 in (30, 32);
+duration l1 in (0.046, 0.047);
+# A
+
+param a2 in (0.1, 0.15);
+param b2 in (-35, -32);
+duration l2 in (0.101, 0.102);
+# B
+
+param a3 in (26, 26.1);
+duration l3 in (0.03, 0.031);
+#duration l3 in (0.032,0.032);
+# C
+
+param a4 in (-40.1, -40);
+duration l4 in (0.027, 0.028);
+#duration l4 in (0.028,0.028)
+# D
+
+param a5 in (25.0,26.0);
+duration l5 in (0.012, 0.013);
+# E
+
+param a6 in (0.03, 0.035);
+param b6 in (8,9);
+duration l6 in (0.151, 0.152);
+# F
+
+param a7 in (0.04, 0.041);
+param b7 in (-35, -34);
+duration l7 in (0.046, 0.047);
+#duration l7 in (0.047,0.047);
+# G
+
+duration d6 in (0.1,0.1);
+

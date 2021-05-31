@@ -58,8 +58,15 @@ class ShapEx(object):
 
     def samples(self, n):
         out = []
+        epsilon_counter = 0
         for i in tqdm.tqdm(range(n), desc='Samples generated', position=0, leave=True):
-            out.append(shapex.sample())
+            new_sample = self.sample()
+            if new_sample:
+                out.append(new_sample)
+            else:
+                epsilon_counter +=1
+        if epsilon_counter:
+            print('Warning: The empty word was sampled {} times, so the sample size is lower than specified.'.format(epsilon_counter))
 
         return out
 
@@ -115,7 +122,7 @@ class ShapEx(object):
         ctx = parser.shape_expression()
 
         # translate to regular expression object
-        from SpecLoaderVisitor import SpecLoaderVisitor
+        from shapex.shapex.SpecLoaderVisitor import SpecLoaderVisitor
 
         visitor = SpecLoaderVisitor()
         reg_exp, bounds_dict, constraints, singletons_dict = visitor.visit(ctx)

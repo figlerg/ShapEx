@@ -71,7 +71,10 @@ class Expression(object):
 
             roots = g_denom.roots()  # these are the poles, rconv is the first one after 0
             pos = list([root for root in roots if (not np.iscomplex(root)) and root > 0])
-            rconv = np.real(pos[0])
+            try:
+                rconv = np.real(pos[0])
+            except IndexError:
+                rconv = float('inf')
 
             g_enum_prime = g_enum.deriv()
             g_denom_prime = g_denom.deriv()

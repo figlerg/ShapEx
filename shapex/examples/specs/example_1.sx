@@ -1,10 +1,6 @@
-# this is nonsense, just to try out some things
+# this is nonsense, just here to serve as an example
 
-
-#sine(a,a,a,a,la).(line(a,zero,la) join line(c,zero,la))* join exp(a,b,c,la)
-#line(a,zero,la)*
-
-# #(ABC(DE union F))+ = ABC(DE union F).ABC(DE union F)*
+ #(ABC(DE union F))+ = ABC(DE union F).ABC(DE union F)*
 
 line(a,zero,la).line(b,zero,la).line(c,zero,la).(line(d,zero,la).line(e,zero,la) join line(f,zero,la))
 .
@@ -21,5 +17,6 @@ param f in (1,1);
 param zero in (0,0);
 duration la in (1,10);
 duration lb in (1,3);
+
 
 a*la -b < 5;
