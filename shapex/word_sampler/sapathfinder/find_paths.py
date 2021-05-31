@@ -2,8 +2,10 @@ from collections import deque
 from typing import Set, Tuple
 
 from shapex.alphabet.letter import Letter
-from shapex.parse import ShapeAutomaton
-from shapex.parse import Transition
+# from shapex.parse import ShapeAutomaton
+# from shapex.parse import Transition
+from shapex.parse.expression2aut.automaton.automaton import ShapeAutomaton
+from shapex.parse.expression2aut.automaton.transition import Transition
 
 
 def find_paths(aut: ShapeAutomaton, n: int) -> Set[Transition]:

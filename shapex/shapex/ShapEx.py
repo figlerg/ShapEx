@@ -2,11 +2,13 @@ import numpy as np
 import tqdm
 from anyHR.hit_and_run.hit_and_run import *
 
-from shapex.shapex.SpecLoaderVisitor import SpecLoaderVisitor
-from shapex.expression import WordSamplerMode
+
+from shapex.expression.Expression import WordSamplerMode
 from shapex.generation_tool.generate_traces import to_typestring, atomic_gen
 from shapex.misc.visualize import plotter
-from shapex.parse import HardSyntaxErrorStrategy
+from shapex.parse.SyntaxError import HardSyntaxErrorStrategy
+from shapex.parse.generated.ShapeExpressionLexer import *
+from shapex.parse.generated.ShapeExpressionParser import *
 
 
 class ShapEx(object):
@@ -113,6 +115,8 @@ class ShapEx(object):
         ctx = parser.shape_expression()
 
         # translate to regular expression object
+        from SpecLoaderVisitor import SpecLoaderVisitor
+
         visitor = SpecLoaderVisitor()
         reg_exp, bounds_dict, constraints, singletons_dict = visitor.visit(ctx)
 

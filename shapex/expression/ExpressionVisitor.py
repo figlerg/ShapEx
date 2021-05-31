@@ -9,7 +9,7 @@ class ExpressionVisitor:
     def visit(self, node, args):
         out = None
 
-        from shapex.expression import AtomicExpression, ConcatExpression, UnionExpression, KleeneExpression
+        from shapex.expression.Expression import AtomicExpression, ConcatExpression, UnionExpression, KleeneExpression
 
         if isinstance(node, AtomicExpression):
             out = self.visitAtomicExpression(node, args)

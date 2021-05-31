@@ -1,7 +1,7 @@
 import numpy as np
 from numpy.polynomial import Polynomial as P
 
-from shapex.expression import ExpressionVisitor
+from shapex.expression.ExpressionVisitor import ExpressionVisitor
 
 
 class GenFuncVisitor(ExpressionVisitor):

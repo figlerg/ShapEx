@@ -1,5 +1,5 @@
-from .letter import Letter
-from .letter_type import LetterType
+from shapex.alphabet.letter import Letter
+from shapex.alphabet.letter_type import LetterType
 
 
 class LineLetter(Letter):
