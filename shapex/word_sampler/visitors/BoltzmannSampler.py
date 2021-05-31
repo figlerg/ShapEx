@@ -1,14 +1,14 @@
 import numpy as np
 from numpy.polynomial import Polynomial as P
 
-from expression.ExpressionVisitor import ExpressionVisitor
+from shapex.expression import ExpressionVisitor
 
 
 class GenFuncVisitor(ExpressionVisitor):
     # creates an automaton object that represents the expression
 
     def __init__(self, expression):
-        from expression.Expression import Expression
+        from shapex.expression import Expression
         self.root_node: Expression = expression
 
     def calculate_gen_func(self):
@@ -57,7 +57,7 @@ class GenFuncVisitor(ExpressionVisitor):
 class BoltzmannVisitor(ExpressionVisitor):
     def __init__(self, expression):
 
-        from expression.Expression import Expression
+        from shapex.expression import Expression
         self.root_node: Expression = expression
 
     def sample(self):

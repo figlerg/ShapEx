@@ -4,16 +4,15 @@ from anyHR.constraint.Constraint import Constraints
 from anyHR.constraint.node.Node import *
 from anyHR.constraint.node.substitute import substitute
 
-from alphabet.const_letter import ConstLetter
-from alphabet.exp_letter import ExpLetter
-from alphabet.line_letter import LineLetter
-from alphabet.sinc_letter import SincLetter
-from alphabet.sine_letter import SineLetter
-from expression.Expression import *
-from misc.Error import *
-from parse.generated.ShapeExpressionParser import ShapeExpressionParser
-from parse.generated.ShapeExpressionVisitor import ShapeExpressionVisitor
-from parse.expression2aut.automaton.interval import IntervalObject
+from shapex.alphabet.const_letter import ConstLetter
+from shapex.alphabet.exp_letter import ExpLetter
+from shapex.alphabet import LineLetter
+from shapex.alphabet import SincLetter
+from shapex.alphabet import SineLetter
+from shapex.misc.Error import *
+from shapex.parse.generated import ShapeExpressionParser
+from shapex.parse.generated import ShapeExpressionVisitor
+from shapex.parse.expression2aut.automaton.interval import IntervalObject
 
 
 class SpecLoaderVisitor(ShapeExpressionVisitor):
@@ -330,8 +329,8 @@ class SpecLoaderVisitor(ShapeExpressionVisitor):
 
 if __name__ == '__main__':
     from antlr4 import *
-    from parse.generated.ShapeExpressionLexer import ShapeExpressionLexer
-    from parse.SyntaxError import HardSyntaxErrorStrategy
+    from shapex.parse.generated import ShapeExpressionLexer
+    from shapex.parse import HardSyntaxErrorStrategy
 
     input_stream = FileStream(r"C:\Users\giglerf\Documents\dev\ShapEx\examples\example_after_refactoring.sx")
     lexer = ShapeExpressionLexer(input_stream)

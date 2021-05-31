@@ -10,11 +10,11 @@ from enum import Enum
 import numpy as np
 from numpy.polynomial import Polynomial as P
 
-from alphabet.letter import Letter
-from misc.Error import InputError
-from word_sampler.sapathfinder.find_paths import find_paths
-from word_sampler.visitors.BoltzmannSampler import GenFuncVisitor, BoltzmannVisitor
-from word_sampler.visitors.RE2SAVisitor import RE2SAVisitor
+from shapex.alphabet.letter import Letter
+from shapex.misc.Error import InputError
+from shapex.word_sampler import find_paths
+from shapex.word_sampler.visitors.BoltzmannSampler import GenFuncVisitor, BoltzmannVisitor
+from shapex.word_sampler.visitors.RE2SAVisitor import RE2SAVisitor
 
 
 # TODO set seeds in this file

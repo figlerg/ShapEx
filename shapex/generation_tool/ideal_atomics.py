@@ -1,6 +1,6 @@
 import numpy as np
 
-from misc.Error import InputError
+from shapex.misc.Error import InputError
 
 
 def create_x_values(duration: int, timestep: float = 1.0):

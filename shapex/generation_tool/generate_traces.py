@@ -2,11 +2,11 @@ from collections import deque
 
 import numpy as np
 
-from alphabet.letter import Letter
-from alphabet.letter import LetterType
-from parse.expression2aut.automaton.interval import IntervalObject
-from generation_tool.ideal_atomics import line_gen, const_gen, sine_gen, sinc_gen, exp_gen
-from misc.Error import InputError
+from shapex.alphabet.letter import Letter
+from shapex.alphabet.letter import LetterType
+from shapex.parse.expression2aut.automaton.interval import IntervalObject
+from shapex.generation_tool.ideal_atomics import line_gen, const_gen, sine_gen, sinc_gen, exp_gen
+from shapex.misc.Error import InputError
 
 
 # this is just an interface to the inputstring for set_gen in shapes.py

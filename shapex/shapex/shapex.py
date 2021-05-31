@@ -3,12 +3,10 @@ import tqdm
 from anyHR.hit_and_run.hit_and_run import *
 
 from SpecLoaderVisitor import SpecLoaderVisitor
-from expression.Expression import WordSamplerMode
-from generation_tool.generate_traces import to_typestring, atomic_gen
-from misc.visualize import plotter
-from parse.SyntaxError import HardSyntaxErrorStrategy
-from parse.generated.ShapeExpressionLexer import *
-from parse.generated.ShapeExpressionParser import *
+from shapex.expression import WordSamplerMode
+from shapex.generation_tool.generate_traces import to_typestring, atomic_gen
+from shapex.misc.visualize import plotter
+from shapex.parse import HardSyntaxErrorStrategy
 
 
 class ShapEx(object):

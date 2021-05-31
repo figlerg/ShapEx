@@ -1,8 +1,8 @@
 from collections import OrderedDict
 from typing import List
 
-from parse.expression2aut.automaton import RelationObject
-from parse.expression2aut.automaton.automaton import ShapeAutomaton
+from shapex.parse import RelationObject
+from shapex.parse import ShapeAutomaton
 
 
 class ShapeAutomatonContainer:

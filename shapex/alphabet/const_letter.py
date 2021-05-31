@@ -1,5 +1,5 @@
-from alphabet.letter import Letter
-from alphabet.letter_type import LetterType
+from shapex.alphabet.letter import Letter
+from shapex.alphabet import LetterType
 
 
 class ConstLetter(Letter):

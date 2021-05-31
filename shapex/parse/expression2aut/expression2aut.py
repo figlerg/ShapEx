@@ -1,6 +1,6 @@
-from parse.expression2aut.automaton.automaton import ShapeAutomaton
-from parse.expression2aut.automaton.location import Location
-from parse.expression2aut.automaton.transition import Transition
+from shapex.parse import ShapeAutomaton
+from shapex.parse import Location
+from shapex.parse import Transition
 
 
 def letter_to_aut(letter):
