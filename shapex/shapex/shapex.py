@@ -2,7 +2,7 @@ import numpy as np
 import tqdm
 from anyHR.hit_and_run.hit_and_run import *
 
-from SpecLoaderVisitor import SpecLoaderVisitor
+from shapex.shapex.SpecLoaderVisitor import SpecLoaderVisitor
 from shapex.expression import WordSamplerMode
 from shapex.generation_tool.generate_traces import to_typestring, atomic_gen
 from shapex.misc.visualize import plotter
