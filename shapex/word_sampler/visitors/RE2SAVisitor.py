@@ -1,6 +1,6 @@
-from shapex.parse import letter_to_aut, concat_to_aut, kleene_to_aut, union_to_aut
+from shapex.parse.expression2aut.expression2aut import letter_to_aut, concat_to_aut, kleene_to_aut, union_to_aut
 
-from shapex.expression import ExpressionVisitor
+from shapex.expression.ExpressionVisitor import ExpressionVisitor
 
 
 class RE2SAVisitor(ExpressionVisitor):

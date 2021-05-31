@@ -1,5 +1,5 @@
 from shapex.alphabet.letter import Letter
-from shapex.alphabet import LetterType
+from shapex.alphabet.letter_type import LetterType
 
 
 class SincLetter(Letter):
