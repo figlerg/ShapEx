@@ -65,10 +65,23 @@ class Expression(object):
             self.sample = self._search_word_sampler
 
         if word_sampler == WordSamplerMode.BOLTZMANN:
+
             assert target_mu, \
                 "'target_mu' parameter has not been set. Boltzmann sampling needs a target expected word length."
             visitor = GenFuncVisitor(self)
-            g_enum, g_denom = visitor.calculate_gen_func()
+            (g_enum, g_denom), deterministic = visitor.calculate_gen_func()
+
+            if deterministic:
+                print("Warning: The shape expression seems to be deterministic. "
+                      "The Boltzmann sampler can only return one word and is equivalent with the BFS algorithm.")
+                visitor = RE2SAVisitor(self)
+                aut = visitor.create_aut()
+                self.word_sampler_mem['aut'] = aut
+                self.word_sampler_mem['path_list'] = find_paths(aut, budget)
+
+                self.sample = self._search_word_sampler
+                return
+
 
             roots = g_denom.roots()  # these are the poles, rconv is the first one after 0
             pos = list([root for root in roots if (not np.iscomplex(root)) and root > 0])

@@ -16,7 +16,7 @@ class ShapEx(object):
                  word_sampler=WordSamplerMode.SEARCH, search_budget=100, target_word_length=0,
                  dir_sampling=DirectionSampling.RDHR, shrinking=Shrinking.NO_SHRINKING, init_point=InitPoint.PSO,
                  noise_dist='uniform', noise=0):
-        self._expression = None  # new.
+        self._expression = None  # regular expression object
         self._constraint = None  # from anyHR
         self._hr = None  # from anyHR
 
@@ -53,7 +53,6 @@ class ShapEx(object):
 
         example = self._create_example(path, params, index)
 
-        # generate ideal example
         return example
 
     def samples(self, n):

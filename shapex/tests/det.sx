@@ -1,0 +1,20 @@
+# deterministic shape expression A.B.C
+
+line(a,zero,la).line(b,zero,lb).line(c,zero,zero)
+
+:
+
+param a in (0.5,2);
+duration la in (1,10);
+
+param b in (-0.5,-0.3);
+param offset2 in (-3,3);
+duration lb in (1,3);
+
+param c in (-1,-1);
+duration lc in (1,1);
+
+param zero in (0,0);
+
+a*la -offset2 <5;
+

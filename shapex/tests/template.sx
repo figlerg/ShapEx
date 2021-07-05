@@ -1,0 +1,15 @@
+# description
+
+# regular expression
+line(a,b,l)
+
+:
+
+# parameter declarations with ranges
+param a in (0,1);
+param b in (0,1);
+duration l in (1,2);
+
+
+# relational constraints
+a-b <0;

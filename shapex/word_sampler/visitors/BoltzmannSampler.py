@@ -22,17 +22,23 @@ class GenFuncVisitor(ExpressionVisitor):
 
         node._gen_func = out
 
-        return out
+        # atomics are deterministic
+        deterministic_flag = True
+
+        return out, deterministic_flag
 
     def visitConcatExpression(self, node, args):
-        p1_enum, p1_denom = self.visit(node.children[0], None)
-        p2_enum, p2_denom = self.visit(node.children[1], None)
+        (p1_enum, p1_denom), det_flag_1 = self.visit(node.children[0], None)
+        (p2_enum, p2_denom), det_flag_2 = self.visit(node.children[1], None)
 
         out = (p1_enum * p2_enum, p1_denom * p2_denom)
 
         node._gen_func = out
 
-        return out
+        # depends on whether children are deterministic
+        deterministic_flag = det_flag_1 and det_flag_2
+
+        return out, deterministic_flag
 
     def visitUnionExpression(self, node, args):
         p1_enum, p1_denom = self.visit(node.children[0], None)
@@ -42,7 +48,10 @@ class GenFuncVisitor(ExpressionVisitor):
 
         node._gen_func = out
 
-        return out
+        # union is always nondeterministic
+        deterministic_flag = False
+
+        return out, deterministic_flag
 
     def visitKleeneExpression(self, node, args):
         p_enum, p_denom = self.visit(node.children[0], None)
@@ -51,7 +60,10 @@ class GenFuncVisitor(ExpressionVisitor):
 
         node._gen_func = out
 
-        return out
+        # kleene is always nondeterministic
+        deterministic_flag = False
+
+        return out, deterministic_flag
 
 
 class BoltzmannVisitor(ExpressionVisitor):
