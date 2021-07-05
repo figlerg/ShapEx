@@ -5,6 +5,7 @@
 # TODO breadth first search: precompute list of paths
 
 import random
+import warnings
 from enum import Enum
 
 import numpy as np
@@ -72,8 +73,9 @@ class Expression(object):
             (g_enum, g_denom), deterministic = visitor.calculate_gen_func()
 
             if deterministic:
-                print("Warning: The shape expression seems to be deterministic. "
-                      "The Boltzmann sampler can only return one word and is equivalent with the BFS algorithm.")
+                warnings.warn("The shape expression seems to be deterministic. "
+                              "The Boltzmann sampler can only return one word and is equivalent with the BFS algorithm.")
+
                 visitor = RE2SAVisitor(self)
                 aut = visitor.create_aut()
                 self.word_sampler_mem['aut'] = aut

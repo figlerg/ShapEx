@@ -235,6 +235,26 @@ class SpecLoaderVisitor(ShapeExpressionVisitor):
 
                 constraints.add_constraint(constraint_tree)
 
+            if isinstance(child, (ShapeExpressionParser.Duration_declarationContext,
+                                  ShapeExpressionParser.Param_declarationContext)):
+                # here we need to add the interval_constraints to the constraints object as well.
+                # Otherwise smt solver does not work
+
+                param_interval: tuple = self.visit(child)
+                param_name = param_interval[0]
+                param_interval_object :IntervalObject = param_interval[1]
+
+                if param_name not in singletons:
+                    var_node = Variable(param_name)
+                    low_bound = Constant(param_interval_object.start)
+                    up_bound = Constant(param_interval_object.end)
+                    constraint_tree : Node = In(var_node,low_bound,up_bound)
+
+                    # these do not need to get substituted because this would mean the param was declared twice (
+                    # which raises an exception)
+
+                    constraints.add_constraint(constraint_tree)
+
         assert var_checkup_set.issubset(var_name_list), 'Some variables have not been properly declared. ' \
                                                         'Check for implicitly declared variables in constraints.'
 

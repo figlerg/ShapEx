@@ -3,6 +3,8 @@ class Error(Exception):
     pass
 
 
+# TODO these should be looked at
+
 class CmdInputError(Error):
     """Exception raised for errors because of cmd inputs.
 
@@ -55,3 +57,21 @@ class IllegalSpecError(Error):
             self.expression = 'Invalid input'
         if not message:
             self.message = 'Check input file'
+
+
+class IllegalParameterError(Error):
+    """Exception raised for invalid user input in the shapex parameters
+
+    Attributes:
+        parameter -- parameter key word
+        value -- specified parameter value that is invalid
+        message -- explanation of the error
+    """
+
+    def __init__(self, parameter = None, value = None ,message=None):
+
+        if not (message or value or parameter):
+            self.message = 'Check parameter input of ShapEx constructor.'
+        else:
+            self.message = message + "...parameter {} with value {} might be the problem.".format(parameter,value)
+

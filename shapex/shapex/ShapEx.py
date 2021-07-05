@@ -1,10 +1,12 @@
 import numpy as np
 import tqdm
 from anyHR.hit_and_run.hit_and_run import *
+import warnings
 
 
 from shapex.expression.Expression import WordSamplerMode
 from shapex.generation_tool.generate_traces import to_typestring, atomic_gen
+from shapex.misc.Error import IllegalParameterError
 from shapex.misc.visualize import plotter
 from shapex.parse.SyntaxError import HardSyntaxErrorStrategy
 from shapex.parse.generated.ShapeExpressionLexer import *
@@ -13,9 +15,35 @@ from shapex.parse.generated.ShapeExpressionParser import *
 
 class ShapEx(object):
     def __init__(self, timestep=1.0,
-                 word_sampler=WordSamplerMode.SEARCH, search_budget=100, target_word_length=0,
+                 word_sampler=WordSamplerMode.SEARCH, search_budget=10, target_word_length=10,
                  dir_sampling=DirectionSampling.RDHR, shrinking=Shrinking.NO_SHRINKING, init_point=InitPoint.PSO,
                  noise_dist='uniform', noise=0):
+
+
+        # some warnings about ill fitted parameter combinations:
+
+        # useless search budgets
+        if word_sampler==WordSamplerMode.SEARCH and search_budget == 0:
+            search_budget = 10
+            warnings.warn("Search budget has been specified as 0 while using BFS word sampler. "
+                          "This It has been set to the default value (10).")
+
+        # for boltzmann, target word length 0 actually makes sense when talking about kleene star specs
+        if word_sampler==WordSamplerMode.BOLTZMANN and target_word_length < 0:
+            target_word_length = 10
+            warnings.warn("Negative word lengths are not permitted and the mean word length will be set to its default "
+                          "value (10).")
+
+
+        #
+
+
+        # some hard errors
+        if timestep <= 0:
+            raise IllegalParameterError("timestep", timestep, "Invalid time step specified.")
+
+
+
         self._expression = None  # regular expression object
         self._constraint = None  # from anyHR
         self._hr = None  # from anyHR
@@ -65,7 +93,8 @@ class ShapEx(object):
             else:
                 epsilon_counter +=1
         if epsilon_counter:
-            print('Warning: The empty word was sampled {} times, so the sample size is lower than specified.'.format(epsilon_counter))
+            warnings.warn('The empty word was sampled {} times, '
+                          'so the sample size is lower than specified.'.format(epsilon_counter))
 
         return out
 
@@ -132,6 +161,8 @@ class ShapEx(object):
 
         self._constraint = constraints
         bounding_box = list([(item[1].start, item[1].end) for item in bounds_dict.items()])
+
+
 
         self._hr = HitAndRun(constraints, bounding_box, self._dir_sampling, self._shrinking, self._init_point)
         self._constants = singletons_dict
