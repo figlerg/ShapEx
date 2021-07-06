@@ -4,7 +4,7 @@
 # TODO Boltzmann: precompute gen func, modulus
 # TODO breadth first search: precompute list of paths
 
-import random
+# import random
 import warnings
 from enum import Enum
 
@@ -19,7 +19,6 @@ from shapex.word_sampler.visitors.BoltzmannSampler import GenFuncVisitor, Boltzm
 from shapex.word_sampler.visitors.RE2SAVisitor import RE2SAVisitor
 
 
-# TODO set seeds in this file
 
 
 class WordSamplerMode(Enum):
@@ -49,7 +48,6 @@ class Expression(object):
         self.word_sampler_mem = {}
         self._gen_func = None
 
-        # self._gen_func = None
 
     def set_sampler(self, word_sampler: WordSamplerMode = WordSamplerMode.SEARCH, budget=100, target_mu=None):
         # set opts and precompute the values necessary for sampling a word from a expression
@@ -135,7 +133,8 @@ class Expression(object):
             # self.
 
     def _search_word_sampler(self):
-        path = random.choice(self.word_sampler_mem['path_list'])
+        choice = np.random.choice(len(self.word_sampler_mem['path_list']))
+        path = self.word_sampler_mem['path_list'][choice]
         return path
 
     def _boltzmann_word_sampler(self):

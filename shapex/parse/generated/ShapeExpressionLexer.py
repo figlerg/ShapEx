@@ -1,9 +1,9 @@
-# Generated from C:/Users/giglerf/Documents/dev/ShapEx/parse/grammar\ShapeExpression.g4 by ANTLR 4.9.1
-from io import StringIO
-
-import sys
+# Generated from C:/Users/giglerf/Documents/dev/dev_code/ShapEx/shapex/parse/grammar\ShapeExpression.g4 by ANTLR 4.9.1
 from antlr4 import *
+from io import StringIO
 from typing.io import TextIO
+import sys
+
 
 
 def serializedATN():
@@ -194,9 +194,10 @@ def serializedATN():
 
 
 class ShapeExpressionLexer(Lexer):
+
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
+    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
 
     T__0 = 1
     T__1 = 2
@@ -235,44 +236,46 @@ class ShapeExpressionLexer(Lexer):
     COMMENT = 35
     LINE_COMMENT = 36
 
-    channelNames = [u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN"]
+    channelNames = [ u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN" ]
 
-    modeNames = ["DEFAULT_MODE"]
+    modeNames = [ "DEFAULT_MODE" ]
 
-    literalNames = ["<INVALID>",
-                    "':'", "';'", "'*'", "'.'", "'join'", "'('", "')'", "'const'",
-                    "'line'", "'exp'", "'sine'", "'sinc'", "'param'", "'duration'",
-                    "'constraint'", "'EULER'", "'**'", "'-'", "'+'", "'['", "']'",
-                    "'<='", "'>='", "'<'", "'>'", "'=='", "'!='", "','", "'in'"]
+    literalNames = [ "<INVALID>",
+            "':'", "';'", "'*'", "'.'", "'join'", "'('", "')'", "'const'", 
+            "'line'", "'exp'", "'sine'", "'sinc'", "'param'", "'duration'", 
+            "'constraint'", "'EULER'", "'**'", "'-'", "'+'", "'['", "']'", 
+            "'<='", "'>='", "'<'", "'>'", "'=='", "'!='", "','", "'in'" ]
 
-    symbolicNames = ["<INVALID>",
-                     "CONCAT", "UNION", "LEFTPAREN", "RIGHTPAREN", "CONSTANT", "LINE",
-                     "EXPONENTIAL", "SINE", "SINC", "PARAM", "DURATION", "CONSTRAINT",
-                     "EULER", "EXP", "MINUS", "PLUS", "LSQBRACKET", "RSQBRACKET",
-                     "LEQ", "GEQ", "LESS", "GREATER", "EQ", "NEQ", "COMMA", "IN",
-                     "IntegerLiteral", "RealLiteral", "Identifier", "LINE_TERMINATOR",
-                     "WHITESPACE", "COMMENT", "LINE_COMMENT"]
+    symbolicNames = [ "<INVALID>",
+            "CONCAT", "UNION", "LEFTPAREN", "RIGHTPAREN", "CONSTANT", "LINE", 
+            "EXPONENTIAL", "SINE", "SINC", "PARAM", "DURATION", "CONSTRAINT", 
+            "EULER", "EXP", "MINUS", "PLUS", "LSQBRACKET", "RSQBRACKET", 
+            "LEQ", "GEQ", "LESS", "GREATER", "EQ", "NEQ", "COMMA", "IN", 
+            "IntegerLiteral", "RealLiteral", "Identifier", "LINE_TERMINATOR", 
+            "WHITESPACE", "COMMENT", "LINE_COMMENT" ]
 
-    ruleNames = ["T__0", "T__1", "T__2", "CONCAT", "UNION", "LEFTPAREN",
-                 "RIGHTPAREN", "CONSTANT", "LINE", "EXPONENTIAL", "SINE",
-                 "SINC", "PARAM", "DURATION", "CONSTRAINT", "EULER", "EXP",
-                 "MINUS", "PLUS", "LSQBRACKET", "RSQBRACKET", "LEQ", "GEQ",
-                 "LESS", "GREATER", "EQ", "NEQ", "COMMA", "IN", "IntegerLiteral",
-                 "DecimalNumeral", "Digits", "Digit", "NonZeroDigit", "DigitsAndUnderscores",
-                 "DigitOrUnderscore", "Underscores", "HexNumeral", "HexDigits",
-                 "HexDigit", "HexDigitsAndUnderscores", "HexDigitOrUnderscore",
-                 "BinaryNumeral", "BinaryDigits", "BinaryDigit", "BinaryDigitsAndUnderscores",
-                 "BinaryDigitOrUnderscore", "RealLiteral", "DecimalRealLiteral",
-                 "ExponentPart", "ExponentIndicator", "SignedInteger",
-                 "Sign", "Identifier", "IdentifierStart", "IdentifierPart",
-                 "LetterOrUnderscore", "Letter", "LINE_TERMINATOR", "WHITESPACE",
-                 "COMMENT", "LINE_COMMENT"]
+    ruleNames = [ "T__0", "T__1", "T__2", "CONCAT", "UNION", "LEFTPAREN", 
+                  "RIGHTPAREN", "CONSTANT", "LINE", "EXPONENTIAL", "SINE", 
+                  "SINC", "PARAM", "DURATION", "CONSTRAINT", "EULER", "EXP", 
+                  "MINUS", "PLUS", "LSQBRACKET", "RSQBRACKET", "LEQ", "GEQ", 
+                  "LESS", "GREATER", "EQ", "NEQ", "COMMA", "IN", "IntegerLiteral", 
+                  "DecimalNumeral", "Digits", "Digit", "NonZeroDigit", "DigitsAndUnderscores", 
+                  "DigitOrUnderscore", "Underscores", "HexNumeral", "HexDigits", 
+                  "HexDigit", "HexDigitsAndUnderscores", "HexDigitOrUnderscore", 
+                  "BinaryNumeral", "BinaryDigits", "BinaryDigit", "BinaryDigitsAndUnderscores", 
+                  "BinaryDigitOrUnderscore", "RealLiteral", "DecimalRealLiteral", 
+                  "ExponentPart", "ExponentIndicator", "SignedInteger", 
+                  "Sign", "Identifier", "IdentifierStart", "IdentifierPart", 
+                  "LetterOrUnderscore", "Letter", "LINE_TERMINATOR", "WHITESPACE", 
+                  "COMMENT", "LINE_COMMENT" ]
 
     grammarFileName = "ShapeExpression.g4"
 
-    def __init__(self, input=None, output: TextIO = sys.stdout):
+    def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.9.1")
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
+
+

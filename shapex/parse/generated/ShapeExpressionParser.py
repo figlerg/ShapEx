@@ -1,20 +1,18 @@
-# Generated from C:/Users/giglerf/Documents/dev/ShapEx/parse/grammar\ShapeExpression.g4 by ANTLR 4.9.1
+# Generated from C:/Users/giglerf/Documents/dev/dev_code/ShapEx/shapex/parse/grammar\ShapeExpression.g4 by ANTLR 4.9.1
 # encoding: utf-8
-from io import StringIO
-
-import sys
 from antlr4 import *
-
+from io import StringIO
+import sys
 if sys.version_info[1] > 5:
-    from typing import TextIO
+	from typing import TextIO
 else:
-    from typing.io import TextIO
+	from typing.io import TextIO
 
 
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3&")
-        buf.write("\u00e8\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\u00de\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\3\2\3\2")
         buf.write("\3\2\3\2\3\3\3\3\3\3\6\3,\n\3\r\3\16\3-\3\4\3\4\3\4\3")
@@ -26,112 +24,106 @@ def serializedATN():
         buf.write("\f\b\16\bw\13\b\3\t\3\t\3\t\3\t\3\t\3\t\5\t\177\n\t\3")
         buf.write("\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\7\t\u0089\n\t\f\t\16\t")
         buf.write("\u008c\13\t\3\n\3\n\3\n\3\n\3\n\5\n\u0093\n\n\3\13\3\13")
-        buf.write("\3\13\3\13\3\13\5\13\u009a\n\13\3\13\3\13\3\f\3\f\3\f")
-        buf.write("\3\f\3\f\3\f\3\f\5\f\u00a5\n\f\3\f\3\f\3\r\3\r\3\r\3\r")
-        buf.write("\3\r\3\r\3\r\3\r\3\r\5\r\u00b2\n\r\3\r\3\r\3\16\3\16\3")
-        buf.write("\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\5\16\u00c1")
-        buf.write("\n\16\3\16\3\16\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17")
-        buf.write("\3\17\3\17\3\17\5\17\u00d0\n\17\3\17\3\17\3\20\3\20\3")
-        buf.write("\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\21")
-        buf.write("\3\21\3\22\3\22\3\22\3\22\5\22\u00e6\n\22\3\22\2\4\16")
-        buf.write("\20\23\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"\2\2\2")
-        buf.write("\u00f4\2$\3\2\2\2\4+\3\2\2\2\6/\3\2\2\2\b\64\3\2\2\2\n")
-        buf.write("9\3\2\2\2\f\\\3\2\2\2\16h\3\2\2\2\20~\3\2\2\2\22\u0092")
-        buf.write("\3\2\2\2\24\u0094\3\2\2\2\26\u009d\3\2\2\2\30\u00a8\3")
-        buf.write("\2\2\2\32\u00b5\3\2\2\2\34\u00c4\3\2\2\2\36\u00d3\3\2")
-        buf.write("\2\2 \u00da\3\2\2\2\"\u00e5\3\2\2\2$%\5\20\t\2%&\7\3\2")
-        buf.write("\2&\'\5\4\3\2\'\3\3\2\2\2(,\5\6\4\2),\5\b\5\2*,\5\n\6")
-        buf.write("\2+(\3\2\2\2+)\3\2\2\2+*\3\2\2\2,-\3\2\2\2-+\3\2\2\2-")
-        buf.write(".\3\2\2\2.\5\3\2\2\2/\60\7\17\2\2\60\61\7\"\2\2\61\62")
-        buf.write("\5\36\20\2\62\63\7\4\2\2\63\7\3\2\2\2\64\65\7\20\2\2\65")
-        buf.write("\66\7\"\2\2\66\67\5 \21\2\678\7\4\2\28\t\3\2\2\29:\5\f")
-        buf.write("\7\2:;\7\4\2\2;\13\3\2\2\2<=\5\16\b\2=>\7\30\2\2>?\5\16")
-        buf.write("\b\2?]\3\2\2\2@A\5\16\b\2AB\7\31\2\2BC\5\16\b\2C]\3\2")
-        buf.write("\2\2DE\5\16\b\2EF\7\32\2\2FG\5\16\b\2G]\3\2\2\2HI\5\16")
-        buf.write("\b\2IJ\7\33\2\2JK\5\16\b\2K]\3\2\2\2LM\5\16\b\2MN\7\34")
-        buf.write("\2\2NO\5\16\b\2O]\3\2\2\2PQ\5\16\b\2QR\7\35\2\2RS\5\16")
-        buf.write("\b\2S]\3\2\2\2TU\5\16\b\2UV\7\37\2\2VW\7\b\2\2WX\5\16")
-        buf.write("\b\2XY\7\36\2\2YZ\5\16\b\2Z[\7\t\2\2[]\3\2\2\2\\<\3\2")
-        buf.write("\2\2\\@\3\2\2\2\\D\3\2\2\2\\H\3\2\2\2\\L\3\2\2\2\\P\3")
-        buf.write("\2\2\2\\T\3\2\2\2]\r\3\2\2\2^_\b\b\1\2_i\7\"\2\2`i\5\"")
-        buf.write("\22\2ab\7\b\2\2bc\5\16\b\2cd\7\t\2\2di\3\2\2\2ef\7\22")
-        buf.write("\2\2fg\7\23\2\2gi\5\16\b\6h^\3\2\2\2h`\3\2\2\2ha\3\2\2")
-        buf.write("\2he\3\2\2\2iu\3\2\2\2jk\f\5\2\2kl\7\5\2\2lt\5\16\b\6")
-        buf.write("mn\f\4\2\2no\7\25\2\2ot\5\16\b\5pq\f\3\2\2qr\7\24\2\2")
-        buf.write("rt\5\16\b\4sj\3\2\2\2sm\3\2\2\2sp\3\2\2\2tw\3\2\2\2us")
-        buf.write("\3\2\2\2uv\3\2\2\2v\17\3\2\2\2wu\3\2\2\2xy\b\t\1\2y\177")
-        buf.write("\5\22\n\2z{\7\b\2\2{|\5\20\t\2|}\7\t\2\2}\177\3\2\2\2")
-        buf.write("~x\3\2\2\2~z\3\2\2\2\177\u008a\3\2\2\2\u0080\u0081\f\4")
-        buf.write("\2\2\u0081\u0082\7\6\2\2\u0082\u0089\5\20\t\5\u0083\u0084")
-        buf.write("\f\3\2\2\u0084\u0085\7\7\2\2\u0085\u0089\5\20\t\4\u0086")
-        buf.write("\u0087\f\5\2\2\u0087\u0089\7\5\2\2\u0088\u0080\3\2\2\2")
-        buf.write("\u0088\u0083\3\2\2\2\u0088\u0086\3\2\2\2\u0089\u008c\3")
-        buf.write("\2\2\2\u008a\u0088\3\2\2\2\u008a\u008b\3\2\2\2\u008b\21")
-        buf.write("\3\2\2\2\u008c\u008a\3\2\2\2\u008d\u0093\5\24\13\2\u008e")
-        buf.write("\u0093\5\26\f\2\u008f\u0093\5\30\r\2\u0090\u0093\5\32")
-        buf.write("\16\2\u0091\u0093\5\34\17\2\u0092\u008d\3\2\2\2\u0092")
-        buf.write("\u008e\3\2\2\2\u0092\u008f\3\2\2\2\u0092\u0090\3\2\2\2")
-        buf.write("\u0092\u0091\3\2\2\2\u0093\23\3\2\2\2\u0094\u0095\7\n")
-        buf.write("\2\2\u0095\u0096\7\b\2\2\u0096\u0099\7\"\2\2\u0097\u0098")
-        buf.write("\7\36\2\2\u0098\u009a\7\"\2\2\u0099\u0097\3\2\2\2\u0099")
-        buf.write("\u009a\3\2\2\2\u009a\u009b\3\2\2\2\u009b\u009c\7\t\2\2")
-        buf.write("\u009c\25\3\2\2\2\u009d\u009e\7\13\2\2\u009e\u009f\7\b")
-        buf.write("\2\2\u009f\u00a0\7\"\2\2\u00a0\u00a1\7\36\2\2\u00a1\u00a4")
-        buf.write("\7\"\2\2\u00a2\u00a3\7\36\2\2\u00a3\u00a5\7\"\2\2\u00a4")
-        buf.write("\u00a2\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5\u00a6\3\2\2\2")
-        buf.write("\u00a6\u00a7\7\t\2\2\u00a7\27\3\2\2\2\u00a8\u00a9\7\f")
-        buf.write("\2\2\u00a9\u00aa\7\b\2\2\u00aa\u00ab\7\"\2\2\u00ab\u00ac")
-        buf.write("\7\36\2\2\u00ac\u00ad\7\"\2\2\u00ad\u00ae\7\36\2\2\u00ae")
-        buf.write("\u00b1\7\"\2\2\u00af\u00b0\7\36\2\2\u00b0\u00b2\7\"\2")
-        buf.write("\2\u00b1\u00af\3\2\2\2\u00b1\u00b2\3\2\2\2\u00b2\u00b3")
-        buf.write("\3\2\2\2\u00b3\u00b4\7\t\2\2\u00b4\31\3\2\2\2\u00b5\u00b6")
-        buf.write("\7\r\2\2\u00b6\u00b7\7\b\2\2\u00b7\u00b8\7\"\2\2\u00b8")
-        buf.write("\u00b9\7\36\2\2\u00b9\u00ba\7\"\2\2\u00ba\u00bb\7\36\2")
-        buf.write("\2\u00bb\u00bc\7\"\2\2\u00bc\u00bd\7\36\2\2\u00bd\u00c0")
-        buf.write("\7\"\2\2\u00be\u00bf\7\36\2\2\u00bf\u00c1\7\"\2\2\u00c0")
-        buf.write("\u00be\3\2\2\2\u00c0\u00c1\3\2\2\2\u00c1\u00c2\3\2\2\2")
-        buf.write("\u00c2\u00c3\7\t\2\2\u00c3\33\3\2\2\2\u00c4\u00c5\7\16")
-        buf.write("\2\2\u00c5\u00c6\7\b\2\2\u00c6\u00c7\7\"\2\2\u00c7\u00c8")
-        buf.write("\7\36\2\2\u00c8\u00c9\7\"\2\2\u00c9\u00ca\7\36\2\2\u00ca")
-        buf.write("\u00cb\7\"\2\2\u00cb\u00cc\7\36\2\2\u00cc\u00cf\7\"\2")
-        buf.write("\2\u00cd\u00ce\7\36\2\2\u00ce\u00d0\7\"\2\2\u00cf\u00cd")
-        buf.write("\3\2\2\2\u00cf\u00d0\3\2\2\2\u00d0\u00d1\3\2\2\2\u00d1")
-        buf.write("\u00d2\7\t\2\2\u00d2\35\3\2\2\2\u00d3\u00d4\7\37\2\2\u00d4")
-        buf.write("\u00d5\7\b\2\2\u00d5\u00d6\5\"\22\2\u00d6\u00d7\7\36\2")
-        buf.write("\2\u00d7\u00d8\5\"\22\2\u00d8\u00d9\7\t\2\2\u00d9\37\3")
-        buf.write("\2\2\2\u00da\u00db\7\37\2\2\u00db\u00dc\7\b\2\2\u00dc")
-        buf.write("\u00dd\5\"\22\2\u00dd\u00de\7\36\2\2\u00de\u00df\5\"\22")
-        buf.write("\2\u00df\u00e0\7\t\2\2\u00e0!\3\2\2\2\u00e1\u00e6\7 \2")
-        buf.write("\2\u00e2\u00e6\7!\2\2\u00e3\u00e4\7\24\2\2\u00e4\u00e6")
-        buf.write("\5\"\22\2\u00e5\u00e1\3\2\2\2\u00e5\u00e2\3\2\2\2\u00e5")
-        buf.write("\u00e3\3\2\2\2\u00e6#\3\2\2\2\22+-\\hsu~\u0088\u008a\u0092")
-        buf.write("\u0099\u00a4\u00b1\u00c0\u00cf\u00e5")
+        buf.write("\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f")
+        buf.write("\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3")
+        buf.write("\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16")
+        buf.write("\3\16\3\16\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17")
+        buf.write("\3\17\3\17\3\17\3\17\3\20\3\20\3\20\3\20\3\20\3\20\3\20")
+        buf.write("\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\22\3\22\3\22\3\22")
+        buf.write("\5\22\u00dc\n\22\3\22\2\4\16\20\23\2\4\6\b\n\f\16\20\22")
+        buf.write("\24\26\30\32\34\36 \"\2\2\2\u00e5\2$\3\2\2\2\4+\3\2\2")
+        buf.write("\2\6/\3\2\2\2\b\64\3\2\2\2\n9\3\2\2\2\f\\\3\2\2\2\16h")
+        buf.write("\3\2\2\2\20~\3\2\2\2\22\u0092\3\2\2\2\24\u0094\3\2\2\2")
+        buf.write("\26\u009b\3\2\2\2\30\u00a4\3\2\2\2\32\u00af\3\2\2\2\34")
+        buf.write("\u00bc\3\2\2\2\36\u00c9\3\2\2\2 \u00d0\3\2\2\2\"\u00db")
+        buf.write("\3\2\2\2$%\5\20\t\2%&\7\3\2\2&\'\5\4\3\2\'\3\3\2\2\2(")
+        buf.write(",\5\6\4\2),\5\b\5\2*,\5\n\6\2+(\3\2\2\2+)\3\2\2\2+*\3")
+        buf.write("\2\2\2,-\3\2\2\2-+\3\2\2\2-.\3\2\2\2.\5\3\2\2\2/\60\7")
+        buf.write("\17\2\2\60\61\7\"\2\2\61\62\5\36\20\2\62\63\7\4\2\2\63")
+        buf.write("\7\3\2\2\2\64\65\7\20\2\2\65\66\7\"\2\2\66\67\5 \21\2")
+        buf.write("\678\7\4\2\28\t\3\2\2\29:\5\f\7\2:;\7\4\2\2;\13\3\2\2")
+        buf.write("\2<=\5\16\b\2=>\7\30\2\2>?\5\16\b\2?]\3\2\2\2@A\5\16\b")
+        buf.write("\2AB\7\31\2\2BC\5\16\b\2C]\3\2\2\2DE\5\16\b\2EF\7\32\2")
+        buf.write("\2FG\5\16\b\2G]\3\2\2\2HI\5\16\b\2IJ\7\33\2\2JK\5\16\b")
+        buf.write("\2K]\3\2\2\2LM\5\16\b\2MN\7\34\2\2NO\5\16\b\2O]\3\2\2")
+        buf.write("\2PQ\5\16\b\2QR\7\35\2\2RS\5\16\b\2S]\3\2\2\2TU\5\16\b")
+        buf.write("\2UV\7\37\2\2VW\7\b\2\2WX\5\16\b\2XY\7\36\2\2YZ\5\16\b")
+        buf.write("\2Z[\7\t\2\2[]\3\2\2\2\\<\3\2\2\2\\@\3\2\2\2\\D\3\2\2")
+        buf.write("\2\\H\3\2\2\2\\L\3\2\2\2\\P\3\2\2\2\\T\3\2\2\2]\r\3\2")
+        buf.write("\2\2^_\b\b\1\2_i\7\"\2\2`i\5\"\22\2ab\7\b\2\2bc\5\16\b")
+        buf.write("\2cd\7\t\2\2di\3\2\2\2ef\7\22\2\2fg\7\23\2\2gi\5\16\b")
+        buf.write("\6h^\3\2\2\2h`\3\2\2\2ha\3\2\2\2he\3\2\2\2iu\3\2\2\2j")
+        buf.write("k\f\5\2\2kl\7\5\2\2lt\5\16\b\6mn\f\4\2\2no\7\25\2\2ot")
+        buf.write("\5\16\b\5pq\f\3\2\2qr\7\24\2\2rt\5\16\b\4sj\3\2\2\2sm")
+        buf.write("\3\2\2\2sp\3\2\2\2tw\3\2\2\2us\3\2\2\2uv\3\2\2\2v\17\3")
+        buf.write("\2\2\2wu\3\2\2\2xy\b\t\1\2y\177\5\22\n\2z{\7\b\2\2{|\5")
+        buf.write("\20\t\2|}\7\t\2\2}\177\3\2\2\2~x\3\2\2\2~z\3\2\2\2\177")
+        buf.write("\u008a\3\2\2\2\u0080\u0081\f\4\2\2\u0081\u0082\7\6\2\2")
+        buf.write("\u0082\u0089\5\20\t\5\u0083\u0084\f\3\2\2\u0084\u0085")
+        buf.write("\7\7\2\2\u0085\u0089\5\20\t\4\u0086\u0087\f\5\2\2\u0087")
+        buf.write("\u0089\7\5\2\2\u0088\u0080\3\2\2\2\u0088\u0083\3\2\2\2")
+        buf.write("\u0088\u0086\3\2\2\2\u0089\u008c\3\2\2\2\u008a\u0088\3")
+        buf.write("\2\2\2\u008a\u008b\3\2\2\2\u008b\21\3\2\2\2\u008c\u008a")
+        buf.write("\3\2\2\2\u008d\u0093\5\24\13\2\u008e\u0093\5\26\f\2\u008f")
+        buf.write("\u0093\5\30\r\2\u0090\u0093\5\32\16\2\u0091\u0093\5\34")
+        buf.write("\17\2\u0092\u008d\3\2\2\2\u0092\u008e\3\2\2\2\u0092\u008f")
+        buf.write("\3\2\2\2\u0092\u0090\3\2\2\2\u0092\u0091\3\2\2\2\u0093")
+        buf.write("\23\3\2\2\2\u0094\u0095\7\n\2\2\u0095\u0096\7\b\2\2\u0096")
+        buf.write("\u0097\7\"\2\2\u0097\u0098\7\36\2\2\u0098\u0099\7\"\2")
+        buf.write("\2\u0099\u009a\7\t\2\2\u009a\25\3\2\2\2\u009b\u009c\7")
+        buf.write("\13\2\2\u009c\u009d\7\b\2\2\u009d\u009e\7\"\2\2\u009e")
+        buf.write("\u009f\7\36\2\2\u009f\u00a0\7\"\2\2\u00a0\u00a1\7\36\2")
+        buf.write("\2\u00a1\u00a2\7\"\2\2\u00a2\u00a3\7\t\2\2\u00a3\27\3")
+        buf.write("\2\2\2\u00a4\u00a5\7\f\2\2\u00a5\u00a6\7\b\2\2\u00a6\u00a7")
+        buf.write("\7\"\2\2\u00a7\u00a8\7\36\2\2\u00a8\u00a9\7\"\2\2\u00a9")
+        buf.write("\u00aa\7\36\2\2\u00aa\u00ab\7\"\2\2\u00ab\u00ac\7\36\2")
+        buf.write("\2\u00ac\u00ad\7\"\2\2\u00ad\u00ae\7\t\2\2\u00ae\31\3")
+        buf.write("\2\2\2\u00af\u00b0\7\r\2\2\u00b0\u00b1\7\b\2\2\u00b1\u00b2")
+        buf.write("\7\"\2\2\u00b2\u00b3\7\36\2\2\u00b3\u00b4\7\"\2\2\u00b4")
+        buf.write("\u00b5\7\36\2\2\u00b5\u00b6\7\"\2\2\u00b6\u00b7\7\36\2")
+        buf.write("\2\u00b7\u00b8\7\"\2\2\u00b8\u00b9\7\36\2\2\u00b9\u00ba")
+        buf.write("\7\"\2\2\u00ba\u00bb\7\t\2\2\u00bb\33\3\2\2\2\u00bc\u00bd")
+        buf.write("\7\16\2\2\u00bd\u00be\7\b\2\2\u00be\u00bf\7\"\2\2\u00bf")
+        buf.write("\u00c0\7\36\2\2\u00c0\u00c1\7\"\2\2\u00c1\u00c2\7\36\2")
+        buf.write("\2\u00c2\u00c3\7\"\2\2\u00c3\u00c4\7\36\2\2\u00c4\u00c5")
+        buf.write("\7\"\2\2\u00c5\u00c6\7\36\2\2\u00c6\u00c7\7\"\2\2\u00c7")
+        buf.write("\u00c8\7\t\2\2\u00c8\35\3\2\2\2\u00c9\u00ca\7\37\2\2\u00ca")
+        buf.write("\u00cb\7\b\2\2\u00cb\u00cc\5\"\22\2\u00cc\u00cd\7\36\2")
+        buf.write("\2\u00cd\u00ce\5\"\22\2\u00ce\u00cf\7\t\2\2\u00cf\37\3")
+        buf.write("\2\2\2\u00d0\u00d1\7\37\2\2\u00d1\u00d2\7\b\2\2\u00d2")
+        buf.write("\u00d3\5\"\22\2\u00d3\u00d4\7\36\2\2\u00d4\u00d5\5\"\22")
+        buf.write("\2\u00d5\u00d6\7\t\2\2\u00d6!\3\2\2\2\u00d7\u00dc\7 \2")
+        buf.write("\2\u00d8\u00dc\7!\2\2\u00d9\u00da\7\24\2\2\u00da\u00dc")
+        buf.write("\5\"\22\2\u00db\u00d7\3\2\2\2\u00db\u00d8\3\2\2\2\u00db")
+        buf.write("\u00d9\3\2\2\2\u00dc#\3\2\2\2\r+-\\hsu~\u0088\u008a\u0092")
+        buf.write("\u00db")
         return buf.getvalue()
 
 
-class ShapeExpressionParser(Parser):
+class ShapeExpressionParser ( Parser ):
+
     grammarFileName = "ShapeExpression.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
+    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = ["<INVALID>", "':'", "';'", "'*'", "'.'", "'join'",
-                    "'('", "')'", "'const'", "'line'", "'exp'", "'sine'",
-                    "'sinc'", "'param'", "'duration'", "'constraint'",
-                    "'EULER'", "'**'", "'-'", "'+'", "'['", "']'", "'<='",
-                    "'>='", "'<'", "'>'", "'=='", "'!='", "','", "'in'"]
+    literalNames = [ "<INVALID>", "':'", "';'", "'*'", "'.'", "'join'", 
+                     "'('", "')'", "'const'", "'line'", "'exp'", "'sine'", 
+                     "'sinc'", "'param'", "'duration'", "'constraint'", 
+                     "'EULER'", "'**'", "'-'", "'+'", "'['", "']'", "'<='", 
+                     "'>='", "'<'", "'>'", "'=='", "'!='", "','", "'in'" ]
 
-    symbolicNames = ["<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                     "CONCAT", "UNION", "LEFTPAREN", "RIGHTPAREN", "CONSTANT",
-                     "LINE", "EXPONENTIAL", "SINE", "SINC", "PARAM", "DURATION",
-                     "CONSTRAINT", "EULER", "EXP", "MINUS", "PLUS", "LSQBRACKET",
-                     "RSQBRACKET", "LEQ", "GEQ", "LESS", "GREATER", "EQ",
-                     "NEQ", "COMMA", "IN", "IntegerLiteral", "RealLiteral",
-                     "Identifier", "LINE_TERMINATOR", "WHITESPACE", "COMMENT",
-                     "LINE_COMMENT"]
+    symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "CONCAT", "UNION", "LEFTPAREN", "RIGHTPAREN", "CONSTANT", 
+                      "LINE", "EXPONENTIAL", "SINE", "SINC", "PARAM", "DURATION", 
+                      "CONSTRAINT", "EULER", "EXP", "MINUS", "PLUS", "LSQBRACKET", 
+                      "RSQBRACKET", "LEQ", "GEQ", "LESS", "GREATER", "EQ", 
+                      "NEQ", "COMMA", "IN", "IntegerLiteral", "RealLiteral", 
+                      "Identifier", "LINE_TERMINATOR", "WHITESPACE", "COMMENT", 
+                      "LINE_COMMENT" ]
 
     RULE_shape_expression = 0
     RULE_constraints = 1
@@ -151,77 +143,85 @@ class ShapeExpressionParser(Parser):
     RULE_discrete_interval = 15
     RULE_literal = 16
 
-    ruleNames = ["shape_expression", "constraints", "param_declaration",
-                 "duration_declaration", "constraint_declaration", "constraint",
-                 "expression", "regular_expression", "atomic", "atomic_constant",
-                 "atomic_line", "atomic_exponential", "atomic_sine", "atomic_sinc",
-                 "interval", "discrete_interval", "literal"]
+    ruleNames =  [ "shape_expression", "constraints", "param_declaration", 
+                   "duration_declaration", "constraint_declaration", "constraint", 
+                   "expression", "regular_expression", "atomic", "atomic_constant", 
+                   "atomic_line", "atomic_exponential", "atomic_sine", "atomic_sinc", 
+                   "interval", "discrete_interval", "literal" ]
 
     EOF = Token.EOF
-    T__0 = 1
-    T__1 = 2
-    T__2 = 3
-    CONCAT = 4
-    UNION = 5
-    LEFTPAREN = 6
-    RIGHTPAREN = 7
-    CONSTANT = 8
-    LINE = 9
-    EXPONENTIAL = 10
-    SINE = 11
-    SINC = 12
-    PARAM = 13
-    DURATION = 14
-    CONSTRAINT = 15
-    EULER = 16
-    EXP = 17
-    MINUS = 18
-    PLUS = 19
-    LSQBRACKET = 20
-    RSQBRACKET = 21
-    LEQ = 22
-    GEQ = 23
-    LESS = 24
-    GREATER = 25
-    EQ = 26
-    NEQ = 27
-    COMMA = 28
-    IN = 29
-    IntegerLiteral = 30
-    RealLiteral = 31
-    Identifier = 32
-    LINE_TERMINATOR = 33
-    WHITESPACE = 34
-    COMMENT = 35
-    LINE_COMMENT = 36
+    T__0=1
+    T__1=2
+    T__2=3
+    CONCAT=4
+    UNION=5
+    LEFTPAREN=6
+    RIGHTPAREN=7
+    CONSTANT=8
+    LINE=9
+    EXPONENTIAL=10
+    SINE=11
+    SINC=12
+    PARAM=13
+    DURATION=14
+    CONSTRAINT=15
+    EULER=16
+    EXP=17
+    MINUS=18
+    PLUS=19
+    LSQBRACKET=20
+    RSQBRACKET=21
+    LEQ=22
+    GEQ=23
+    LESS=24
+    GREATER=25
+    EQ=26
+    NEQ=27
+    COMMA=28
+    IN=29
+    IntegerLiteral=30
+    RealLiteral=31
+    Identifier=32
+    LINE_TERMINATOR=33
+    WHITESPACE=34
+    COMMENT=35
+    LINE_COMMENT=36
 
-    def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
+    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.9.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
+
+
+
     class Shape_expressionContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def regular_expression(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.Regular_expressionContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.Regular_expressionContext,0)
+
 
         def constraints(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.ConstraintsContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.ConstraintsContext,0)
+
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_shape_expression
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitShape_expression"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitShape_expression" ):
                 return visitor.visitShape_expression(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def shape_expression(self):
 
@@ -243,48 +243,55 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class ConstraintsContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def param_declaration(self, i: int = None):
+        def param_declaration(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.Param_declarationContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.Param_declarationContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.Param_declarationContext,i)
 
-        def duration_declaration(self, i: int = None):
+
+        def duration_declaration(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.Duration_declarationContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.Duration_declarationContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.Duration_declarationContext,i)
 
-        def constraint_declaration(self, i: int = None):
+
+        def constraint_declaration(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.Constraint_declarationContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.Constraint_declarationContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.Constraint_declarationContext,i)
+
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_constraints
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitConstraints"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConstraints" ):
                 return visitor.visitConstraints(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def constraints(self):
 
         localctx = ShapeExpressionParser.ConstraintsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_constraints)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 41
+            self.state = 41 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
@@ -299,24 +306,17 @@ class ShapeExpressionParser(Parser):
                     self.state = 39
                     self.duration_declaration()
                     pass
-                elif token in [ShapeExpressionParser.LEFTPAREN, ShapeExpressionParser.EULER,
-                               ShapeExpressionParser.MINUS, ShapeExpressionParser.IntegerLiteral,
-                               ShapeExpressionParser.RealLiteral, ShapeExpressionParser.Identifier]:
+                elif token in [ShapeExpressionParser.LEFTPAREN, ShapeExpressionParser.EULER, ShapeExpressionParser.MINUS, ShapeExpressionParser.IntegerLiteral, ShapeExpressionParser.RealLiteral, ShapeExpressionParser.Identifier]:
                     self.state = 40
                     self.constraint_declaration()
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 43
+                self.state = 43 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & (
-                        (1 << ShapeExpressionParser.LEFTPAREN) | (1 << ShapeExpressionParser.PARAM) | (
-                        1 << ShapeExpressionParser.DURATION) | (1 << ShapeExpressionParser.EULER) | (
-                                1 << ShapeExpressionParser.MINUS) | (1 << ShapeExpressionParser.IntegerLiteral) | (
-                                1 << ShapeExpressionParser.RealLiteral) | (
-                                1 << ShapeExpressionParser.Identifier))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ShapeExpressionParser.LEFTPAREN) | (1 << ShapeExpressionParser.PARAM) | (1 << ShapeExpressionParser.DURATION) | (1 << ShapeExpressionParser.EULER) | (1 << ShapeExpressionParser.MINUS) | (1 << ShapeExpressionParser.IntegerLiteral) | (1 << ShapeExpressionParser.RealLiteral) | (1 << ShapeExpressionParser.Identifier))) != 0)):
                     break
 
         except RecognitionException as re:
@@ -327,10 +327,11 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class Param_declarationContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -341,16 +342,20 @@ class ShapeExpressionParser(Parser):
             return self.getToken(ShapeExpressionParser.Identifier, 0)
 
         def interval(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.IntervalContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.IntervalContext,0)
+
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_param_declaration
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitParam_declaration"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParam_declaration" ):
                 return visitor.visitParam_declaration(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def param_declaration(self):
 
@@ -374,10 +379,11 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class Duration_declarationContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -388,16 +394,20 @@ class ShapeExpressionParser(Parser):
             return self.getToken(ShapeExpressionParser.Identifier, 0)
 
         def discrete_interval(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.Discrete_intervalContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.Discrete_intervalContext,0)
+
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_duration_declaration
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitDuration_declaration"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDuration_declaration" ):
                 return visitor.visitDuration_declaration(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def duration_declaration(self):
 
@@ -421,24 +431,29 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class Constraint_declarationContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def constraint(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.ConstraintContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.ConstraintContext,0)
+
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_constraint_declaration
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitConstraint_declaration"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConstraint_declaration" ):
                 return visitor.visitConstraint_declaration(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def constraint_declaration(self):
 
@@ -458,174 +473,184 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class ConstraintContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_constraint
 
-        def copyFrom(self, ctx: ParserRuleContext):
+     
+        def copyFrom(self, ctx:ParserRuleContext):
             super().copyFrom(ctx)
+
+
 
     class LRA_NeqContext(ConstraintContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ConstraintContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def expression(self, i: int = None):
+        def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,i)
 
         def NEQ(self):
             return self.getToken(ShapeExpressionParser.NEQ, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLRA_Neq"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLRA_Neq" ):
                 return visitor.visitLRA_Neq(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class LRA_EqContext(ConstraintContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ConstraintContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def expression(self, i: int = None):
+        def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,i)
 
         def EQ(self):
             return self.getToken(ShapeExpressionParser.EQ, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLRA_Eq"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLRA_Eq" ):
                 return visitor.visitLRA_Eq(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class LRA_LEQContext(ConstraintContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ConstraintContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def expression(self, i: int = None):
+        def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,i)
 
         def LEQ(self):
             return self.getToken(ShapeExpressionParser.LEQ, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLRA_LEQ"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLRA_LEQ" ):
                 return visitor.visitLRA_LEQ(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class LRA_GEQContext(ConstraintContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ConstraintContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def expression(self, i: int = None):
+        def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,i)
 
         def GEQ(self):
             return self.getToken(ShapeExpressionParser.GEQ, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLRA_GEQ"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLRA_GEQ" ):
                 return visitor.visitLRA_GEQ(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class LRA_InContext(ConstraintContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ConstraintContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def expression(self, i: int = None):
+        def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,i)
 
         def IN(self):
             return self.getToken(ShapeExpressionParser.IN, 0)
-
         def LEFTPAREN(self):
             return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
-
         def COMMA(self):
             return self.getToken(ShapeExpressionParser.COMMA, 0)
-
         def RIGHTPAREN(self):
             return self.getToken(ShapeExpressionParser.RIGHTPAREN, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLRA_In"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLRA_In" ):
                 return visitor.visitLRA_In(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class LRA_GreaterContext(ConstraintContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ConstraintContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def expression(self, i: int = None):
+        def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,i)
 
         def GREATER(self):
             return self.getToken(ShapeExpressionParser.GREATER, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLRA_Greater"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLRA_Greater" ):
                 return visitor.visitLRA_Greater(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class LRA_LessContext(ConstraintContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ConstraintContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ConstraintContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def expression(self, i: int = None):
+        def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,i)
 
         def LESS(self):
             return self.getToken(ShapeExpressionParser.LESS, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLRA_Less"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLRA_Less" ):
                 return visitor.visitLRA_Less(self)
             else:
                 return visitor.visitChildren(self)
+
+
 
     def constraint(self):
 
@@ -634,7 +659,7 @@ class ShapeExpressionParser(Parser):
         try:
             self.state = 90
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input, 2, self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
             if la_ == 1:
                 localctx = ShapeExpressionParser.LRA_LEQContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -729,152 +754,164 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class ExpressionContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_expression
 
-        def copyFrom(self, ctx: ParserRuleContext):
+     
+        def copyFrom(self, ctx:ParserRuleContext):
             super().copyFrom(ctx)
+
 
     class ExpressionParanthesisContext(ExpressionContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ExpressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def LEFTPAREN(self):
             return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
-
         def expression(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,0)
 
         def RIGHTPAREN(self):
             return self.getToken(ShapeExpressionParser.RIGHTPAREN, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitExpressionParanthesis"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionParanthesis" ):
                 return visitor.visitExpressionParanthesis(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class ExpressionMultiplicationContext(ExpressionContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ExpressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def expression(self, i: int = None):
+        def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,i)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitExpressionMultiplication"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionMultiplication" ):
                 return visitor.visitExpressionMultiplication(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class ExpressionSubtractionContext(ExpressionContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ExpressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def expression(self, i: int = None):
+        def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,i)
 
         def MINUS(self):
             return self.getToken(ShapeExpressionParser.MINUS, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitExpressionSubtraction"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionSubtraction" ):
                 return visitor.visitExpressionSubtraction(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class ExpressionAdditionContext(ExpressionContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ExpressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def expression(self, i: int = None):
+        def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.ExpressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,i)
 
         def PLUS(self):
             return self.getToken(ShapeExpressionParser.PLUS, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitExpressionAddition"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionAddition" ):
                 return visitor.visitExpressionAddition(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class ExpressionVariableContext(ExpressionContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ExpressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def Identifier(self):
             return self.getToken(ShapeExpressionParser.Identifier, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitExpressionVariable"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionVariable" ):
                 return visitor.visitExpressionVariable(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class ExpressionConstantContext(ExpressionContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ExpressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def literal(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.LiteralContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.LiteralContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitExpressionConstant"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionConstant" ):
                 return visitor.visitExpressionConstant(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class ExpressionExponentialContext(ExpressionContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.ExpressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def EULER(self):
             return self.getToken(ShapeExpressionParser.EULER, 0)
-
         def EXP(self):
             return self.getToken(ShapeExpressionParser.EXP, 0)
-
         def expression(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitExpressionExponential"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionExponential" ):
                 return visitor.visitExpressionExponential(self)
             else:
                 return visitor.visitChildren(self)
 
-    def expression(self, _p: int = 0):
+
+
+    def expression(self, _p:int=0):
         _parentctx = self._ctx
         _parentState = self.state
         localctx = ShapeExpressionParser.ExpressionContext(self, self._ctx, _parentState)
@@ -894,8 +931,7 @@ class ShapeExpressionParser(Parser):
                 self.state = 93
                 self.match(ShapeExpressionParser.Identifier)
                 pass
-            elif token in [ShapeExpressionParser.MINUS, ShapeExpressionParser.IntegerLiteral,
-                           ShapeExpressionParser.RealLiteral]:
+            elif token in [ShapeExpressionParser.MINUS, ShapeExpressionParser.IntegerLiteral, ShapeExpressionParser.RealLiteral]:
                 localctx = ShapeExpressionParser.ExpressionConstantContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
@@ -930,20 +966,17 @@ class ShapeExpressionParser(Parser):
             self._ctx.stop = self._input.LT(-1)
             self.state = 115
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input, 5, self._ctx)
-            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
-                if _alt == 1:
+            _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 113
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input, 4, self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
                     if la_ == 1:
-                        localctx = ShapeExpressionParser.ExpressionMultiplicationContext(self,
-                                                                                         ShapeExpressionParser.ExpressionContext(
-                                                                                             self, _parentctx,
-                                                                                             _parentState))
+                        localctx = ShapeExpressionParser.ExpressionMultiplicationContext(self, ShapeExpressionParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 104
                         if not self.precpred(self._ctx, 3):
@@ -956,9 +989,7 @@ class ShapeExpressionParser(Parser):
                         pass
 
                     elif la_ == 2:
-                        localctx = ShapeExpressionParser.ExpressionAdditionContext(self,
-                                                                                   ShapeExpressionParser.ExpressionContext(
-                                                                                       self, _parentctx, _parentState))
+                        localctx = ShapeExpressionParser.ExpressionAdditionContext(self, ShapeExpressionParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 107
                         if not self.precpred(self._ctx, 2):
@@ -971,10 +1002,7 @@ class ShapeExpressionParser(Parser):
                         pass
 
                     elif la_ == 3:
-                        localctx = ShapeExpressionParser.ExpressionSubtractionContext(self,
-                                                                                      ShapeExpressionParser.ExpressionContext(
-                                                                                          self, _parentctx,
-                                                                                          _parentState))
+                        localctx = ShapeExpressionParser.ExpressionSubtractionContext(self, ShapeExpressionParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 110
                         if not self.precpred(self._ctx, 1):
@@ -986,9 +1014,10 @@ class ShapeExpressionParser(Parser):
                         self.expression(2)
                         pass
 
+             
                 self.state = 117
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input, 5, self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -998,118 +1027,124 @@ class ShapeExpressionParser(Parser):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class Regular_expressionContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_regular_expression
 
-        def copyFrom(self, ctx: ParserRuleContext):
+     
+        def copyFrom(self, ctx:ParserRuleContext):
             super().copyFrom(ctx)
+
 
     class AtomicExpContext(Regular_expressionContext):
 
-        def __init__(self, parser,
-                     ctx: ParserRuleContext):  # actually a ShapeExpressionParser.Regular_expressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.Regular_expressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def atomic(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.AtomicContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.AtomicContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomicExp"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomicExp" ):
                 return visitor.visitAtomicExp(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class KleeneExpContext(Regular_expressionContext):
 
-        def __init__(self, parser,
-                     ctx: ParserRuleContext):  # actually a ShapeExpressionParser.Regular_expressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.Regular_expressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def regular_expression(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.Regular_expressionContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.Regular_expressionContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitKleeneExp"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitKleeneExp" ):
                 return visitor.visitKleeneExp(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class UnionExpContext(Regular_expressionContext):
 
-        def __init__(self, parser,
-                     ctx: ParserRuleContext):  # actually a ShapeExpressionParser.Regular_expressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.Regular_expressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def regular_expression(self, i: int = None):
+        def regular_expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.Regular_expressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.Regular_expressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.Regular_expressionContext,i)
 
         def UNION(self):
             return self.getToken(ShapeExpressionParser.UNION, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitUnionExp"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitUnionExp" ):
                 return visitor.visitUnionExp(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class ParenExpContext(Regular_expressionContext):
 
-        def __init__(self, parser,
-                     ctx: ParserRuleContext):  # actually a ShapeExpressionParser.Regular_expressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.Regular_expressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def LEFTPAREN(self):
             return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
-
         def regular_expression(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.Regular_expressionContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.Regular_expressionContext,0)
 
         def RIGHTPAREN(self):
             return self.getToken(ShapeExpressionParser.RIGHTPAREN, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitParenExp"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParenExp" ):
                 return visitor.visitParenExp(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class ConcatExpContext(Regular_expressionContext):
 
-        def __init__(self, parser,
-                     ctx: ParserRuleContext):  # actually a ShapeExpressionParser.Regular_expressionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.Regular_expressionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def regular_expression(self, i: int = None):
+        def regular_expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.Regular_expressionContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.Regular_expressionContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.Regular_expressionContext,i)
 
         def CONCAT(self):
             return self.getToken(ShapeExpressionParser.CONCAT, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitConcatExp"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConcatExp" ):
                 return visitor.visitConcatExp(self)
             else:
                 return visitor.visitChildren(self)
 
-    def regular_expression(self, _p: int = 0):
+
+
+    def regular_expression(self, _p:int=0):
         _parentctx = self._ctx
         _parentState = self.state
         localctx = ShapeExpressionParser.Regular_expressionContext(self, self._ctx, _parentState)
@@ -1121,8 +1156,7 @@ class ShapeExpressionParser(Parser):
             self.state = 124
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ShapeExpressionParser.CONSTANT, ShapeExpressionParser.LINE, ShapeExpressionParser.EXPONENTIAL,
-                         ShapeExpressionParser.SINE, ShapeExpressionParser.SINC]:
+            if token in [ShapeExpressionParser.CONSTANT, ShapeExpressionParser.LINE, ShapeExpressionParser.EXPONENTIAL, ShapeExpressionParser.SINE, ShapeExpressionParser.SINC]:
                 localctx = ShapeExpressionParser.AtomicExpContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
@@ -1147,19 +1181,17 @@ class ShapeExpressionParser(Parser):
             self._ctx.stop = self._input.LT(-1)
             self.state = 136
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input, 8, self._ctx)
-            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
-                if _alt == 1:
+            _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 134
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input, 7, self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
                     if la_ == 1:
-                        localctx = ShapeExpressionParser.ConcatExpContext(self,
-                                                                          ShapeExpressionParser.Regular_expressionContext(
-                                                                              self, _parentctx, _parentState))
+                        localctx = ShapeExpressionParser.ConcatExpContext(self, ShapeExpressionParser.Regular_expressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_regular_expression)
                         self.state = 126
                         if not self.precpred(self._ctx, 2):
@@ -1172,9 +1204,7 @@ class ShapeExpressionParser(Parser):
                         pass
 
                     elif la_ == 2:
-                        localctx = ShapeExpressionParser.UnionExpContext(self,
-                                                                         ShapeExpressionParser.Regular_expressionContext(
-                                                                             self, _parentctx, _parentState))
+                        localctx = ShapeExpressionParser.UnionExpContext(self, ShapeExpressionParser.Regular_expressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_regular_expression)
                         self.state = 129
                         if not self.precpred(self._ctx, 1):
@@ -1187,9 +1217,7 @@ class ShapeExpressionParser(Parser):
                         pass
 
                     elif la_ == 3:
-                        localctx = ShapeExpressionParser.KleeneExpContext(self,
-                                                                          ShapeExpressionParser.Regular_expressionContext(
-                                                                              self, _parentctx, _parentState))
+                        localctx = ShapeExpressionParser.KleeneExpContext(self, ShapeExpressionParser.Regular_expressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_regular_expression)
                         self.state = 132
                         if not self.precpred(self._ctx, 3):
@@ -1199,9 +1227,10 @@ class ShapeExpressionParser(Parser):
                         self.match(ShapeExpressionParser.T__2)
                         pass
 
+             
                 self.state = 138
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input, 8, self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1211,93 +1240,109 @@ class ShapeExpressionParser(Parser):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class AtomicContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_atomic
 
-        def copyFrom(self, ctx: ParserRuleContext):
+     
+        def copyFrom(self, ctx:ParserRuleContext):
             super().copyFrom(ctx)
+
+
 
     class AtomicSincExpContext(AtomicContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.AtomicContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.AtomicContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def atomic_sinc(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.Atomic_sincContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.Atomic_sincContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomicSincExp"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomicSincExp" ):
                 return visitor.visitAtomicSincExp(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class AtomicSineExpContext(AtomicContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.AtomicContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.AtomicContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def atomic_sine(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.Atomic_sineContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.Atomic_sineContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomicSineExp"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomicSineExp" ):
                 return visitor.visitAtomicSineExp(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class AtomicLineExpContext(AtomicContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.AtomicContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.AtomicContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def atomic_line(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.Atomic_lineContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.Atomic_lineContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomicLineExp"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomicLineExp" ):
                 return visitor.visitAtomicLineExp(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class AtomicExponentialExpContext(AtomicContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.AtomicContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.AtomicContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def atomic_exponential(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.Atomic_exponentialContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.Atomic_exponentialContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomicExponentialExp"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomicExponentialExp" ):
                 return visitor.visitAtomicExponentialExp(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class AtomicConstExpContext(AtomicContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a ShapeExpressionParser.AtomicContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.AtomicContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def atomic_constant(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.Atomic_constantContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.Atomic_constantContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomicConstExp"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomicConstExp" ):
                 return visitor.visitAtomicConstExp(self)
             else:
                 return visitor.visitChildren(self)
+
+
 
     def atomic(self):
 
@@ -1348,10 +1393,11 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class Atomic_constantContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1361,32 +1407,34 @@ class ShapeExpressionParser(Parser):
         def LEFTPAREN(self):
             return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
 
-        def Identifier(self, i: int = None):
+        def Identifier(self, i:int=None):
             if i is None:
                 return self.getTokens(ShapeExpressionParser.Identifier)
             else:
                 return self.getToken(ShapeExpressionParser.Identifier, i)
 
-        def RIGHTPAREN(self):
-            return self.getToken(ShapeExpressionParser.RIGHTPAREN, 0)
-
         def COMMA(self):
             return self.getToken(ShapeExpressionParser.COMMA, 0)
+
+        def RIGHTPAREN(self):
+            return self.getToken(ShapeExpressionParser.RIGHTPAREN, 0)
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_atomic_constant
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomic_constant"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomic_constant" ):
                 return visitor.visitAtomic_constant(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def atomic_constant(self):
 
         localctx = ShapeExpressionParser.Atomic_constantContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_atomic_constant)
-        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 146
@@ -1395,16 +1443,11 @@ class ShapeExpressionParser(Parser):
             self.match(ShapeExpressionParser.LEFTPAREN)
             self.state = 148
             self.match(ShapeExpressionParser.Identifier)
+            self.state = 149
+            self.match(ShapeExpressionParser.COMMA)
+            self.state = 150
+            self.match(ShapeExpressionParser.Identifier)
             self.state = 151
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la == ShapeExpressionParser.COMMA:
-                self.state = 149
-                self.match(ShapeExpressionParser.COMMA)
-                self.state = 150
-                self.match(ShapeExpressionParser.Identifier)
-
-            self.state = 153
             self.match(ShapeExpressionParser.RIGHTPAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1414,10 +1457,11 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class Atomic_lineContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1427,13 +1471,13 @@ class ShapeExpressionParser(Parser):
         def LEFTPAREN(self):
             return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
 
-        def Identifier(self, i: int = None):
+        def Identifier(self, i:int=None):
             if i is None:
                 return self.getTokens(ShapeExpressionParser.Identifier)
             else:
                 return self.getToken(ShapeExpressionParser.Identifier, i)
 
-        def COMMA(self, i: int = None):
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(ShapeExpressionParser.COMMA)
             else:
@@ -1445,39 +1489,36 @@ class ShapeExpressionParser(Parser):
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_atomic_line
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomic_line"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomic_line" ):
                 return visitor.visitAtomic_line(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def atomic_line(self):
 
         localctx = ShapeExpressionParser.Atomic_lineContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_atomic_line)
-        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 155
+            self.state = 153
             self.match(ShapeExpressionParser.LINE)
-            self.state = 156
+            self.state = 154
             self.match(ShapeExpressionParser.LEFTPAREN)
+            self.state = 155
+            self.match(ShapeExpressionParser.Identifier)
+            self.state = 156
+            self.match(ShapeExpressionParser.COMMA)
             self.state = 157
             self.match(ShapeExpressionParser.Identifier)
             self.state = 158
             self.match(ShapeExpressionParser.COMMA)
             self.state = 159
             self.match(ShapeExpressionParser.Identifier)
-            self.state = 162
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la == ShapeExpressionParser.COMMA:
-                self.state = 160
-                self.match(ShapeExpressionParser.COMMA)
-                self.state = 161
-                self.match(ShapeExpressionParser.Identifier)
-
-            self.state = 164
+            self.state = 160
             self.match(ShapeExpressionParser.RIGHTPAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1487,10 +1528,11 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class Atomic_exponentialContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1500,13 +1542,13 @@ class ShapeExpressionParser(Parser):
         def LEFTPAREN(self):
             return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
 
-        def Identifier(self, i: int = None):
+        def Identifier(self, i:int=None):
             if i is None:
                 return self.getTokens(ShapeExpressionParser.Identifier)
             else:
                 return self.getToken(ShapeExpressionParser.Identifier, i)
 
-        def COMMA(self, i: int = None):
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(ShapeExpressionParser.COMMA)
             else:
@@ -1518,23 +1560,33 @@ class ShapeExpressionParser(Parser):
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_atomic_exponential
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomic_exponential"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomic_exponential" ):
                 return visitor.visitAtomic_exponential(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def atomic_exponential(self):
 
         localctx = ShapeExpressionParser.Atomic_exponentialContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_atomic_exponential)
-        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 166
+            self.state = 162
             self.match(ShapeExpressionParser.EXPONENTIAL)
-            self.state = 167
+            self.state = 163
             self.match(ShapeExpressionParser.LEFTPAREN)
+            self.state = 164
+            self.match(ShapeExpressionParser.Identifier)
+            self.state = 165
+            self.match(ShapeExpressionParser.COMMA)
+            self.state = 166
+            self.match(ShapeExpressionParser.Identifier)
+            self.state = 167
+            self.match(ShapeExpressionParser.COMMA)
             self.state = 168
             self.match(ShapeExpressionParser.Identifier)
             self.state = 169
@@ -1542,19 +1594,6 @@ class ShapeExpressionParser(Parser):
             self.state = 170
             self.match(ShapeExpressionParser.Identifier)
             self.state = 171
-            self.match(ShapeExpressionParser.COMMA)
-            self.state = 172
-            self.match(ShapeExpressionParser.Identifier)
-            self.state = 175
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la == ShapeExpressionParser.COMMA:
-                self.state = 173
-                self.match(ShapeExpressionParser.COMMA)
-                self.state = 174
-                self.match(ShapeExpressionParser.Identifier)
-
-            self.state = 177
             self.match(ShapeExpressionParser.RIGHTPAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1564,10 +1603,11 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class Atomic_sineContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1577,13 +1617,13 @@ class ShapeExpressionParser(Parser):
         def LEFTPAREN(self):
             return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
 
-        def Identifier(self, i: int = None):
+        def Identifier(self, i:int=None):
             if i is None:
                 return self.getTokens(ShapeExpressionParser.Identifier)
             else:
                 return self.getToken(ShapeExpressionParser.Identifier, i)
 
-        def COMMA(self, i: int = None):
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(ShapeExpressionParser.COMMA)
             else:
@@ -1595,23 +1635,37 @@ class ShapeExpressionParser(Parser):
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_atomic_sine
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomic_sine"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomic_sine" ):
                 return visitor.visitAtomic_sine(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def atomic_sine(self):
 
         localctx = ShapeExpressionParser.Atomic_sineContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_atomic_sine)
-        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 179
+            self.state = 173
             self.match(ShapeExpressionParser.SINE)
-            self.state = 180
+            self.state = 174
             self.match(ShapeExpressionParser.LEFTPAREN)
+            self.state = 175
+            self.match(ShapeExpressionParser.Identifier)
+            self.state = 176
+            self.match(ShapeExpressionParser.COMMA)
+            self.state = 177
+            self.match(ShapeExpressionParser.Identifier)
+            self.state = 178
+            self.match(ShapeExpressionParser.COMMA)
+            self.state = 179
+            self.match(ShapeExpressionParser.Identifier)
+            self.state = 180
+            self.match(ShapeExpressionParser.COMMA)
             self.state = 181
             self.match(ShapeExpressionParser.Identifier)
             self.state = 182
@@ -1619,23 +1673,6 @@ class ShapeExpressionParser(Parser):
             self.state = 183
             self.match(ShapeExpressionParser.Identifier)
             self.state = 184
-            self.match(ShapeExpressionParser.COMMA)
-            self.state = 185
-            self.match(ShapeExpressionParser.Identifier)
-            self.state = 186
-            self.match(ShapeExpressionParser.COMMA)
-            self.state = 187
-            self.match(ShapeExpressionParser.Identifier)
-            self.state = 190
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la == ShapeExpressionParser.COMMA:
-                self.state = 188
-                self.match(ShapeExpressionParser.COMMA)
-                self.state = 189
-                self.match(ShapeExpressionParser.Identifier)
-
-            self.state = 192
             self.match(ShapeExpressionParser.RIGHTPAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1645,10 +1682,11 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class Atomic_sincContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1658,13 +1696,13 @@ class ShapeExpressionParser(Parser):
         def LEFTPAREN(self):
             return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
 
-        def Identifier(self, i: int = None):
+        def Identifier(self, i:int=None):
             if i is None:
                 return self.getTokens(ShapeExpressionParser.Identifier)
             else:
                 return self.getToken(ShapeExpressionParser.Identifier, i)
 
-        def COMMA(self, i: int = None):
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(ShapeExpressionParser.COMMA)
             else:
@@ -1676,47 +1714,44 @@ class ShapeExpressionParser(Parser):
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_atomic_sinc
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtomic_sinc"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtomic_sinc" ):
                 return visitor.visitAtomic_sinc(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def atomic_sinc(self):
 
         localctx = ShapeExpressionParser.Atomic_sincContext(self, self._ctx, self.state)
         self.enterRule(localctx, 26, self.RULE_atomic_sinc)
-        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 194
+            self.state = 186
             self.match(ShapeExpressionParser.SINC)
-            self.state = 195
+            self.state = 187
             self.match(ShapeExpressionParser.LEFTPAREN)
+            self.state = 188
+            self.match(ShapeExpressionParser.Identifier)
+            self.state = 189
+            self.match(ShapeExpressionParser.COMMA)
+            self.state = 190
+            self.match(ShapeExpressionParser.Identifier)
+            self.state = 191
+            self.match(ShapeExpressionParser.COMMA)
+            self.state = 192
+            self.match(ShapeExpressionParser.Identifier)
+            self.state = 193
+            self.match(ShapeExpressionParser.COMMA)
+            self.state = 194
+            self.match(ShapeExpressionParser.Identifier)
+            self.state = 195
+            self.match(ShapeExpressionParser.COMMA)
             self.state = 196
             self.match(ShapeExpressionParser.Identifier)
             self.state = 197
-            self.match(ShapeExpressionParser.COMMA)
-            self.state = 198
-            self.match(ShapeExpressionParser.Identifier)
-            self.state = 199
-            self.match(ShapeExpressionParser.COMMA)
-            self.state = 200
-            self.match(ShapeExpressionParser.Identifier)
-            self.state = 201
-            self.match(ShapeExpressionParser.COMMA)
-            self.state = 202
-            self.match(ShapeExpressionParser.Identifier)
-            self.state = 205
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la == ShapeExpressionParser.COMMA:
-                self.state = 203
-                self.match(ShapeExpressionParser.COMMA)
-                self.state = 204
-                self.match(ShapeExpressionParser.Identifier)
-
-            self.state = 207
             self.match(ShapeExpressionParser.RIGHTPAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1726,10 +1761,11 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class IntervalContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1739,11 +1775,12 @@ class ShapeExpressionParser(Parser):
         def LEFTPAREN(self):
             return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
 
-        def literal(self, i: int = None):
+        def literal(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.LiteralContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.LiteralContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.LiteralContext,i)
+
 
         def COMMA(self):
             return self.getToken(ShapeExpressionParser.COMMA, 0)
@@ -1754,11 +1791,14 @@ class ShapeExpressionParser(Parser):
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_interval
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitInterval"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInterval" ):
                 return visitor.visitInterval(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def interval(self):
 
@@ -1766,17 +1806,17 @@ class ShapeExpressionParser(Parser):
         self.enterRule(localctx, 28, self.RULE_interval)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 209
+            self.state = 199
             self.match(ShapeExpressionParser.IN)
-            self.state = 210
+            self.state = 200
             self.match(ShapeExpressionParser.LEFTPAREN)
-            self.state = 211
+            self.state = 201
             self.literal()
-            self.state = 212
+            self.state = 202
             self.match(ShapeExpressionParser.COMMA)
-            self.state = 213
+            self.state = 203
             self.literal()
-            self.state = 214
+            self.state = 204
             self.match(ShapeExpressionParser.RIGHTPAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1786,10 +1826,11 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class Discrete_intervalContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1799,11 +1840,12 @@ class ShapeExpressionParser(Parser):
         def LEFTPAREN(self):
             return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
 
-        def literal(self, i: int = None):
+        def literal(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(ShapeExpressionParser.LiteralContext)
             else:
-                return self.getTypedRuleContext(ShapeExpressionParser.LiteralContext, i)
+                return self.getTypedRuleContext(ShapeExpressionParser.LiteralContext,i)
+
 
         def COMMA(self):
             return self.getToken(ShapeExpressionParser.COMMA, 0)
@@ -1814,11 +1856,14 @@ class ShapeExpressionParser(Parser):
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_discrete_interval
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitDiscrete_interval"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDiscrete_interval" ):
                 return visitor.visitDiscrete_interval(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def discrete_interval(self):
 
@@ -1826,17 +1871,17 @@ class ShapeExpressionParser(Parser):
         self.enterRule(localctx, 30, self.RULE_discrete_interval)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 216
+            self.state = 206
             self.match(ShapeExpressionParser.IN)
-            self.state = 217
+            self.state = 207
             self.match(ShapeExpressionParser.LEFTPAREN)
-            self.state = 218
+            self.state = 208
             self.literal()
-            self.state = 219
+            self.state = 209
             self.match(ShapeExpressionParser.COMMA)
-            self.state = 220
+            self.state = 210
             self.literal()
-            self.state = 221
+            self.state = 211
             self.match(ShapeExpressionParser.RIGHTPAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1846,10 +1891,11 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
+
     class LiteralContext(ParserRuleContext):
         __slots__ = 'parser'
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1863,40 +1909,44 @@ class ShapeExpressionParser(Parser):
             return self.getToken(ShapeExpressionParser.MINUS, 0)
 
         def literal(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.LiteralContext, 0)
+            return self.getTypedRuleContext(ShapeExpressionParser.LiteralContext,0)
+
 
         def getRuleIndex(self):
             return ShapeExpressionParser.RULE_literal
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLiteral"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLiteral" ):
                 return visitor.visitLiteral(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def literal(self):
 
         localctx = ShapeExpressionParser.LiteralContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_literal)
         try:
-            self.state = 227
+            self.state = 217
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ShapeExpressionParser.IntegerLiteral]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 223
+                self.state = 213
                 self.match(ShapeExpressionParser.IntegerLiteral)
                 pass
             elif token in [ShapeExpressionParser.RealLiteral]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 224
+                self.state = 214
                 self.match(ShapeExpressionParser.RealLiteral)
                 pass
             elif token in [ShapeExpressionParser.MINUS]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 225
+                self.state = 215
                 self.match(ShapeExpressionParser.MINUS)
-                self.state = 226
+                self.state = 216
                 self.literal()
                 pass
             else:
@@ -1910,7 +1960,9 @@ class ShapeExpressionParser(Parser):
             self.exitRule()
         return localctx
 
-    def sempred(self, localctx: RuleContext, ruleIndex: int, predIndex: int):
+
+
+    def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
         if self._predicates == None:
             self._predicates = dict()
         self._predicates[6] = self.expression_sempred
@@ -1921,22 +1973,32 @@ class ShapeExpressionParser(Parser):
         else:
             return pred(localctx, predIndex)
 
-    def expression_sempred(self, localctx: ExpressionContext, predIndex: int):
-        if predIndex == 0:
-            return self.precpred(self._ctx, 3)
+    def expression_sempred(self, localctx:ExpressionContext, predIndex:int):
+            if predIndex == 0:
+                return self.precpred(self._ctx, 3)
+         
 
-        if predIndex == 1:
-            return self.precpred(self._ctx, 2)
+            if predIndex == 1:
+                return self.precpred(self._ctx, 2)
+         
 
-        if predIndex == 2:
-            return self.precpred(self._ctx, 1)
+            if predIndex == 2:
+                return self.precpred(self._ctx, 1)
+         
 
-    def regular_expression_sempred(self, localctx: Regular_expressionContext, predIndex: int):
-        if predIndex == 3:
-            return self.precpred(self._ctx, 2)
+    def regular_expression_sempred(self, localctx:Regular_expressionContext, predIndex:int):
+            if predIndex == 3:
+                return self.precpred(self._ctx, 2)
+         
 
-        if predIndex == 4:
-            return self.precpred(self._ctx, 1)
+            if predIndex == 4:
+                return self.precpred(self._ctx, 1)
+         
 
-        if predIndex == 5:
-            return self.precpred(self._ctx, 3)
+            if predIndex == 5:
+                return self.precpred(self._ctx, 3)
+         
+
+
+
+

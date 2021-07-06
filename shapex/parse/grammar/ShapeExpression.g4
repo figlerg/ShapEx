@@ -70,23 +70,23 @@ atomic:
 
 
 atomic_constant:
-    CONSTANT LEFTPAREN Identifier (COMMA Identifier)? RIGHTPAREN
+    CONSTANT LEFTPAREN Identifier COMMA Identifier RIGHTPAREN
     ;
 
 atomic_line:
-    LINE LEFTPAREN Identifier COMMA Identifier (COMMA Identifier)? RIGHTPAREN
+    LINE LEFTPAREN Identifier COMMA Identifier COMMA Identifier RIGHTPAREN
     ;
 
 atomic_exponential:
-    EXPONENTIAL LEFTPAREN Identifier COMMA Identifier COMMA Identifier (COMMA Identifier)? RIGHTPAREN
+    EXPONENTIAL LEFTPAREN Identifier COMMA Identifier COMMA Identifier COMMA Identifier RIGHTPAREN
     ;
 
 atomic_sine:
-    SINE LEFTPAREN Identifier COMMA Identifier COMMA Identifier COMMA Identifier (COMMA Identifier)? RIGHTPAREN
+    SINE LEFTPAREN Identifier COMMA Identifier COMMA Identifier COMMA Identifier COMMA Identifier RIGHTPAREN
     ;
 
 atomic_sinc:
-    SINC LEFTPAREN Identifier COMMA Identifier COMMA Identifier COMMA Identifier (COMMA Identifier)? RIGHTPAREN
+    SINC LEFTPAREN Identifier COMMA Identifier COMMA Identifier COMMA Identifier COMMA Identifier RIGHTPAREN
     ;
 
 
