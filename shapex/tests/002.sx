@@ -1,15 +1,14 @@
 # description
 
 # regular expression
-line(a,b,l)
+const(a,l)
 
 :
 
 # parameter declarations with ranges
 param a in (0,1);
-param b in (0,1);
-duration l in (1,3);
+duration l in (1,2);
 
 
 # relational constraints
-a-b <0;
+l*a in (1.0,1.5);

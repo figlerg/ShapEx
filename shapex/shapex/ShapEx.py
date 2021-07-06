@@ -28,10 +28,11 @@ class ShapEx(object):
             warnings.warn("Search budget has been specified as 0 while using BFS word sampler. "
                           "This It has been set to the default value (10).")
 
-        # for boltzmann, target word length 0 actually makes sense when talking about kleene star specs
-        if word_sampler==WordSamplerMode.BOLTZMANN and target_word_length < 0:
+        # TODO for boltzmann, target word length 0 actually could make sense when talking about kleene star specs.
+        #  Maybe we can allow this somehow?
+        if word_sampler==WordSamplerMode.BOLTZMANN and target_word_length <= 0:
             target_word_length = 10
-            warnings.warn("Negative word lengths are not permitted and the mean word length will be set to its default "
+            warnings.warn("Only positive target word lengths are permitted and the mean word length will be set to its default "
                           "value (10).")
 
 
@@ -86,7 +87,7 @@ class ShapEx(object):
     def samples(self, n):
         out = []
         epsilon_counter = 0
-        for i in tqdm.tqdm(range(n), desc='Samples generated', position=0, leave=True):
+        for i in tqdm.tqdm(range(n), desc='Samples generated', position=0, leave=True, disable=True):
             new_sample = self.sample()
             if new_sample:
                 out.append(new_sample)

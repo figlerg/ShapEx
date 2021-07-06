@@ -67,18 +67,21 @@ class Expression(object):
 
         if word_sampler == WordSamplerMode.BOLTZMANN:
 
-            assert target_mu, \
-                "'target_mu' parameter has not been set. Boltzmann sampling needs a target expected word length."
+
+            # assert target_mu, \
+            #     "'target_mu' parameter has not been set. Boltzmann sampling needs a target expected word length."
             visitor = GenFuncVisitor(self)
             (g_enum, g_denom), deterministic = visitor.calculate_gen_func()
 
             if deterministic:
                 warnings.warn("The shape expression seems to be deterministic. "
-                              "The Boltzmann sampler can only return one word and is equivalent with the BFS algorithm.")
-
+                              "The Boltzmann sampler can only return one word and is equivalent to the BFS algorithm.")
                 visitor = RE2SAVisitor(self)
                 aut = visitor.create_aut()
                 self.word_sampler_mem['aut'] = aut
+
+
+                budget = 1 # this might be 0 and is not checked at the beginning if boltzmann was chosen
                 self.word_sampler_mem['path_list'] = find_paths(aut, budget)
 
                 self.sample = self._search_word_sampler

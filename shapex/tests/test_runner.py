@@ -9,6 +9,7 @@ from shapex.misc.Error import *
 
 import unittest
 
+
 # these test the whole shapex class, meaning they are not actual unit tests with regard to the subroutines in anyHR,
 #  the sample generators etc.
 
@@ -22,15 +23,20 @@ settings_list = []
 # timestep=1.0, word_sampler=WordSamplerMode.SEARCH, search_budget=100, target_word_length=0,
 #               dir_sampling=DirectionSampling.RDHR, shrinking=Shrinking.NO_SHRINKING, init_point=InitPoint.PSO,
 #               noise_dist='uniform', noise=0)
-timesteps = (-1, 0, 1,)
+# timesteps = (-1, 0, 1,) # -1 handled
+timesteps = (0.5, 1,)
 word_samplers = (WordSamplerMode.SEARCH, WordSamplerMode.BOLTZMANN)
-search_budget = (0, 1, 10)
-word_lengths = (0, 1, 10)
+# search_budget = (0, 1, 10) # 0 is handled
+# word_lengths = (0, 1, 10) # 0 is handled
+search_budget = (5,)
+word_lengths = (5,)
 dir_sampling_modes = (DirectionSampling.RDHR, DirectionSampling.CDHR)
 shrinking_modes = (Shrinking.NO_SHRINKING, Shrinking.SHRINKING)
 init_point_modes = (InitPoint.PSO, InitPoint.SMT)
-noise_dists = ('uniform', 'gaussian')
-noise_vals = (0,)
+# noise_dists = ('uniform', 'normal') # normal is difficult to test
+noise_dists = ('uniform',)
+# noise_vals = (0,) if gaussian is tested, use this line
+noise_vals = (0,0.01)
 
 # these are in the right order, do the cartesian product to get all combinations of modes
 cart_prod = (
@@ -69,14 +75,90 @@ class TestShapEx(unittest.TestCase):
 
                     samples = shapex.samples(10)
 
+                    # assertions
+
+                    self.assertTrue(len(samples)==10)
+
+                    for sample in samples:
+                        self.assertTrue(-0.01 <= sample[1][0] <= 1.01, msg= "Line- 1st point impossible: mode {}, sample{}".format(mode, sample)) # first val
+                        if len(sample[0]) == 2:
+                            self.assertTrue(-0.01 <= sample[1][1] <= 2.01, msg= "Line- last point impossible: mode {}, sample{}".format(mode, sample)) # last val
+
+                        if len(sample[0]) == 3:
+                            self.assertTrue(-0.01 <= sample[1][2] <= 3.01, msg= "Line- last point impossible: mode {}, sample{}".format(mode, sample)) # last val
+
+
                 except IllegalParameterError:
                     # these are handled already and can be assumed to be user errors
                     pass
 
+
+
+
+    # 002
+    def test_const(self):
+        """
+        single const atomic
+        """
+        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\002.sx"
+        for mode in modes:
+            with self.subTest(i=mode):
+
+                # print(mode)
+                try:
+                    shapex = ShapEx(*mode)
+                    shapex.add_shape_expression(input_file)
+
+                    samples = shapex.samples(10)
+
+                    # plotter(samples)
+
+                    # assertions
+
+                    self.assertTrue(len(samples)==10)
+
+                    for sample in samples:
+                        self.assertTrue(-0.01 <= sample[1][0] <= 1.01, msg= "Const- 1st point impossible: mode {}, sample{}".format(mode, sample)) # first val
+
+                        # check whether the constant appears to have slope zero
+                        self.assertTrue(abs(sample[1][0]-sample[1][-1]) <= 0.02, msg= "Const- Not constant? mode {}, sample{}".format(mode, sample)) # first val
+
+
+                except IllegalParameterError:
+                    # these are handled already and can be assumed to be user errors
+                    pass
+
+
     def test_sine(self):
         """
-        single exponential atomic
+        single sine atomic
         """
+        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\003.sx"
+        for mode in modes:
+            with self.subTest(i=mode):
+
+                # print(mode)
+                try:
+                    shapex = ShapEx(*mode)
+                    shapex.add_shape_expression(input_file)
+
+                    samples = shapex.samples(10)
+
+                    # plotter(samples)
+
+                    # assertions
+
+                    self.assertTrue(len(samples)==10)
+
+                    for sample in samples:
+                        self.assertTrue(-0.01 <= sample[1][0] <= 1.01, msg= "Const- 1st point impossible: mode {}, sample{}".format(mode, sample)) # first val
+
+
+
+                except IllegalParameterError:
+                    # these are handled already and can be assumed to be user errors
+                    pass
+
 
     def test_sinc(self):
         """
