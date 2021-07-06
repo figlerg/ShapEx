@@ -1,3 +1,4 @@
+import numpy as np
 from anyHR.hit_and_run.hit_and_run import DirectionSampling, Shrinking, InitPoint
 
 from shapex.expression.Expression import WordSamplerMode
@@ -37,11 +38,12 @@ init_point_modes = (InitPoint.PSO, InitPoint.SMT)
 noise_dists = ('uniform',)
 # noise_vals = (0,) if gaussian is tested, use this line
 noise_vals = (0,0.01)
+seeds = (0,)
 
 # these are in the right order, do the cartesian product to get all combinations of modes
 cart_prod = (
 timesteps, word_samplers, search_budget, word_lengths, dir_sampling_modes, shrinking_modes, init_point_modes,
-noise_dists, noise_vals)
+noise_dists, noise_vals, seeds)
 
 # these are all the parameter inputs that are bing tested (this is a lot!)
 modes = list(itertools.product(*cart_prod))
@@ -79,6 +81,16 @@ class TestShapEx(unittest.TestCase):
 
                     self.assertTrue(len(samples)==10)
 
+                    # test reproducibility
+                    shapex2 = ShapEx(*mode)
+                    shapex2.add_shape_expression(input_file)
+                    samples2 = shapex2.samples(10)
+
+                    for i in range(len(samples)):
+                        for j in range(len(samples[i])):
+                            assert np.all(samples[i][j]==samples2[i][j])
+
+                    # test some specification characteristics
                     for sample in samples:
                         self.assertTrue(-0.01 <= sample[1][0] <= 1.01, msg= "Line- 1st point impossible: mode {}, sample{}".format(mode, sample)) # first val
                         if len(sample[0]) == 2:
@@ -116,6 +128,16 @@ class TestShapEx(unittest.TestCase):
                     # assertions
 
                     self.assertTrue(len(samples)==10)
+
+                    # test reproducibility
+                    shapex2 = ShapEx(*mode)
+                    shapex2.add_shape_expression(input_file)
+                    samples2 = shapex2.samples(10)
+
+                    for i in range(len(samples)):
+                        for j in range(len(samples[i])):
+                            assert np.all(samples[i][j]==samples2[i][j])
+
 
                     for sample in samples:
                         self.assertTrue(-0.01 <= sample[1][0] <= 1.01, msg= "Const- 1st point impossible: mode {}, sample{}".format(mode, sample)) # first val
