@@ -24,14 +24,14 @@ class ShapEx(object):
         # some warnings about ill fitted parameter combinations:
 
         # useless search budgets
-        if word_sampler == WordSamplerMode.SEARCH and search_budget == 0:
+        if word_sampler == WordSamplerMode.SEARCH and search_budget < 1:
             search_budget = 10
             warnings.warn("Search budget has been specified as 0 while using BFS word sampler. "
-                          "This It has been set to the default value (10).")
+                          "It has been set to the default value (10).")
 
         # TODO for boltzmann, target word length 0 actually could make sense when talking about kleene star specs.
         #  Maybe we can allow this somehow?
-        if word_sampler == WordSamplerMode.BOLTZMANN and target_word_length <= 0:
+        if word_sampler == WordSamplerMode.BOLTZMANN and target_word_length <1:
             target_word_length = 10
             warnings.warn(
                 "Only positive target word lengths are permitted and the mean word length will be set to its default "

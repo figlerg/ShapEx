@@ -12,7 +12,7 @@ import numpy as np
 from numpy.polynomial import Polynomial as P
 
 from shapex.alphabet.letter import Letter
-from shapex.misc.Error import InputError
+from shapex.misc.Error import InputError, IllegalParameterError
 
 from shapex.word_sampler.sapathfinder.find_paths import find_paths
 from shapex.word_sampler.visitors.BoltzmannSampler import GenFuncVisitor, BoltzmannVisitor
@@ -115,12 +115,16 @@ class Expression(object):
                                and root > 0
                                and root < rconv])
 
+
+            bad_params = False
             try:
                 fitting_boltzmann_param = np.real(in_0_rconv[0])
             except IndexError:
-                raise InputError('Boltzmann parameters invalid', 'It looks like the target mean word length is not '
-                                                                 'satisfiable. Check whether the regular expression'
-                                                                 'can match words of the given length')
+                bad_params = True
+
+            # this structure makes the output message clearer (because the index error is not the problem)
+            if bad_params:
+                raise IllegalParameterError('target_word_length',target_mu,'Cannot match words of given word length.')
 
             self.word_sampler_mem['z'] = fitting_boltzmann_param
             # self.word_sampler_mem['z'] = 0.4
@@ -133,6 +137,7 @@ class Expression(object):
             # self.
 
     def _search_word_sampler(self):
+
         choice = np.random.choice(len(self.word_sampler_mem['path_list']))
         path = self.word_sampler_mem['path_list'][choice]
         return path

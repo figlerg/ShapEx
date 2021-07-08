@@ -1,5 +1,10 @@
 import math
 
+from shapex.alphabet.const_letter import ConstLetter
+from shapex.alphabet.exp_letter import ExpLetter
+from shapex.alphabet.line_letter import LineLetter
+from shapex.alphabet.sinc_letter import SincLetter
+from shapex.alphabet.sine_letter import SineLetter
 from shapex.misc.Error import IllegalParameterError
 from shapex.misc.visualize import plotter
 from shapex.shapex.ShapEx import ShapEx
@@ -11,45 +16,36 @@ import functools
 
 np.random.seed(0)
 
-input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\005.sx"
 
 mode = (1,WordSamplerMode.SEARCH,5,5,DirectionSampling.RDHR,Shrinking.NO_SHRINKING,InitPoint.PSO,'uniform',0)
+
+input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\007.sx"
+# line(a,b,l).const(b,l).sine(a,b,c,d,l).sinc(a,b,c,d,l).exp(a,b,c,l)
+a,b,c,d,l,l2 = 'a', 'b', 'c', 'd', 'l', 'l2'
+phi_0 = (LineLetter(a,b,l2), ConstLetter(b,l), SineLetter(a,b,c,d,l),SincLetter(a,b,c,d,l), ExpLetter(a,b,c,l2)) # this is repeated because of kleene
 
 try:
     shapex = ShapEx(*mode)
     shapex.add_shape_expression(input_file)
 
-    samples = shapex.samples(1000)
 
-    for sample in samples:
-        param_vals = dict(sample[3]) # dict of sampled parameters
-        a = param_vals['a']
-        b = param_vals['b']
-        c = param_vals['c']
-        l = param_vals['l']
-
-        start = c
-        end = a*np.exp(b*math.ceil(l))-a+c
-
-        assert abs(sample[1][0]-start) <= 0.01, 'Unexpected start point for exp'
-        assert abs(sample[1][-1]-end) <= 0.001, 'Unexpected end point for exp. Diff = {}'.format(abs(sample[1][-1]-end))
-
-    #
-    # shapex2 = ShapEx(*mode)
-    # shapex2.add_shape_expression(input_file)
-    #
-    # samples2 = shapex2.samples(100)
-    #
-    # # print(np.hstack(samples == samples2).all())
-    # for i in range(len(samples)):
-    #     for j in range(len(samples[i])):
-    #         assert np.all(samples[i][j]==samples2[i][j])
+    for i in range(100):
+        word = shapex._expression.sample()
 
 
-    # print(samples)
+
+
+        for j in range(len(word)):
+            assert word[j] == phi_0[j%5]
+
+
 
 except IllegalParameterError:
     # these are handled already and can be assumed to be user errors
     pass
 
+samples = shapex.samples(10)
+
 plotter(samples)
+
+

@@ -73,5 +73,6 @@ class IllegalParameterError(Error):
         if not (message or value or parameter):
             self.message = 'Check parameter input of ShapEx constructor.'
         else:
-            self.message = message + "...parameter {} with value {} might be the problem.".format(parameter,value)
+            message = message + "...parameter {} with value {} might be the problem."
+            self.message = message.format(parameter,value)
 

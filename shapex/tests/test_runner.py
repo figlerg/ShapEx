@@ -37,8 +37,8 @@ timesteps = (0.5, 1,)
 word_samplers = (WordSamplerMode.SEARCH, WordSamplerMode.BOLTZMANN)
 # search_budget = (0, 1, 10) # 0 is handled
 # word_lengths = (0, 1, 10) # 0 is handled
-search_budget = (5,)
-word_lengths = (10,)
+search_budget = (-1,0,5,)
+word_lengths = (2,3,10,)
 dir_sampling_modes = (DirectionSampling.RDHR, DirectionSampling.CDHR)
 shrinking_modes = (Shrinking.NO_SHRINKING, Shrinking.SHRINKING)
 init_point_modes = (InitPoint.PSO, InitPoint.SMT)
@@ -303,15 +303,16 @@ class TestShapEx(unittest.TestCase):
                     # these are handled already and can be assumed to be user errors
                     pass
 
-    def test_nondet_word_sampler(self):
+
+    def test_kleene_word_sampler(self):
         '''
-        Tests whether the word samplers return the single possible word for a deterministic automaton
+        Tests whether the output sequences are matched by the expression (with a kleene *)
         '''
 
         input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\007.sx"
         # line(a,b,l).const(b,l).sine(a,b,c,d,l).sinc(a,b,c,d,l).exp(a,b,c,l)
-        a,b,c,d,l = 'a', 'b', 'c', 'd', 'l'
-        phi_0 = (LineLetter(a,b,l), ConstLetter(b,l), SineLetter(a,b,c,d,l),SincLetter(a,b,c,d,l), ExpLetter(a,b,c,l)) # this is repeated because of kleene
+        a,b,c,d,l,l2 = 'a', 'b', 'c', 'd', 'l','l2'
+        phi_0 = (LineLetter(a,b,l2), ConstLetter(b,l), SineLetter(a,b,c,d,l),SincLetter(a,b,c,d,l), ExpLetter(a,b,c,l2)) # this is repeated because of kleene
 
 
 
@@ -329,12 +330,45 @@ class TestShapEx(unittest.TestCase):
 
 
 
-                except IllegalParameterError:
+                except (IllegalParameterError, InputError):
                     # these are handled already and can be assumed to be user errors
                     pass
 
 
+    def test_union_word_sampler(self):
+        '''
+        Tests whether the word samplers return the single possible word for a deterministic automaton
+        '''
 
+        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\008.sx"
+        # line(a,b,l).const(b,l).sine(a,b,c,d,l).sinc(a,b,c,d,l).exp(a,b,c,l)
+        a,b,c,d,l,l2 = 'a', 'b', 'c', 'd', 'l','l2'
+
+        # the two words that can be sampled
+        phi_1 = (LineLetter(a,b,l2), ConstLetter(b,l), SineLetter(a,b,c,d,l))
+        phi_2 = (SincLetter(a,b,c,d,l), ExpLetter(a,b,c,l2))
+
+
+
+
+
+        for mode in modes:
+            with self.subTest(i=mode):
+                try:
+                    shapex = ShapEx(*mode)
+                    shapex.add_shape_expression(input_file)
+
+                    for i in range(100):
+                        word = shapex._expression.sample()
+
+                        self.assertTrue(word == phi_1 or word == phi_2)
+
+
+
+                except IllegalParameterError:
+                # except (InputError, IllegalParameterError):
+                    # these are handled already and can be assumed to be user errors
+                    pass
 
 
 

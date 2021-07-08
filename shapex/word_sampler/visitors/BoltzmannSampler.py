@@ -42,7 +42,7 @@ class GenFuncVisitor(ExpressionVisitor):
 
     def visitUnionExpression(self, node, args):
         (p1_enum, p1_denom), former_det_flag1 = self.visit(node.children[0], None)
-        (p2_enum, p2_denom), former_det_flag1 = self.visit(node.children[1], None)
+        (p2_enum, p2_denom), former_det_flag2 = self.visit(node.children[1], None)
 
         out = (p1_enum * p2_denom + p2_enum * p1_denom, p1_denom * p2_denom)
 
