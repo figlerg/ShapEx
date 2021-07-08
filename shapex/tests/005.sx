@@ -1,0 +1,20 @@
+# description
+
+# regular expression
+exp(a,b,c,l) # f(x)=a*exp(b*t) + c
+
+:
+
+# parameter declarations with ranges
+#param a in (1,1);
+#param b in (2,2);
+#param c in (3,4);
+#duration l in (4,4);
+param a in (0,1);
+param b in (0,1);
+param c in (0,10);
+duration l in (1,10);
+
+
+# relational constraints
+a-b <0;

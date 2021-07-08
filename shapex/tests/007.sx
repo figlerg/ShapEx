@@ -1,16 +1,16 @@
 # description
 
 # regular expression
-sine(a,b,c,d,l)
+(line(a,b,l).const(b,l).sine(a,b,c,d,l).sinc(a,b,c,d,l).exp(a,b,c,l))* join line(a,b,l)
 
 :
 
 # parameter declarations with ranges
 param a in (0,1);
 param b in (0,1);
-param c in (0,0);
-param d in (0,0);
-duration l in (1,100);
+param c in (0,1);
+param d in (0,1);
+duration l in (1,10);
 
 
 # relational constraints

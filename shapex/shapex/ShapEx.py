@@ -1,7 +1,10 @@
+import time
+
 import numpy as np
 import tqdm
 from anyHR.hit_and_run.hit_and_run import *
 import warnings
+
 
 from shapex.expression.Expression import WordSamplerMode
 from shapex.generation_tool.generate_traces import to_typestring, atomic_gen
@@ -16,7 +19,7 @@ class ShapEx(object):
     def __init__(self, timestep=1.0,
                  word_sampler=WordSamplerMode.SEARCH, search_budget=10, target_word_length=10,
                  dir_sampling=DirectionSampling.RDHR, shrinking=Shrinking.NO_SHRINKING, init_point=InitPoint.PSO,
-                 noise_dist='uniform', noise=0, seed=0):
+                 noise_dist='uniform', noise=0, seed=None):
 
         # some warnings about ill fitted parameter combinations:
 
@@ -38,8 +41,9 @@ class ShapEx(object):
         if timestep <= 0:
             raise IllegalParameterError("timestep", timestep, "Invalid time step specified.")
 
-        # set seed
+        # set seed. If seed = None, then numpy automatically uses system time and generates non-reproducible randomness
         np.random.seed(seed)
+
 
         self._expression = None  # regular expression object
         self._constraint = None  # from anyHR

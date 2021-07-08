@@ -41,8 +41,8 @@ class GenFuncVisitor(ExpressionVisitor):
         return out, deterministic_flag
 
     def visitUnionExpression(self, node, args):
-        p1_enum, p1_denom = self.visit(node.children[0], None)
-        p2_enum, p2_denom = self.visit(node.children[1], None)
+        (p1_enum, p1_denom), former_det_flag1 = self.visit(node.children[0], None)
+        (p2_enum, p2_denom), former_det_flag1 = self.visit(node.children[1], None)
 
         out = (p1_enum * p2_denom + p2_enum * p1_denom, p1_denom * p2_denom)
 
@@ -54,7 +54,7 @@ class GenFuncVisitor(ExpressionVisitor):
         return out, deterministic_flag
 
     def visitKleeneExpression(self, node, args):
-        p_enum, p_denom = self.visit(node.children[0], None)
+        (p_enum, p_denom), former_det_flag = self.visit(node.children[0], None)
 
         out = (p_denom, p_denom - p_enum)
 

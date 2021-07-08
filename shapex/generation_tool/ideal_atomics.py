@@ -163,14 +163,17 @@ def sinc_gen(fixed_function_parameters: list, timestep: float = 1.):
 
     a, b, c = fixed_function_parameters[3:6]
 
-    try:
-        if has_relative_offset:
-            relative_offset = fixed_function_parameters[-1]
-            d = relative_offset + fixed_function_parameters[2] - a * np.sin(c) / c
-        else:
-            relative_offset = 0
-            d = fixed_function_parameters[2] - a * np.sin(c) / c
-    except ZeroDivisionError:
+    # prevent zero division, this limit exists and is calculated in else
+
+    if has_relative_offset:
+        relative_offset = fixed_function_parameters[-1]
+    else:
+        relative_offset = 0
+
+    # need to prevent division wit zero- this limit existsand is a without offset
+    if c:
+        d = relative_offset + fixed_function_parameters[2] - a * np.sin(c) / c
+    else:
         d = a + relative_offset
 
     # x_values
@@ -199,7 +202,7 @@ def sinc_gen(fixed_function_parameters: list, timestep: float = 1.):
 
 
 def exp_gen(fixed_function_parameters: list, timestep: float = 1.):
-    # arbitrary exp fct: f(x)=a+b*exp(c*t)
+    # arbitrary exp fct: f(x)=a*exp(b*t) + c
     # fixed_function_parameters =[duration,x_0,y_0,b,c]
 
     # EDIT: give optional relative offset parameter at the end of fixed function parameters, so [duration,x_0,y_0,b,c, rel_offset]
@@ -210,7 +213,7 @@ def exp_gen(fixed_function_parameters: list, timestep: float = 1.):
         raise InputError('illegal input', 'invalid parameter vector length')
 
     duration = fixed_function_parameters[0]
-    b, c = fixed_function_parameters[3:5]
+    a, b = fixed_function_parameters[3:5]
 
     # y_0-b*exp(c*x_0) = a
     if has_relative_offset:
@@ -220,14 +223,14 @@ def exp_gen(fixed_function_parameters: list, timestep: float = 1.):
         y_0 = fixed_function_parameters[2]
     x_0 = fixed_function_parameters[1]
 
-    intercept = b
+    intercept = a # a*exp(0) = a
     correction = -(intercept - y_0)
 
     # x = np.array(range(duration + 1))
     x = create_x_values(duration, timestep)
     transferred_x = x + x_0  # translation
 
-    exact_y = b * (np.exp(c * x)) + correction
+    exact_y = a * (np.exp(b * x)) + correction
     exact_function = [transferred_x, exact_y, .0]  # last entry for mse later
 
     # signal = add_noise(exact_function, noise_dist_spec, dist_mode,
