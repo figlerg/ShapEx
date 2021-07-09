@@ -17,7 +17,9 @@ import itertools
 from shapex.misc.Error import *
 
 import unittest
+import os
 
+spec_dir = os.getcwd()
 
 # these test the whole shapex class, meaning they are not actual unit tests with regard to the subroutines in anyHR,
 #  the sample generators etc.
@@ -74,7 +76,7 @@ class TestShapEx(unittest.TestCase):
         """
         single line atomic with constraint
         """
-        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\001.sx"
+        input_file = os.path.join(spec_dir,"001.sx")
         for mode in modes:
             with self.subTest(i=mode):
 
@@ -112,7 +114,7 @@ class TestShapEx(unittest.TestCase):
         """
         single const atomic
         """
-        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\002.sx"
+        input_file = os.path.join(spec_dir,"002.sx")
         for mode in modes:
             with self.subTest(i=mode):
 
@@ -148,7 +150,7 @@ class TestShapEx(unittest.TestCase):
         """
         single sine atomic
         """
-        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\003.sx"
+        input_file = os.path.join(spec_dir,"003.sx")
         for mode in modes:
             with self.subTest(i=mode):
 
@@ -185,7 +187,7 @@ class TestShapEx(unittest.TestCase):
         """
         single sinc atomic
         """
-        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\004.sx"
+        input_file = os.path.join(spec_dir,"004.sx")
         for mode in modes:
             with self.subTest(i=mode):
 
@@ -222,7 +224,7 @@ class TestShapEx(unittest.TestCase):
         """
         single exponential atomic
         """
-        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\005.sx"
+        input_file = os.path.join(spec_dir,"005.sx")
         for mode in modes:
             with self.subTest(i=mode):
 
@@ -279,7 +281,7 @@ class TestShapEx(unittest.TestCase):
         Tests whether the word samplers return the single possible word for a deterministic automaton
         '''
 
-        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\006.sx"
+        input_file = os.path.join(spec_dir,"006.sx")
         # line(a,b,l).const(b,l).sine(a,b,c,d,l).sinc(a,b,c,d,l).exp(a,b,c,l)
         a,b,c,d,l = 'a', 'b', 'c', 'd', 'l'
         only_word = (LineLetter(a,b,l), ConstLetter(b,l), SineLetter(a,b,c,d,l),SincLetter(a,b,c,d,l), ExpLetter(a,b,c,l))
@@ -309,7 +311,7 @@ class TestShapEx(unittest.TestCase):
         Tests whether the output sequences are matched by the expression (with a kleene *)
         '''
 
-        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\007.sx"
+        input_file = os.path.join(spec_dir,"007.sx")
         # line(a,b,l).const(b,l).sine(a,b,c,d,l).sinc(a,b,c,d,l).exp(a,b,c,l)
         a,b,c,d,l,l2 = 'a', 'b', 'c', 'd', 'l','l2'
         phi_0 = (LineLetter(a,b,l2), ConstLetter(b,l), SineLetter(a,b,c,d,l),SincLetter(a,b,c,d,l), ExpLetter(a,b,c,l2)) # this is repeated because of kleene
@@ -340,7 +342,7 @@ class TestShapEx(unittest.TestCase):
         Tests whether the word samplers return the single possible word for a deterministic automaton
         '''
 
-        input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\008.sx"
+        input_file = os.path.join(spec_dir,"008.sx")
         # line(a,b,l).const(b,l).sine(a,b,c,d,l).sinc(a,b,c,d,l).exp(a,b,c,l)
         a,b,c,d,l,l2 = 'a', 'b', 'c', 'd', 'l','l2'
 
