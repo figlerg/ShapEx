@@ -11,15 +11,18 @@ from shapex.shapex.ShapEx import ShapEx
 from anyHR.hit_and_run.hit_and_run import DirectionSampling, Shrinking, InitPoint
 from shapex.expression.Expression import WordSamplerMode
 
+import os
+
 import numpy as np
 import functools
 
-np.random.seed(0)
 
 
-mode = (0.5,WordSamplerMode.SEARCH,5,3,DirectionSampling.RDHR,Shrinking.NO_SHRINKING,InitPoint.SMT,'uniform',0, None)
+mode = (0.5,WordSamplerMode.SEARCH,-1,0,DirectionSampling.RDHR,Shrinking.NO_SHRINKING,InitPoint.SMT,'uniform',0, None)
 
-input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\007.sx"
+
+spec_dir = os.getcwd()
+input_file = os.path.join(spec_dir,"007.sx")
 # line(a,b,l).const(b,l).sine(a,b,c,d,l).sinc(a,b,c,d,l).exp(a,b,c,l)
 a,b,c,d,l,l2 = 'a', 'b', 'c', 'd', 'l', 'l2'
 phi_0 = (LineLetter(a,b,l2), ConstLetter(b,l), SineLetter(a,b,c,d,l),SincLetter(a,b,c,d,l), ExpLetter(a,b,c,l2)) # this is repeated because of kleene

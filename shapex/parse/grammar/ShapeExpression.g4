@@ -43,7 +43,7 @@ expression
 	Identifier                                                          #ExpressionVariable
 	| literal                                                           #ExpressionConstant
 	| LEFTPAREN expression RIGHTPAREN                                   #ExpressionParanthesis
-	| EULER EXP expression                                                #ExpressionExponential
+	| EULER EXP expression                                              #ExpressionExponential
     | expression '*' expression                                         #ExpressionMultiplication
 	| expression PLUS expression                                        #ExpressionAddition
 	| expression MINUS expression                                       #ExpressionSubtraction

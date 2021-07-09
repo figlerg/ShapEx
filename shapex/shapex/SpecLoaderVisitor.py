@@ -231,7 +231,7 @@ class SpecLoaderVisitor(ShapeExpressionVisitor):
                 substitute(node=constraint_tree, var_val_pairs=singletons_hashmap)
                 # constraint tree now has all singleton values as concrete values
 
-                var_checkup_set.update(constraint_tree.get_vars())
+                var_checkup_set.update(constraint_tree.get_vars(set()))
 
                 constraints.add_constraint(constraint_tree)
 
