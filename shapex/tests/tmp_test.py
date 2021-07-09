@@ -17,7 +17,7 @@ import functools
 np.random.seed(0)
 
 
-mode = (1,WordSamplerMode.SEARCH,5,5,DirectionSampling.RDHR,Shrinking.NO_SHRINKING,InitPoint.PSO,'uniform',0)
+mode = (0.5,WordSamplerMode.SEARCH,5,3,DirectionSampling.RDHR,Shrinking.NO_SHRINKING,InitPoint.SMT,'uniform',0, None)
 
 input_file = r"C:\Users\giglerf\Documents\dev\dev_code\ShapEx\shapex\tests\007.sx"
 # line(a,b,l).const(b,l).sine(a,b,c,d,l).sinc(a,b,c,d,l).exp(a,b,c,l)
