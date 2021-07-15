@@ -1,0 +1,25 @@
+line(c, b1, d1).line(a2, b2, d2).line(c, b3, d3)
+
+:
+
+# constant (zero) slope
+param c in (0,0);
+
+# Line A
+param b1 in (4,10);
+duration d1 in (6,10);
+
+# Line B
+param a2 in (-10,-1);
+param b2 in (-100, 100);
+duration d2 in (1,4);
+
+# Line C
+param b3 in (-1, 1);
+duration d3 in (2,4);
+
+# Continuity constraints
+#b2 >= b1 - 0.1;
+#b2 <= b1 + 0.1;
+b3 >= a2 * (d1 + d2) + b2 - 0.1;
+#b3 <= a2 * (d1 + d2) + b2 + 0.1;

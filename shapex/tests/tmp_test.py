@@ -22,32 +22,13 @@ mode = (0.5,WordSamplerMode.SEARCH,-1,0,DirectionSampling.RDHR,Shrinking.NO_SHRI
 
 
 spec_dir = os.getcwd()
-input_file = os.path.join(spec_dir,"007.sx")
+input_file = os.path.join(spec_dir,"bug_001.sx")
 # line(a,b,l).const(b,l).sine(a,b,c,d,l).sinc(a,b,c,d,l).exp(a,b,c,l)
-a,b,c,d,l,l2 = 'a', 'b', 'c', 'd', 'l', 'l2'
-phi_0 = (LineLetter(a,b,l2), ConstLetter(b,l), SineLetter(a,b,c,d,l),SincLetter(a,b,c,d,l), ExpLetter(a,b,c,l2)) # this is repeated because of kleene
 
-try:
-    shapex = ShapEx(*mode)
-    shapex.add_shape_expression(input_file)
+shapex = ShapEx(*mode)
+shapex.add_shape_expression(input_file)
 
-
-    for i in range(100):
-        word = shapex._expression.sample()
-
-
-
-
-        for j in range(len(word)):
-            assert word[j] == phi_0[j%5]
-
-
-
-except IllegalParameterError:
-    # these are handled already and can be assumed to be user errors
-    pass
-
-samples = shapex.samples(10)
+samples = shapex.samples(100)
 
 plotter(samples)
 

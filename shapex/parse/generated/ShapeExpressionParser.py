@@ -771,27 +771,6 @@ class ShapeExpressionParser ( Parser ):
             super().copyFrom(ctx)
 
 
-    class ExpressionParanthesisContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def LEFTPAREN(self):
-            return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
-        def expression(self):
-            return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,0)
-
-        def RIGHTPAREN(self):
-            return self.getToken(ShapeExpressionParser.RIGHTPAREN, 0)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExpressionParanthesis" ):
-                return visitor.visitExpressionParanthesis(self)
-            else:
-                return visitor.visitChildren(self)
-
-
     class ExpressionMultiplicationContext(ExpressionContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
@@ -872,6 +851,27 @@ class ShapeExpressionParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
+    class ExpressionParenthesisContext(ExpressionContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def LEFTPAREN(self):
+            return self.getToken(ShapeExpressionParser.LEFTPAREN, 0)
+        def expression(self):
+            return self.getTypedRuleContext(ShapeExpressionParser.ExpressionContext,0)
+
+        def RIGHTPAREN(self):
+            return self.getToken(ShapeExpressionParser.RIGHTPAREN, 0)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionParenthesis" ):
+                return visitor.visitExpressionParenthesis(self)
+            else:
+                return visitor.visitChildren(self)
+
+
     class ExpressionConstantContext(ExpressionContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a ShapeExpressionParser.ExpressionContext
@@ -939,7 +939,7 @@ class ShapeExpressionParser ( Parser ):
                 self.literal()
                 pass
             elif token in [ShapeExpressionParser.LEFTPAREN]:
-                localctx = ShapeExpressionParser.ExpressionParanthesisContext(self, localctx)
+                localctx = ShapeExpressionParser.ExpressionParenthesisContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 95
