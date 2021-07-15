@@ -69,11 +69,6 @@ class ShapeExpressionVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ShapeExpressionParser#ExpressionParanthesis.
-    def visitExpressionParanthesis(self, ctx:ShapeExpressionParser.ExpressionParanthesisContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by ShapeExpressionParser#ExpressionMultiplication.
     def visitExpressionMultiplication(self, ctx:ShapeExpressionParser.ExpressionMultiplicationContext):
         return self.visitChildren(ctx)
@@ -91,6 +86,11 @@ class ShapeExpressionVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ShapeExpressionParser#ExpressionVariable.
     def visitExpressionVariable(self, ctx:ShapeExpressionParser.ExpressionVariableContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ShapeExpressionParser#ExpressionParenthesis.
+    def visitExpressionParenthesis(self, ctx:ShapeExpressionParser.ExpressionParenthesisContext):
         return self.visitChildren(ctx)
 
 

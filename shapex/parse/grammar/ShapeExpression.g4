@@ -42,7 +42,7 @@ expression
 	:
 	Identifier                                                          #ExpressionVariable
 	| literal                                                           #ExpressionConstant
-	| LEFTPAREN expression RIGHTPAREN                                   #ExpressionParanthesis
+	| LEFTPAREN expression RIGHTPAREN                                   #ExpressionParenthesis
 	| EULER EXP expression                                              #ExpressionExponential
     | expression '*' expression                                         #ExpressionMultiplication
 	| expression PLUS expression                                        #ExpressionAddition

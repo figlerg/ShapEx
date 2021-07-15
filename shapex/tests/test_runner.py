@@ -39,15 +39,15 @@ timesteps = (0.5, 1,)
 word_samplers = (WordSamplerMode.SEARCH, WordSamplerMode.BOLTZMANN)
 # search_budget = (0, 1, 10) # 0 is handled
 # word_lengths = (0, 1, 10) # 0 is handled
-search_budget = (-1,0,5,)
-word_lengths = (2,3,10,)
+search_budget = (5,)
+word_lengths = (3,)
 dir_sampling_modes = (DirectionSampling.RDHR, DirectionSampling.CDHR)
 shrinking_modes = (Shrinking.NO_SHRINKING, Shrinking.SHRINKING)
 init_point_modes = (InitPoint.PSO, InitPoint.SMT)
 # noise_dists = ('uniform', 'normal') # normal is difficult to test
 noise_dists = ('uniform',)
 # noise_vals = (0,) if gaussian is tested, use this line
-noise_vals = (0,0.01)
+noise_vals = (0,)
 seeds = (None,)
 
 # these are in the right order, do the cartesian product to get all combinations of modes
@@ -364,6 +364,30 @@ class TestShapEx(unittest.TestCase):
                         word = shapex._expression.sample()
 
                         self.assertTrue(word == phi_1 or word == phi_2)
+
+
+
+                except IllegalParameterError:
+                # except (InputError, IllegalParameterError):
+                    # these are handled already and can be assumed to be user errors
+                    pass
+
+    def test_paren_parser(self):
+        '''
+        There was a bug with the parenthesis rule. This just has a constraint with parenthesis to test whether I fixed it
+        '''
+
+        input_file = os.path.join(spec_dir,"bug_001.sx")
+
+        for mode in modes:
+            with self.subTest(i=mode):
+                try:
+                    shapex = ShapEx(*mode)
+                    shapex.add_shape_expression(input_file)
+
+                    shapex.samples(100)
+
+                    # TODO maybe add some assertion, but I just wanted to check if it parses without exceptions
 
 
 
