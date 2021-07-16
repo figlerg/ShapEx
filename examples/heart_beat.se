@@ -1,0 +1,42 @@
+exp(a1, b1, c1, d1).exp(a2, b2, c2, d2).line(a3, b3, d3).line(a4, b4, d4).line(a5, b5, d5).exp(a6, b6, c6, d6).exp(a7, b7, c7, d7)
+
+:
+
+# Exp A
+param a1 in (0, 0);
+param b1 in (0.008, 0.027);
+param c1 in (30, 32);
+duration d1 in (0.046, 0.047);
+
+# Exp B
+param a2 in (0.03, 0.1);
+param b2 in (0.08, 0.23);
+param c2 in (-35, -32);
+duration d2 in (0.101, 0.102);
+
+# Line C
+param a3 in (22, 30);
+param b3 in (-0.12, 0.01);
+duration d3 in (0.03, 0.031);
+
+# Line D
+param a4 in (-50, -30);
+param b4 in (0.7,0.8);
+duration d4 in (0.027, 0.028);
+
+# Line E
+param a5 in (20, 30);
+param b5 in (-0.4,-0.3);
+duration d5 in (0.012, 0.013);
+
+# Exp F
+param a6 in (-0.05, 0.03);
+param b6 in (0.018, 0.043);
+param c6 in (8, 9);
+duration d6 in (0.15, 0.1525);
+
+# Exp G
+param a7 in (-0.02, 0.123);
+param b7 in (0.0395, 0.0415);
+param c7 in (-35, -34);
+duration d7 in (0.046, 0.047);
