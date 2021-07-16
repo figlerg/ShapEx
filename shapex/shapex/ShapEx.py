@@ -124,7 +124,7 @@ class ShapEx(object):
                                    for parameter in param_vars]
                 # these are global, need only look at first segment
 
-                trace.insert(3, settings_labels)
+                trace.insert(3, set())
             else:
                 start = (trace[-1][0], 0)  # again, relative offset is added in atomic_gen
                 new_segment = atomic_gen(param_values_selected, letter_type, dist_mode=self.noise_dist,
@@ -135,6 +135,13 @@ class ShapEx(object):
                 trace[2] = max(trace[2], new_segment[2])  # mse of concat is max of both
 
                 trace[-1] = new_segment[-1]
+
+        settings_labels = set()
+        for key in index.keys():
+            idx = index[key]
+            settings_labels.add((key, param_values[idx]))
+        trace.insert(3, settings_labels)
+
 
         return trace
 

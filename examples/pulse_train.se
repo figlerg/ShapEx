@@ -1,26 +1,54 @@
-line(c, b1, d1).line(a2, b2, d2).line(c, b3, d3)
+line(c, b1, d1).line(a2, b1, d2).line(c, b3, d3).(line(a4, b4, d4) join line(a5, b4, d5).line(a6, b6, d6)).
+((line(c, b1, d1).line(a2, b1, d2).line(c, b3, d3).(line(a4, b4, d4) join line(a5, b4, d5).line(a6, b6, d6)))*).
+line(c, b1, d1)
 
 :
 
 # constant (zero) slope
-param c in (0,0);
+param c in (0, 0);
 
 # Line A
-param b1 in (4,10);
-duration d1 in (6,10);
+param b1 in (4, 10);
+duration d1 in (6, 10);
 
 # Line B
-param a2 in (-10,-1);
-param b2 in (-100, 100);
-duration d2 in (1,4);
+param a2 in (-10, -1);
+duration d2 in (1, 4);
 
 # Line C
 param b3 in (-1, 1);
-duration d3 in (2,4);
+duration d3 in (2, 4);
+
+# Line D
+param a4 in (1, 2);
+param b4 in (-0.1, 0.1);
+duration d4 in (0.5, 2);
+
+# Line E
+param a5 in (5, 900);
+duration d5 in (0.01, 2);
+
+# Line F
+param a6 in (1, 5);
+param b6 in (-100, 100);
+duration d6 in (2, 10);
+
 
 # Continuity constraints
-b2 >= b1 - 0.1;
-b2 <= b1 + 0.1;
-b3 >= a2 * (d1 + d2) + b2 - 0.1;
-b3 <= a2 * (d1 + d2) + b2 + 0.1;
+b3 >= a2 * d2 + b1 - 0.1;
+b3 <= a2 * d2 + b1 + 0.1;
+
+b4 >= b3 - 0.1;
+b4 <= b3 + 0.1;
+
+b6 >= a5*d5 + b3 - 0.1;
+b6 <= a5*d5 + b3 + 0.1;
+
+b1 >= a4 * d4 + b4 - 0.1;
+b1 <= a4 * d4 + b4 + 0.1;
+
+b1 >= a6 * d6 + b6 - 0.1;
+b1 <= a6 * d6 + b6 + 0.1;
+
+
 

@@ -8,15 +8,18 @@ cwd = os.getcwd()
 path = os.path.join(cwd, 'pulse_train.se')
 
 # initialize object
-shapex_object = ShapEx(timestep=1,
-                       word_sampler=WordSamplerMode.BOLTZMANN, target_word_length=1, init_point=InitPoint.SMT,
-                       dir_sampling=DirectionSampling.RDHR, shrinking=Shrinking.NO_SHRINKING,
-                       noise_dist='uniform', noise=0.1)
+shapex_object = ShapEx(timestep=0.01,
+                       word_sampler=WordSamplerMode.BOLTZMANN, target_word_length=7, init_point=InitPoint.SMT,
+                       dir_sampling=DirectionSampling.CDHR, shrinking=Shrinking.SHRINKING,
+                       noise_dist='uniform', noise=0)
+
 
 # loads the spec
 shapex_object.add_shape_expression(path)
 
 # sample
-samples = shapex_object.samples(100)
+samples = shapex_object.samples(5)
+
+print(samples)
 
 plotter(samples)
