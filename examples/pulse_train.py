@@ -18,7 +18,7 @@ shapex_object = ShapEx(timestep=0.01,
 shapex_object.add_shape_expression(path)
 
 # sample
-samples = shapex_object.samples(5)
+samples = shapex_object.samples(100)
 
 print(samples)
 

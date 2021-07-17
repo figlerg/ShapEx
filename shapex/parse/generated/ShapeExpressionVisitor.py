@@ -1,4 +1,4 @@
-# Generated from C:/Users/giglerf/Documents/dev/dev_code/ShapEx/shapex/parse/grammar\ShapeExpression.g4 by ANTLR 4.9.1
+# Generated from ShapeExpression.g4 by ANTLR 4.5.1
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .ShapeExpressionParser import ShapeExpressionParser
@@ -64,6 +64,11 @@ class ShapeExpressionVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ShapeExpressionParser#LRA_Exp.
+    def visitLRA_Exp(self, ctx:ShapeExpressionParser.LRA_ExpContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ShapeExpressionParser#LRA_In.
     def visitLRA_In(self, ctx:ShapeExpressionParser.LRA_InContext):
         return self.visitChildren(ctx)
@@ -94,13 +99,13 @@ class ShapeExpressionVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ShapeExpressionParser#ExpressionConstant.
-    def visitExpressionConstant(self, ctx:ShapeExpressionParser.ExpressionConstantContext):
+    # Visit a parse tree produced by ShapeExpressionParser#ExpressionExponential.
+    def visitExpressionExponential(self, ctx:ShapeExpressionParser.ExpressionExponentialContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ShapeExpressionParser#ExpressionExponential.
-    def visitExpressionExponential(self, ctx:ShapeExpressionParser.ExpressionExponentialContext):
+    # Visit a parse tree produced by ShapeExpressionParser#ExpressionConstant.
+    def visitExpressionConstant(self, ctx:ShapeExpressionParser.ExpressionConstantContext):
         return self.visitChildren(ctx)
 
 

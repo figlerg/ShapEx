@@ -35,6 +35,7 @@ constraint:
     | expression GREATER expression                                     #LRA_Greater
     | expression EQ expression                                          #LRA_Eq
     | expression NEQ expression                                         #LRA_Neq
+    | EULER EXP expression                                              #LRA_Exp
     | expression IN LEFTPAREN expression COMMA expression RIGHTPAREN    #LRA_In
     ;
 
@@ -132,7 +133,7 @@ CONSTRAINT: 'constraint';
 
 // for constraints, numbers etc
 EULER
-    : 'EULER' ;
+    : 'e' ;
 
 EXP
     : '**' ;
