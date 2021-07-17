@@ -11,7 +11,7 @@ path = os.path.join(cwd, 'pulse_train.se')
 shapex_object = ShapEx(timestep=0.01,
                        word_sampler=WordSamplerMode.BOLTZMANN, target_word_length=7, init_point=InitPoint.SMT,
                        dir_sampling=DirectionSampling.CDHR, shrinking=Shrinking.SHRINKING,
-                       noise_dist='uniform', noise=0)
+                       noise_dist='uniform', noise=0, seed=1)
 
 
 # loads the spec

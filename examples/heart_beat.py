@@ -5,7 +5,7 @@ import os
 #  In a normal usecase you would instead just need the path to the specification file
 cwd = os.getcwd()
 
-path = os.path.join(cwd, 'heart_beat_debug.se')
+path = os.path.join(cwd, 'heart_beat.se')
 
 # initialize object
 shapex_object = ShapEx(timestep=0.0001,
