@@ -1,60 +1,60 @@
-README for trace generating tool (shape expressions)
+# ShapEx
 
-UPDATED THE INSTALLATION PROCESS 01/2021 !
-for a very simple working install, one must:
+## Introduction
+ShapEx is a tool   that generates  random  behaviors  from  shape  expressions,  a  formal specification formalism for describing sophisticated temporal behaviors of CPS. 
+The tool samples a random behavior in two steps:
 
-- install miniconda
-- "conda install numpy sympy scipy pandas networkx tqdm matplotlib pyswarms pandas -y"
-- "conda install -c conda-forge antlr-python-runtime -y"
+   (1) it first explores the space of qualitative parameterized shapes and then 
 
-TYPICAL USECASES (newest version 06/2020):
+   (2) instantiates parameters by sampling a possibly non-linear constraint.
 
-1) Sampling mode with visualization:
-   This creates 100 traces of the spec given in --inputfile with uniformly sampled parameters. A maximum of 10 paths are
-   chosen (beginning with the shortest) and for each a portion of traces with similar size is generated until there are
-   100 traces. The sampling frequency is 0.1, the noise threshold is 0.001, offsets are taken into account. The results
-   are visualized, but not saved to csv files.
+It uses several sampling algorithms for the different stages of sample generation and generates timed traces according to a textual shape expression file.
 
-python main.py --inputfile <path>\example_spec\emsoft20\pulses_emsoft20.felix -n 100 --valuation_mode sampling --paths
-10 --threshold 0.001 --timestep 0.1 --enable_offsets --visualize
+## Installation
+ShapEx is written in Python 3 and uses our standalone library *anyHR*. 
+It is necessary to have a working installation of 
+[pip](https://pip.pypa.io/en/stable/installing/) and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)  for the following installation process.
 
-2) Iteration mode with csv saving python main.py --inputfile <path>\example_spec\emsoft20\pulses_emsoft20.felix -n 100
-   --valuation_mode iteration --paths 10 --threshold 0.001 --timestep 0.1 --enable_offsets --save_csv
+Open the target directory in a terminal, and type `git clone https://github.com/figlerg/anyHR && cd anyHR`.
 
-PARAMETERS (new first):
---valuation_mode/-m [string 'sampling' or 'iteration]'
-This distinguishes between relational sampling and iterating over parameter space For sampling, both relational
-constraints (like 'a+2b <=3;') and interval constraints (like 'param a in [1,2]') are supported.
+Then type
+`pip install -r requirements.txt`.
 
---visualize/-v invokes a plotting function for the generated traces
+The anyHR library should be installed now and we will repeat the same process for the ShapEx tool:
 
---save_csv/-s saves all the traces to csv files in specified "out" directory.
+`cd .. && git clone https://github.com/figlerg/ShapEx && cd ShapEx`
 
---continuity_constraints/-cc Mode for imposing constraints to enforce some kind of continuity. Options: no_constraints (
-default), hardcoded, filter
+`pip install -r requirements.txt`
 
---inputfile/-i  [path string]
-specification file
+Finally, add the anyHR directory to the PYTHONPATH and ShapEx is ready to be used.
 
---out/-o [path string]
-path to directory where csv-files are stored. This is mandatory only in saving mode.
-(e.g. when calling the tool with parameter '-s' in cmd)
+## Use
+The following block illustrates a minimum working example for the use of the ShapEx tool. 
+For all parameters the default values are used and 100 samples are generated for the SE from the imported text file 'pulse.se'.
+```
+from shapex.shapex.ShapEx import *
 
---timestep/-ts  [double/int]
-signal sampling time step
+# initialize ShapEx object
+se = ShapEx()
+# loads the specification
+se.add_shape_expression('pulse.se')
+# Generate 100 examples 
+samples = shapex_object.samples(100)
+```
 
---density/-ds [double/int]
-defines how many equidistant points are evaluated for each parameter interval IN INTERVAL MODE
-(has no effect in sampling mode, will simply print a warning)
+The following table gives an overview of the parameters that can be set at ShapEx object initialization (line 4 of the code above):
 
---threshold/-th [double/int]
-acceptable noise threshold
-
---number/-n [int]
-number of samples
-
---dist ['normal' or 'uniform'] NEEDS TO BE CHECKED optionally sets the noise distribution
-
+| Parameter          | Description                                                                                            | Values                                                       |
+|--------------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| timestep           | Difference between two consecutive timestamps.                                                         | positive float (default 1.0)                                 |
+| word_sampler       | Qualitative word sampler.                                                                              | WordSamplerMode.SEARCH (default),  WordSamplerMode.BOLTZMANN |
+| search_budget      | Maximum number of distinctive qualitative words. Applicable to WordSamplerMode.SEARCH only.            | positive integer (default 10)                                |
+| mean_word_length   | Mean length of qualitative word. Applicable to WordSamplerMode.BOLTZMANN only.                          | positive float (default 10.0)                                |
+| dir_sampling       | Direction sampling hit-and-run algorithm. Random (RDHR) vs. coordinate direction (CDHR)                | DirectionSampling.RDHR (default), DirectionSampling.CDHR     |
+| shrinking          | Direction sampling hit-and-run algorithm.                                                              | Shrinking.NO_SHINKING (default), Shrinking.SHRINKING         |
+| init_point         | Hit-and-run with or without shrinking                                                                  | InitPoint.PSO (default), InitPoint.SMT                       |
+| noise_distribution | Finding initial point for hit-and-run. Particle swarm optimization (PSO) vs. constraint solving (SMT). | 'uniform' (default), 'gaussian'                              |
+| noise              | Distribution use to add noise to the generated signals.                                                | positive float (default 0.0)                                 |
 
 
 
