@@ -31,7 +31,7 @@ Finally, add the anyHR directory to the PYTHONPATH and ShapEx is ready to be use
 ## Use
 The following block illustrates a minimum working example for the use of the ShapEx tool. 
 For all parameters the default values are used and 100 samples are generated for the SE from the imported text file 'pulse.se'.
-```
+```python
 from shapex.shapex.ShapEx import *
 
 # initialize ShapEx object
