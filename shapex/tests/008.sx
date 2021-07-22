@@ -1,7 +1,7 @@
 # description
 
 # regular expression
-(line(a,b,l2).const(b,l).sine(a,b,c,d,l)) join (sinc(a,b,c,d,l).exp(a,b,c,l2))
+(line(a,b,l2).const(b,l).sine(a,b,c,d,l)) union (sinc(a,b,c,d,l).exp(a,b,c,l2))
 
 :
 

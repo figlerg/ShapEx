@@ -110,7 +110,7 @@ class ShapeExpressionParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "':'", "';'", "'*'", "'.'", "'join'", 
+    literalNames = [ "<INVALID>", "':'", "';'", "'*'", "'.'", "<INVALID>", 
                      "'('", "')'", "'const'", "'line'", "'exp'", "'sine'", 
                      "'sinc'", "'param'", "'duration'", "'constraint'", 
                      "'EULER'", "'**'", "'-'", "'+'", "'['", "']'", "'<='", 

@@ -110,7 +110,7 @@ literal
 
 // for regular _expression phi (from original shapex grammar)
 CONCAT: '.';
-UNION: 'join';
+UNION: 'union'|'join'; // union and join are equivalent keywords
 //KLEENE: '*'; // using * elsewhere... KLEENE would shadow this
 
 LEFTPAREN: '(';
