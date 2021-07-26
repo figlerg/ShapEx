@@ -12,21 +12,13 @@ It uses several sampling algorithms for the different stages of sample generatio
 
 ## Installation
 ShapEx is written in Python 3 and uses our standalone library *anyHR*. 
-It is necessary to have a working installation of 
+It is necessary to have a working installation of Python 3,
 [pip](https://pip.pypa.io/en/stable/installing/) and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)  for the following installation process.
 
-Open the target directory in a terminal, and type `git clone https://github.com/figlerg/anyHR && cd anyHR`.
+To install the tool, type 
+`pip install ShapEx`.
 
-Then type
-`pip install -r requirements.txt`.
-
-The anyHR library should be installed now and we will repeat the same process for the ShapEx tool:
-
-`cd .. && git clone https://github.com/figlerg/ShapEx && cd ShapEx`
-
-`pip install -r requirements.txt`
-
-Finally, add the anyHR directory to the PYTHONPATH and ShapEx is ready to be used.
+This also installs *anyHR* and all other dependencies. The below example should now work right away.
 
 ## Use
 The following block illustrates a minimum working example for the use of the ShapEx tool. 
