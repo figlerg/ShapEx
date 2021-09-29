@@ -138,6 +138,8 @@ class ShapEx(object):
 
                 trace[-1] = new_segment[-1]
 
+        trace[3] = trace[3].items()
+
         return trace
 
     # add_noise

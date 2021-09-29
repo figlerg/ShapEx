@@ -39,16 +39,16 @@ timesteps = (0.5, 1,)
 word_samplers = (WordSamplerMode.SEARCH, WordSamplerMode.BOLTZMANN)
 # search_budget = (0, 1, 10) # 0 is handled
 # word_lengths = (0, 1, 10) # 0 is handled
-search_budget = (5,)
-word_lengths = (3,)
+search_budget = (0,5,)
+word_lengths = (3,-1.5)
 dir_sampling_modes = (DirectionSampling.RDHR, DirectionSampling.CDHR)
 shrinking_modes = (Shrinking.NO_SHRINKING, Shrinking.SHRINKING)
 init_point_modes = (InitPoint.PSO, InitPoint.SMT)
 # noise_dists = ('uniform', 'normal') # normal is difficult to test
 noise_dists = ('uniform',)
 # noise_vals = (0,) if gaussian is tested, use this line
-noise_vals = (0,)
-seeds = (None,)
+noise_vals = (0,0.01)
+seeds = (None,123)
 
 # these are in the right order, do the cartesian product to get all combinations of modes
 cart_prod = (
@@ -265,8 +265,8 @@ class TestShapEx(unittest.TestCase):
                             # these are sampled as normal params and then get rounded up to next multiple of timestep
                             end = a*np.exp(b*mode[0]*math.ceil(l/mode[0])) - a+c
 
-                        self.assertAlmostEqual(sample[1][0],start,delta= 0.01,msg= 'Unexpected start point for exp')
-                        self.assertAlmostEqual(sample[1][-1],end,delta= 0.01,msg= 'Unexpected end point for exp. Diff = {}'.format(abs(sample[1][-1]-end)))
+                        self.assertAlmostEqual(sample[1][0],start,delta=0.02,msg= 'Unexpected start point for exp')
+                        self.assertAlmostEqual(sample[1][-1],end,delta=0.02,msg= 'Unexpected end point for exp. Diff = {}'.format(abs(sample[1][-1]-end)))
 
 
 
@@ -400,35 +400,28 @@ class TestShapEx(unittest.TestCase):
 
 
 def reproducibility_test(tester_self, mode, samples,input_file):
-    if mode[-1]:
-        # test reproducibility
-        shapex2 = ShapEx(*mode)
-        shapex2.add_shape_expression(input_file)
-        samples2 = shapex2.samples(10)
+    # test reproducibility
+    shapex2 = ShapEx(*mode)
+    shapex2.add_shape_expression(input_file)
+    samples2 = shapex2.samples(10)
 
-        for i in range(len(samples)):
-            for j in range(len(samples[i])):
-                tester_self.assertTrue(np.all(samples[i][j].shape==samples2[i][j].shape))
-                tester_self.assertTrue(np.all(samples[i][j]==samples2[i][j]))
-    else: # no seed given
-        # test reproducibility
-        shapex2 = ShapEx(*mode)
-        shapex2.add_shape_expression(input_file)
-        samples2 = shapex2.samples(10)
+    same = True
 
-        # the two samples should be different if no seed is given!
-        same = True
-        for i in range(len(samples)):
-            for j in [0,1]:
-                if np.all(samples[i][j].shape!=samples2[i][j].shape):
-                    same = False
-                    break
-                    # this also means that the two samples are different and means the test passes
-                    # otherwise the next line gives a warning because it cannot compare the two
+    for i in range(len(samples)):
+        for j in [0,1]:
+            if np.all(samples[i][j].shape!=samples2[i][j].shape):
+                same = False
+                break
+                # this also means that the two samples are different and means the test passes
+                # otherwise the next line gives a warning because it cannot compare the two
 
-                # if all the shapes are the same, at least the values should be different
-                if not np.all(samples[i][j]==samples2[i][j]):
-                    same = False
-                    break
+            # if all the shapes are the same, at least the values should be different
+            if not np.all(samples[i][j]==samples2[i][j]):
+                same = False
+                break
 
+    if mode[-1] != None:
+        tester_self.assertTrue(same, 'Output is not the same even though the same seed was given.')
+
+    else: # no seed given, this should definitely be false
         tester_self.assertFalse(same, 'Output is the same even though no seed was given.')
