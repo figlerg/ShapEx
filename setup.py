@@ -5,7 +5,7 @@ with open("readme.md", "r") as fh:
 
 setup(
     name='ShapEx',
-    version='1.0.0',
+    version='1.0.1',
     description='Library for sampling shape expressions.',
     long_description=long_description,
     long_description_content_type="text/markdown",

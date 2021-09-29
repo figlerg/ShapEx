@@ -1,0 +1,17 @@
+# https://towardsdatascience.com/how-to-upload-your-python-package-to-pypi-de1b363a1b3
+
+# update pip
+python -m pip install --upgrade pip
+
+# install twine
+pip install twine
+
+# ensure that the setup file is up to date.
+
+# create a new .tar.gz file in the new directory "dist"
+python setup.py sdist
+
+# upload it
+twine upload dist/<filename>
+OR POSSIBLY
+python -m twine upload dist/<filename>
