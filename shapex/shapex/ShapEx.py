@@ -120,9 +120,8 @@ class ShapEx(object):
                                    timestep=self._timestep,
                                    start=start, dist_param=self.noise)
 
-                settings_labels = [(parameter, param_values[index[parameter]])
-                                   for parameter in param_vars]
-                # these are global, need only look at first segment
+                settings_labels = dict([(parameter, param_values[index[parameter]])
+                                        for parameter in param_vars])
 
                 trace.insert(3, settings_labels)
             else:
@@ -133,6 +132,9 @@ class ShapEx(object):
                 trace[0] = np.concatenate((trace[0], new_segment[0]))
                 trace[1] = np.concatenate((trace[1], new_segment[1]))
                 trace[2] = max(trace[2], new_segment[2])  # mse of concat is max of both
+
+                for parameter in param_vars:
+                    trace[3][parameter] = param_values[index[parameter]]
 
                 trace[-1] = new_segment[-1]
 
