@@ -1,22 +1,11 @@
 from shapex.shapex.ShapEx import *
-import os
+from shapex.misc.visualize import plotter
 
-# this is just to get the path to the current working directory.
-#  In a normal usecase you would instead just need the path to the specification file
-cwd = os.getcwd()
-
-path = os.path.join(cwd, 'specs','example_1.sx')
-
-# initialize object
-shapex_object = ShapEx(timestep = 1,
-                       word_sampler=WordSamplerMode.BOLTZMANN,target_word_length=5,
-                       dir_sampling= DirectionSampling.RDHR, shrinking = Shrinking.NO_SHRINKING,
-                       noise_dist='uniform', noise=0.1)
-
-# loads the spec
-shapex_object.add_shape_expression(path)
-
-# sample
-samples = shapex_object.samples(100)
+# initialize ShapEx object
+se = ShapEx(dir_sampling=DirectionSampling.CDHR, init_point=InitPoint.SMT,timestep=0.01)
+# loads the specification
+se.add_shape_expression('pulse.sx')
+# Generate 100 examples
+samples = se.samples(100)
 
 plotter(samples)

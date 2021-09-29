@@ -1,0 +1,34 @@
+# description
+
+# regular expression
+line(a1,b1,d1).line(a2,b2,d2).line(a3,b3,d3).line(a4,b4,d4).line(a5,b5,d5)
+
+:
+
+# parameter declarations with ranges
+param a1 in (0,0);
+param b1 in (0,0.1);
+duration d1 in (1,2);
+
+param a2 in (0,-1);
+param b2 in (-0.1,0.1);
+duration d2 in (1,2);
+
+param a3 in (0,0);
+param b3 in (0,-2);
+duration d3 in (1,2);
+
+param a4 in (0,1);
+param b4 in (-2,-0.5);
+duration d4 in (1,2);
+
+param a5 in (0,0);
+param b5 in (-1,1);
+duration d5 in (1,2);
+
+# relational constraints
+b1+a1*d1-b2 in (-0.01,0.01);
+b2+a2*d2-b3 in (-0.01,0.01);
+b3+a3*d3-b4 in (-0.01,0.01);
+b4+a4*d4-b5 in (-0.01,0.01);
+b5+a5*d5-b1 in (-0.01,0.01);
