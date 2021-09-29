@@ -15,7 +15,7 @@ ShapEx is written in Python 3 and uses our standalone library *anyHR*.
 It is necessary to have a working installation of Python 3,
 [pip](https://pip.pypa.io/en/stable/installing/) and [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)  for the following installation process.
 
-To install the tool, type 
+To install the tool, open a terminal and type 
 `pip install ShapEx`.
 
 This also installs *anyHR* and all other dependencies. The below example should now work right away.
