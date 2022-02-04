@@ -92,6 +92,20 @@ The following table gives an overview of the parameters that can be set at ShapE
 | noise              | Distribution use to add noise to the generated signals.                                                | positive float (default 0.0)                                 |
 
 
+## Cite
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Bibliography</title>
+</head>
+<body>
+<div class="csl-bib-body" style="line-height: 2; margin-left: 2em; text-indent:-2em;">
+  <div class="csl-entry">Basset, N., Dang, T., Gigler, F., Mateis, C., &amp; Ničković, D. (2021). Sampling of Shape Expressions with ShapEx. <i>Proceedings of the 19th ACM-IEEE International Conference on Formal Methods and Models for System Design</i>, 118–125. <a href="https://doi.org/10.1145/3487212.3487350">https://doi.org/10.1145/3487212.3487350</a></div>
+  <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_id=info%3Adoi%2F10.1145%2F3487212.3487350&amp;rft_id=urn%3Aisbn%3A978-1-4503-9127-6&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.atitle=Sampling%20of%20Shape%20Expressions%20with%20ShapEx&amp;rft.btitle=Proceedings%20of%20the%2019th%20ACM-IEEE%20International%20Conference%20on%20Formal%20Methods%20and%20Models%20for%20System%20Design&amp;rft.place=New%20York%2C%20NY%2C%20USA&amp;rft.publisher=Association%20for%20Computing%20Machinery&amp;rft.series=MEMOCODE%20'21&amp;rft.aufirst=Nicolas&amp;rft.aulast=Basset&amp;rft.au=Nicolas%20Basset&amp;rft.au=Thao%20Dang&amp;rft.au=Felix%20Gigler&amp;rft.au=Cristinel%20Mateis&amp;rft.au=Dejan%20Ni%C4%8Dkovi%C4%87&amp;rft.date=2021&amp;rft.pages=118%E2%80%93125&amp;rft.spage=118&amp;rft.epage=125&amp;rft.isbn=978-1-4503-9127-6"></span>
+</div></body>
+</html>
+
 
 
 
