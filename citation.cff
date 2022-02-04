@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Gigler"
+  given-names: "Felix"
+  orcid: " https://orcid.org/0000-0002-6495-9048 "
+- family-names: "Ničković"
+  given-names: "Dejan"
+- family-names: "Mateis"
+  given-names: "Cristinel"
+- family-names: "Basset"
+  given-names: "Nicolas"
+- family-names: "Dang"
+  given-names: "Thao"
+title: "ShapEx"
+version: 1.0.1
+doi: 10.5281/zenodo.1234
+date-released: 2022-02-04
+url: "https://github.com/figlerg/ShapEx"
+preferred-citation:
+  type: conference-paper
+  authors:
+  - family-names: "Gigler"
+  given-names: "Felix"
+  orcid: " https://orcid.org/0000-0002-6495-9048 "
+  - family-names: "Ničković"
+  given-names: "Dejan"
+  - family-names: "Mateis"
+  given-names: "Cristinel"
+  - family-names: "Basset"
+  given-names: "Nicolas"
+  - family-names: "Dang"
+  given-names: "Thao"
+  doi: "10.1145/3487212.3487350"
+  title: "Sampling of Shape Expressions with ShapEx"
+  booktitle:"Proceedings of the 19th ACM-IEEE International Conference on Formal Methods and Models for System Design"
+  pages:"118–125"
+  numpages:"8"
+  keywords:"hit-and-run, testing, shape expressions, sampling"
+  location:"Virtual Event, China"
+  series:MEMOCODE '21"
+  year:"2021"
